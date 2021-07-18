@@ -75,7 +75,7 @@ Mod-Union is a big project, it will include MTP and SMaD, as well as all new mod
 5.  Done! Now run the game and enjoy!
 
 <div align="left">
-<img src="./images/Deinstallation.png" width=35%/>
+<img src="./images/Uninstallation.png" width=35%/>
 </div>
 
 1.  Just remove "TBB.dll" from /Steam/SteamApps/common/Streets of Rogue/BepInEx/plugins.
