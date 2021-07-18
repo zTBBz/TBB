@@ -80,6 +80,58 @@ namespace TBB
                 English = "The mafia saw you eating spaghetti downtown one time. Ever since, you have carried their undying respect and loyalty.<color=#ff0000ff>[Every new floor +30 Ammo Box]</color>",
                 Russian = "Будучи в деловом центре вы попробовали спагетти, с тех пор когда вас видят мафиози они признают вас истинным ценителем спаггети.<color=#ff0000ff>[Каждый этаж +30 Ящик с боеприпасами]</color>."
             });
+            unlock = new TraitUnlock("AlignedTo_Thief") { UnlockCost = 0, CharacterCreationCost = 5 };
+            Traits.Add(unlock);
+            RogueLibs.CreateCustomUnlock(unlock,
+            new CustomNameInfo
+            {
+                English = "Celebrity Among Thieves",
+                Russian = "Знаменитость среди воров"
+            },
+            new CustomNameInfo
+            {
+                English = "After busting your ass for 10 years in the factory, you started feeling discontent. You started with petty theft, until one day you stole the entire factory and pawned it. Thieves everywhere look at you with reverence.",
+                Russian = "Более 10 лет вы впахивали на заводе, в конце - концов вам это надоело, вы захотели лёгкой жизни и стали воровать, все воры в городе знают о вас."
+            });
+            unlock = new TraitUnlock("LoyalTo_Bartender") { UnlockCost = 0, CharacterCreationCost = 4 };
+            Traits.Add(unlock);
+            RogueLibs.CreateCustomUnlock(unlock,
+            new CustomNameInfo
+            {
+                English = "Loyal Bar-Fly",
+                Russian = "Любитель выпить"
+            },
+            new CustomNameInfo
+            {
+                English = "After wasted your life funding their, the Bartenders of the city have decided you're a pretty cool customer. Hey, it's not all bad! They know your name, at least.",
+                Russian = "Вы имея на руках деньги от умершего отца вы начали пропивать их, уже через несколько месяцев вы стали заядлым алкоголиком и знаменитостью среди барменов."
+            });
+            unlock = new TraitUnlock("AlignedTo_Hacker") { UnlockCost = 0, CharacterCreationCost = 5 };
+            Traits.Add(unlock);
+            RogueLibs.CreateCustomUnlock(unlock,
+            new CustomNameInfo
+            {
+                English = "Cyber-Spider",
+                Russian = "Паук в интернете"
+            },
+            new CustomNameInfo
+            {
+                English = "You are known in Cyberspace as the Spider. The Data Cowboys, RAM Rustlers, and Techno-Fetishists of the city associate your name with deep respect.<color=#ff0000ff>[Every new floor +2 Hacking Tool]</color>",
+                Russian = "Постоянно играв и зависая в сети вы начали обрастать новыми знакомствами, в частности вы познакомились с хакерами.<color=#ff0000ff>[Каждый этаж +2 Устройства для взлома]</color>"
+            });
+            unlock = new TraitUnlock("AlignedTo_Doctor") { UnlockCost = 0, CharacterCreationCost = 5 };
+            Traits.Add(unlock);
+            RogueLibs.CreateCustomUnlock(unlock,
+            new CustomNameInfo
+            {
+                English = "Pharmaceutical Importer",
+                Russian = "Контрабандист лекарств"
+            },
+            new CustomNameInfo
+            {
+                English = "Doctors love you. Not because you're good, or because you're kind. But because you bring them the Good Shit at a price that they won't ask questions about.<color=#ff0000ff>[Every new floor +1 Syringe]</color>",
+                Russian = "Вы долгое время ходили по этажам и доставляли различные лекарства, в основном нелегальные.. Для всех врачей вы запомнились оптимальными ценами.<color=#ff0000ff>[Каждый этаж +1 Шприц]</color>"
+            });
         }
         public static void Relationships_SetupRelationshipOriginal(Relationships __instance, Agent otherAgent, Agent ___agent)
         {
