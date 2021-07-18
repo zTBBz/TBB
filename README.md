@@ -17,7 +17,6 @@
       <img src="https://img.shields.io/github/stars/zTBBz/TBB?color=green&label=Stars&style=for-the-badge" alt="Stars"/>
     </a>
   </p>
-  <img src="./images/Logo.png" width=25%/>
 </div>
 
 ## Traveler's Bag Build or Mod-Union (TBB) ##
