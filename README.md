@@ -22,13 +22,13 @@
 
 ## Traveler's Bag Build or Mod-Union (TBB) ##
 <div align="left">
-<img src="./images/Info.png" width=30%/>
+<img src="./images/Info.png" width=35%/>
 </div>
 
 Mod-Union is a big project, it will include MTP and SMaD, as well as all new mods under my authorship. All mods become Mod-Union modules with great relative autonomy. That is, Mod-Union can update only one module for each update and it will be indicated which module was updated and, of course, what exactly was updated. 
 
 <div align="left">
-<img src="./images/FAQ.png" width=30%/>
+<img src="./images/FAQ.png" width=35%/>
 </div>
 
 1.  When will Mod-Union be released????
@@ -47,7 +47,7 @@ Mod-Union is a big project, it will include MTP and SMaD, as well as all new mod
     1.  Write to me in DM Discord (T.B.B#3317)
 
 <div align="left">
-<img src="./images/Links.png" width=30%/>
+<img src="./images/Links.png" width=35%/>
 </div>
 
 *  [Download TBB](https://github.com/zTBBz/MTP/releases)
@@ -59,7 +59,7 @@ Mod-Union is a big project, it will include MTP and SMaD, as well as all new mod
 *  [Official RU SoR Discord](https://discord.gg/neDvsmk)
 
 <div align="left">
-<img src="./images/Installation.png" width=30%/>
+<img src="./images/Installation.png" width=35%/>
 </div>
 
 1.  Install BepInEx:
@@ -75,7 +75,7 @@ Mod-Union is a big project, it will include MTP and SMaD, as well as all new mod
 5.  Done! Now run the game and enjoy!
 
 <div align="left">
-<img src="./images/Deinstallation.png" width=30%/>
+<img src="./images/Deinstallation.png" width=35%/>
 </div>
 
 1.  Just remove "TBB.dll" from /Steam/SteamApps/common/Streets of Rogue/BepInEx/plugins.
