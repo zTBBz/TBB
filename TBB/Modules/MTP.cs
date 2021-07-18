@@ -13,13 +13,24 @@ namespace TBB
     class MTP
     {
         public static bool IsATOIInstalled;
+        public static List<TraitUnlock> Traits = new List<TraitUnlock>();
+        public static void SetActive(bool isEnabled)
+        {
+            foreach (TraitUnlock unlock in Traits)
+            {
+                unlock.IsAvailable = isEnabled;
+                unlock.IsAvailableInCC = isEnabled;
+            }
+        }
         public void Awake()
         {
             RoguePatcher Patcher = new RoguePatcher(Main.MainInstance, typeof(MTP));
             Patcher.Postfix(typeof(Relationships), "SetupRelationshipOriginal", new Type[1] { typeof(Agent) });
             IsATOIInstalled = File.Exists(Path.GetFullPath(Path.Combine(Paths.PluginPath, "aTonOfItems.dll")));
             RogueFramework.TraitFactories.Add(new AlignedTraitFactory());
-            RogueLibs.CreateCustomUnlock(new TraitUnlock("AlignedTo_Gangbanger") { UnlockCost = 0, CharacterCreationCost = 5 },
+            TraitUnlock unlock = new TraitUnlock("AlignedTo_Gangbanger") { UnlockCost = 0, CharacterCreationCost = 5 };
+            Traits.Add(unlock);
+            RogueLibs.CreateCustomUnlock(unlock,
                 new CustomNameInfo
                 {
                     English = "Crepe Rolle",
@@ -30,7 +41,9 @@ namespace TBB
                     English = "You back the Blue, but the other kind. Throughout your early life, you rolled with Crepes.",
                     Russian = "После нескольких лет в трущобах, вы связали свою жизнь с блинчиками."
                 });
-            RogueLibs.CreateCustomUnlock(new TraitUnlock("AlignedTo_GangbangerB") { UnlockCost = 0, CharacterCreationCost = 5 },
+                unlock = new TraitUnlock("AlignedTo_GangbangerB") { UnlockCost = 0, CharacterCreationCost = 5 };
+                Traits.Add(unlock);
+                RogueLibs.CreateCustomUnlock(unlock,
                 new CustomNameInfo
                 {
                     English = "Blahd Brother",
@@ -41,7 +54,9 @@ namespace TBB
                     English = "Due to your love of bad food, pointless work, and raw deals, the Soldiers see you as one of their own.",
                     Russian = "После нескольких лет в трущобах, вы связали свою жизнь с кровяными."
                 });
-            RogueLibs.CreateCustomUnlock(new TraitUnlock("LoyalTo_Soldier") { UnlockCost = 0, CharacterCreationCost = 4 },
+                unlock = new TraitUnlock("LoyalTo_Soldier") { UnlockCost = 0, CharacterCreationCost = 4 };
+                Traits.Add(unlock);
+                RogueLibs.CreateCustomUnlock(unlock,
                 new CustomNameInfo
                 {
                     English = "Honorary Sergeant",
@@ -52,17 +67,19 @@ namespace TBB
                     English = "Your father is a former military man, it's no secret that for all soldiers you are a native rookie",
                     Russian = "Ваш отец бывший военный, никому уже не секрет что для всех солдат вы родной салага."
                 });
-            RogueLibs.CreateCustomUnlock(new TraitUnlock("LoyalTo_Mafia") { UnlockCost = 0, CharacterCreationCost = 4 },
-                new CustomNameInfo
-                {
-                    English = "Spaghetti Connoisseur",
-                    Russian = "Ценитель спагетти"
-                },
-                new CustomNameInfo
-                {
-                    English = "The mafia saw you eating spaghetti downtown one time. Ever since, you have carried their undying respect and loyalty.<color=#ff0000ff>[Every new floor +30 Ammo Box]</color>",
-                    Russian = "Будучи в деловом центре вы попробовали спагетти, с тех пор когда вас видят мафиози они признают вас истинным ценителем спаггети.<color=#ff0000ff>[Каждый этаж +30 Ящик с боеприпасами]</color>."
-                });
+            unlock = new TraitUnlock("LoyalTo_Mafia") { UnlockCost = 0, CharacterCreationCost = 4 };
+            Traits.Add(unlock);
+            RogueLibs.CreateCustomUnlock(unlock,
+            new CustomNameInfo
+            {
+                English = "Spaghetti Connoisseur",
+                Russian = "Ценитель спагетти"
+            },
+            new CustomNameInfo
+            {
+                English = "The mafia saw you eating spaghetti downtown one time. Ever since, you have carried their undying respect and loyalty.<color=#ff0000ff>[Every new floor +30 Ammo Box]</color>",
+                Russian = "Будучи в деловом центре вы попробовали спагетти, с тех пор когда вас видят мафиози они признают вас истинным ценителем спаггети.<color=#ff0000ff>[Каждый этаж +30 Ящик с боеприпасами]</color>."
+            });
         }
         public static void Relationships_SetupRelationshipOriginal(Relationships __instance, Agent otherAgent, Agent ___agent)
         {

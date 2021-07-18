@@ -22,6 +22,8 @@
 
 ## Traveler's Bag Build or Mod-Union (TBB) ##
 
+<img src="./images/Information.png" width=25%/>
+
 ## Information ##
 
 Mod-Union is a big project, it will include MTP and SMaD, as well as all new mods under my authorship. All mods become Mod-Union modules with great relative autonomy. That is, Mod-Union can update only one module for each update and it will be indicated which module was updated and, of course, what exactly was updated. 

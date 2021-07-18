@@ -68,7 +68,38 @@ namespace TBB
                 English = "Changes all the items, etc. of the SMaD module, depending on the name of the button",
                 Russian = "Изменяет все предметы и т.д SMaD модуля в зависимости от названия кнопки"
             });
+            RogueLibs.CreateCustomName("MTP_Off_colored", "Unlock", new CustomNameInfo
+            {
+                English = "<color=#ff0000ff>Swith off [MTP]</color>",
+                Russian = "<color=#ff0000ff>Выключить [MTP]</color>"
+            });
+            RogueLibs.CreateCustomName("MTP_Off", "Unlock", new CustomNameInfo
+            {
+                English = "Swith off [MTP]",
+                Russian = "Выключить [MTP]"
+            });
+            RogueLibs.CreateCustomName("D_MTP_Off", "Unlock", new CustomNameInfo
+            {
+                English = "Changes all the items, etc. of the MTP module, depending on the name of the button",
+                Russian = "Изменяет все предметы и т.д MTP модуля в зависимости от названия кнопки"
+            });
+            RogueLibs.CreateCustomName("MTP_On_colored", "Unlock", new CustomNameInfo
+            {
+                English = "<color=#008000ff>Swith on [MTP]</color>",
+                Russian = "<color=#008000ff>Включить [MTP]</color>"
+            });
+            RogueLibs.CreateCustomName("MTP_On", "Unlock", new CustomNameInfo
+            {
+                English = "Swith on [MTP]",
+                Russian = "Включить [MTP]"
+            });
+            RogueLibs.CreateCustomName("D_MTP_On", "Unlock", new CustomNameInfo
+            {
+                English = "Changes all the items, etc. of the MTP module, depending on the name of the button",
+                Russian = "Изменяет все предметы и т.д MTP модуля в зависимости от названия кнопки"
+            });
             RogueLibs.CreateCustomUnlock(new SMaD_Switch());
+            RogueLibs.CreateCustomUnlock(new MTP_Switch());
             RogueLibs.CreateCustomAudio("Bag_Use", Properties.Resources.Bag_Use, AudioType.OGGVORBIS);
         }
         public class SMaD_Switch : MutatorUnlock
@@ -127,6 +158,66 @@ namespace TBB
                 else
                 {
                     return gc.nameDB.GetName("D_SMaD_On", "Unlock");
+                }
+            }
+
+        }
+        public class MTP_Switch : MutatorUnlock
+        {
+            public MTP_Switch() : base("MTP_Switch", true)
+            {
+                SortingOrder = -50;
+                IgnoreStateSorting = true;
+            }
+            public override void OnPushedButton()
+            {
+                if (MTP.Traits[0].IsAvailable)
+                {
+                    MTP.SetActive(false);
+                }
+                else
+                    MTP.SetActive(true);
+               UpdateButton();
+               UpdateMenu();
+            }
+            public override void UpdateButton()
+            {
+                base.UpdateButton();
+                if (MTP.Traits[0].IsAvailable)
+                    Text = gc.nameDB.GetName("MTP_Off_colored", "Unlock");
+                else Text = gc.nameDB.GetName("MTP_On_colored", "Unlock");
+            }
+            public override string GetFancyName()
+            {
+                if (MTP.Traits[0].IsAvailable)
+                {
+                    return gc.nameDB.GetName("MTP_Off_colored", "Unlock");
+                }
+                else
+                {
+                    return gc.nameDB.GetName("MTP_On_colored", "Unlock");
+                }
+            }
+            public override string GetName()
+            {
+                if (MTP.Traits[0].IsAvailable)
+                {
+                    return gc.nameDB.GetName("MTP_Off", "Unlock");
+                }
+                else
+                {
+                    return gc.nameDB.GetName("MTP_On", "Unlock");
+                }
+            }
+            public override string GetDescription()
+            {
+                if (MTP.Traits[0].IsAvailable)
+                {
+                    return gc.nameDB.GetName("D_MTP_Off", "Unlock");
+                }
+                else
+                {
+                    return gc.nameDB.GetName("D_MTP_On", "Unlock");
                 }
             }
 
