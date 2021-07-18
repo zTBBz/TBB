@@ -21,14 +21,15 @@
 </div>
 
 ## Traveler's Bag Build or Mod-Union (TBB) ##
-
-<img src="./images/Information.png" width=25%/>
-
-## Information ##
+<div align="center">
+<img src="./images/Info.png" width=35%/>
+</div>
 
 Mod-Union is a big project, it will include MTP and SMaD, as well as all new mods under my authorship. All mods become Mod-Union modules with great relative autonomy. That is, Mod-Union can update only one module for each update and it will be indicated which module was updated and, of course, what exactly was updated. 
 
-## F.A.Q ##
+<div align="center">
+<img src="./images/FAQ.png" width=35%/>
+</div>
 
 1.  When will Mod-Union be released????
     1.  Well, the work continues. 35% of all the work on the transfer of MTP and SMaD has already been done, only the transfer, not the update. The Mod-Union beta will be released soon, you will be able to look at the progress and some new features.
@@ -45,7 +46,10 @@ Mod-Union is a big project, it will include MTP and SMaD, as well as all new mod
 1.  I want to write sounds for items and others, where should I turn?
     1.  Write to me in DM Discord (T.B.B#3317)
 
-## Links ##
+<div align="center">
+<img src="./images/Links.png" width=35%/>
+</div>
+
 *  [Download TBB](https://github.com/zTBBz/MTP/releases)
 *  [RogueLibs on GitHub](https://github.com/Abbysssal/RogueLibs)
 *  [aToI on GitHub](https://github.com/Abbysssal/aToI)
@@ -54,7 +58,10 @@ Mod-Union is a big project, it will include MTP and SMaD, as well as all new mod
 *  [Official SoR Discord](https://discord.gg/AMww6nP2Af)
 *  [Official RU SoR Discord](https://discord.gg/neDvsmk)
 
-## Installation ##
+<div align="center">
+<img src="./images/Installation.png" width=35%/>
+</div>
+
 1.  Install BepInEx:
     1.  [Download the latest version of BepInEx](https://github.com/BepInEx/BepInEx/releases/latest);
     2.  Drag all files from the archive into directory /Steam/SteamApps/common/Streets of Rogue/;
@@ -67,5 +74,8 @@ Mod-Union is a big project, it will include MTP and SMaD, as well as all new mod
 4.  Drag the file "TBB.dll" into directory /Steam/SteamApps/common/Streets of Rogue/BepInEx/plugins;
 5.  Done! Now run the game and enjoy!
 
-## Deinstallation ##
+<div align="center">
+<img src="./images/Deinstallation.png" width=35%/>
+</div>
+
 1.  Just remove "TBB.dll" from /Steam/SteamApps/common/Streets of Rogue/BepInEx/plugins.
