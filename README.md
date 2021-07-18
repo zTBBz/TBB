@@ -46,7 +46,10 @@ Mod-Union is a big project, it will include MTP and SMaD, as well as all new mod
 *  [Download TBB](https://github.com/zTBBz/MTP/releases)
 *  [RogueLibs on GitHub](https://github.com/Abbysssal/RogueLibs)
 *  [aToI on GitHub](https://github.com/Abbysssal/aToI)
+*  [Networking DLL Fix](https://discord.com/channels/187414758536773632/433748059172896769/764059349000781874)
 *  [MTP Traits table](https://docs.google.com/spreadsheets/d/1kySq44n0-29RoTd5aPPAJifNcYvBeIGS0MIgwUOwTv4/edit#gid=0)
+*  [Official Discord SoR](https://discord.gg/AMww6nP2Af)
+*  [Official RU Discord SoR](https://discord.gg/neDvsmk)
 
 ## Installation ##
 1.  Install BepInEx:
