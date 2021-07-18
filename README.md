@@ -39,7 +39,7 @@ Mod-Union is a big project, it will include MTP and SMaD, as well as all new mod
 1.  I've seen SMaD sprites - they're terrible, I'm a pixel artist can I help?
     1.  Sure. Sprites are always needed. Write to me in DM Discord (T.B.B#3317)
 
-1.  I want to write sounds for objects, where should I turn?
+1.  I want to write sounds for items and others, where should I turn?
     1.  Write to me in DM Discord (T.B.B#3317)
 
 ## Links ##
