@@ -132,6 +132,47 @@ namespace TBB
                 English = "Doctors love you. Not because you're good, or because you're kind. But because you bring them the Good Shit at a price that they won't ask questions about.<color=#ff0000ff>[Every new floor +1 Syringe]</color>",
                 Russian = "Вы долгое время ходили по этажам и доставляли различные лекарства, в основном нелегальные.. Для всех врачей вы запомнились оптимальными ценами.<color=#ff0000ff>[Каждый этаж +1 Шприц]</color>"
             });
+            unlock = new TraitUnlock("LoyalTo_Scientist") { UnlockCost = 0, CharacterCreationCost = 4 };
+            unlock.Unlock.upgrade = "AlignedTo_Scientist";
+            Traits.Add(unlock);
+            RogueLibs.CreateCustomUnlock(unlock,
+            new CustomNameInfo
+            {
+                English = "Model Specimen",
+                Russian = "Идеальный образец"
+            },
+            new CustomNameInfo
+            {
+                English = "The Scientists remember you fondly. You were poked and prodded and injected with all manner of things, and never once complained.",
+                Russian = "Сидя в камере лаборатории вы не дёргались и выполняли все приказы людей в халатах, спустя пару лет вас выпустили. Среди учёных разнёсся слух о идеальном образце, о вас."
+            });
+            unlock = new TraitUnlock("AlignedTo_Scientist") { UnlockCost = 0, CharacterCreationCost = 5 };
+            Traits.Add(unlock);
+            RogueLibs.CreateCustomUnlock(unlock,
+            new CustomNameInfo
+            {
+                English = "Model Specimen +",
+                Russian = "Идеальный образец +"
+            },
+            new CustomNameInfo
+            {
+                English = "The Scientists remember you fondly. You were poked and prodded and injected with all manner of things, and never once complained.",
+                Russian = "Сидя в камере лаборатории вы не дёргались и выполняли все приказы людей в халатах, спустя пару лет вас выпустили. Среди учёных разнёсся слух о идеальном образце, о вас."
+            });
+            unlock = new TraitUnlock("AlignedTo_Gorilla") { UnlockCost = 0, CharacterCreationCost = 5 };
+            Traits.Add(unlock);
+            RogueLibs.CreateCustomUnlock(unlock,
+            new CustomNameInfo
+            {
+                English = "Smooth Cousin",
+                Russian = "Не волосатый родственник"
+            },
+            new CustomNameInfo
+            {
+                English = "You stick out like a sore (opposable) thumb at family gatherings, because you're the only one who's not a Gorilla. The food leaves something to be desired, but the Gorillas of the city are your family!",
+                Russian = "Без волос на теле, с гладкой кожей, с большим пальцем.. Да вы не волосатый родственник!"
+            });
+
         }
         public static void Relationships_SetupRelationshipOriginal(Relationships __instance, Agent otherAgent, Agent ___agent)
         {

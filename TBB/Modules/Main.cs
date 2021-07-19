@@ -38,6 +38,10 @@ namespace TBB
             logger = Logger;
             new MTP().Awake();
             new SMaD().Awake();
+            int score_traits = MTP.Traits.Count;
+            logger.LogWarning("[MTP]: Traits count: " + score_traits);
+            int score_items = SMaD.Items.Count;
+            logger.LogWarning("[SMaD]: Items count: " + score_items);
             RogueLibs.CreateCustomName("SMaD_Off_colored", "Unlock", new CustomNameInfo
             {
                 English = "<color=#ff0000ff>Swith off [SMaD]</color>",
