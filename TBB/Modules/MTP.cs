@@ -31,38 +31,38 @@ namespace TBB
             TraitUnlock unlock = new TraitUnlock("AlignedTo_Gangbanger") { UnlockCost = 0, CharacterCreationCost = 5 };
             Traits.Add(unlock);
             RogueLibs.CreateCustomUnlock(unlock,
-                new CustomNameInfo
+            new CustomNameInfo
                 {
                     English = "Crepe Rolle",
                     Russian = "Друг блинчиков"
                 },
-                new CustomNameInfo
+            new CustomNameInfo
                 {
                     English = "You back the Blue, but the other kind. Throughout your early life, you rolled with Crepes.",
                     Russian = "После нескольких лет в трущобах, вы связали свою жизнь с блинчиками."
                 });
-                unlock = new TraitUnlock("AlignedTo_GangbangerB") { UnlockCost = 0, CharacterCreationCost = 5 };
-                Traits.Add(unlock);
-                RogueLibs.CreateCustomUnlock(unlock,
-                new CustomNameInfo
+            unlock = new TraitUnlock("AlignedTo_GangbangerB") { UnlockCost = 0, CharacterCreationCost = 5 };
+            Traits.Add(unlock);
+            RogueLibs.CreateCustomUnlock(unlock,
+            new CustomNameInfo
                 {
                     English = "Blahd Brother",
                     Russian = "Друг кровяных"
                 },
-                new CustomNameInfo
+            new CustomNameInfo
                 {
                     English = "Due to your love of bad food, pointless work, and raw deals, the Soldiers see you as one of their own.",
                     Russian = "После нескольких лет в трущобах, вы связали свою жизнь с кровяными."
                 });
-                unlock = new TraitUnlock("LoyalTo_Soldier") { UnlockCost = 0, CharacterCreationCost = 4 };
-                Traits.Add(unlock);
-                RogueLibs.CreateCustomUnlock(unlock,
-                new CustomNameInfo
+            unlock = new TraitUnlock("LoyalTo_Soldier") { UnlockCost = 0, CharacterCreationCost = 4 };
+            Traits.Add(unlock);
+            RogueLibs.CreateCustomUnlock(unlock,
+            new CustomNameInfo
                 {
                     English = "Honorary Sergeant",
                     Russian = "Салага"
                 },
-                new CustomNameInfo
+            new CustomNameInfo
                 {
                     English = "Your father is a former military man, it's no secret that for all soldiers you are a native rookie",
                     Russian = "Ваш отец бывший военный, никому уже не секрет что для всех солдат вы родной салага."
@@ -172,7 +172,6 @@ namespace TBB
                 English = "You stick out like a sore (opposable) thumb at family gatherings, because you're the only one who's not a Gorilla. The food leaves something to be desired, but the Gorillas of the city are your family!",
                 Russian = "Без волос на теле, с гладкой кожей, с большим пальцем.. Да вы не волосатый родственник!"
             });
-
         }
         public static void Relationships_SetupRelationshipOriginal(Relationships __instance, Agent otherAgent, Agent ___agent)
         {
