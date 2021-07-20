@@ -28,22 +28,34 @@
 Mod-Union is a big project, it will include MTP and SMaD, as well as all new mods under my authorship. All mods become Mod-Union modules with great relative autonomy. That is, Mod-Union can update only one module for each update and it will be indicated which module was updated and, of course, what exactly was updated. 
 
 <div align="left">
+<img src="./images/Progress.png" width=35%/>
+</div>
+
+Current priority:
+1.  Moving main content of SMaD and MTP to new version of RogueLibs. SMaD - 17,39% and MTP - 23,91%.
+2.  Make normal custom status effects for SMaD. Search pixel-artist for items sprites.
+3.  Refactoring desc. traits for MTP. Search pixel-artist for traits sprites.
+
+<div align="left">
 <img src="./images/FAQ.png" width=35%/>
 </div>
 
 1.  When will Mod-Union be released????
-    1.  Well, the work continues. 35% of all the work on the transfer of MTP and SMaD has already been done, only the transfer, not the update. The Mod-Union beta will be released soon, you will be able to look at the progress and some new features.
+    1.  Well, the work continues. The Mod-Union beta will be released soon, you will be able to look at the progress and some new features.
 
-1.  Why aren't SMaD and MTP updated?
+2.  Why aren't SMaD and MTP updated?
     1.  SMaD and MTP are updated. Just on their pages on GameBanana and on GitHub, they will not be updated.
 
-1.  I downloaded Mod-Union, but I have all the items and everything else without names, or they just don't exist
+3.  I started playing multiplayer with Mod-Union, but something doesn't work, how fix?
+    1.  This is normal, the mod is intended only for single-player play, like all mods at the moment.
+
+4.  I downloaded Mod-Union, but I have all the items and everything else without names, or they just don't exist, how fix?
     1.  Check the correct installation, your version of the game, you have installed [Networking DLL Fix](https://discord.com/channels/187414758536773632/433748059172896769/764059349000781874)
 
-1.  I've seen SMaD sprites - they're terrible, I'm a pixel artist can I help?
+5.  I've seen SMaD sprites - they're terrible, I'm a pixel artist can I help?
     1.  Sure. Sprites are always needed. Write to me in DM Discord (T.B.B#3317)
 
-1.  I want to write sounds for items and others, where should I turn?
+6.  I want to write sounds for items and others, where should I turn?
     1.  Write to me in DM Discord (T.B.B#3317)
 
 <div align="left">
@@ -57,6 +69,7 @@ Mod-Union is a big project, it will include MTP and SMaD, as well as all new mod
 *  [MTP Traits table](https://docs.google.com/spreadsheets/d/1kySq44n0-29RoTd5aPPAJifNcYvBeIGS0MIgwUOwTv4/edit#gid=0)
 *  [Official SoR Discord](https://discord.gg/AMww6nP2Af)
 *  [Official RU SoR Discord](https://discord.gg/neDvsmk)
+*  [Me in Discord](https://discord.com/channels/@me/866959877414060042)
 
 <div align="left">
 <img src="./images/Installation.png" width=35%/>
