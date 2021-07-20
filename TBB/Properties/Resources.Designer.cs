@@ -109,5 +109,35 @@ namespace TBB.Properties {
                 return ((byte[])(obj));
             }
         }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] steal_apple {
+            get {
+                object obj = ResourceManager.GetObject("steal_apple", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] Steel_Apple_Walk {
+            get {
+                object obj = ResourceManager.GetObject("Steel_Apple_Walk", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] tentacle_kraken {
+            get {
+                object obj = ResourceManager.GetObject("tentacle_kraken", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

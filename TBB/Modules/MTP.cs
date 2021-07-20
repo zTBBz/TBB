@@ -51,7 +51,7 @@ namespace TBB
                 },
             new CustomNameInfo
                 {
-                    English = "Due to your love of bad food, pointless work, and raw deals, the Soldiers see you as one of their own.",
+                    English = "Blahd in, Blahd out! The Boys in Red have jumped you in, and you're a trusted ally.",
                     Russian = "После нескольких лет в трущобах, вы связали свою жизнь с кровяными."
                 });
             unlock = new TraitUnlock("LoyalTo_Soldier") { UnlockCost = 0, CharacterCreationCost = 4 };

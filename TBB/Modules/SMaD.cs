@@ -60,7 +60,7 @@ namespace TBB
                    English = "The latest development of Mech.Food.Industrial and yes.. this apple... steel apple.. The essence is simple when eaten, it envelops the organs and skin with a special alloy that can delay bullets and reduce damage from them. However, it big damages the body from the inside..It is usefull, isn't it?",
                    Russian = "Новейшая разработка Mech.Food.Industrial и да.. это яблоко... стальное яблоко.. Суть проста при съедении обволакивает органы и кожу особым сплавом который способен задерживать пули и снижать ущерб от них. Однако крайне сильно повреждает тело изнутри..Полезно, не правда ли?"
                })
-               .WithSprite(Properties.Resources.JoCake)
+               .WithSprite(Properties.Resources.steal_apple)
                .WithUnlock(new ItemUnlock { UnlockCost = 0, CharacterCreationCost = 8 });
             Items.Add(builder.Unlock);
             builder = RogueLibs.CreateCustomItem<Tentacle_Kraken>()
@@ -73,11 +73,12 @@ namespace TBB
                    English = "Any Chinese would give a fortune for such a tentacle! What is unique about it? It has strong healing properties,heals all wounds, but gives you a taste of seasickness. Bon Appetit!",
                    Russian = "За такое щупальце любой китаец отдал бы состояние! Что в нём уникального? Оно обладая сильными целительными свойствами,залечивает все раны, но даёт вам попробовать на вкус морскую болезнь. Приятного аппетита!"
                })
-               .WithSprite(Properties.Resources.JoCake)
+               .WithSprite(Properties.Resources.tentacle_kraken)
                .WithUnlock(new ItemUnlock { UnlockCost = 0, CharacterCreationCost = 5 });
             Items.Add(builder.Unlock);
             RoguePatcher Patcher = new RoguePatcher(Main.MainInstance, typeof(SMaD));
             RogueLibs.CreateCustomAudio("Blind_Mushroom_Use", Properties.Resources.Blind_Mushroom_Use, AudioType.OGGVORBIS);
+            RogueLibs.CreateCustomAudio("Steel_Apple_Walk", Properties.Resources.Steel_Apple_Walk, AudioType.OGGVORBIS);
         }
         public class Blind_Mushroom : CustomItem, IItemUsable
         {
@@ -135,6 +136,7 @@ namespace TBB
                 return true;
             }
         }
+        [EffectParameters(EffectLimitations.RemoveOnDeath | EffectLimitations.RemoveOnKnockOut)]
         public class Tentacle_Kraken : CustomItem, IItemUsable
         {
             public override void SetupDetails()
@@ -143,7 +145,7 @@ namespace TBB
                 Item.itemValue = 95;
                 Item.initCount = 1;
                 Item.rewardCount = 1;
-                Item.healthChange = 500;
+                Item.healthChange = 180;
                 Item.stackable = true;
                 Item.hasCharges = true;
                 Item.goesInToolbar = true;
@@ -194,6 +196,7 @@ namespace TBB
                 return true;
             }
         }
+        [EffectParameters()]
         public class Steal_Apple_Effect : CustomEffect
         {
             [RLSetup]
@@ -203,12 +206,12 @@ namespace TBB
                             .WithName(new CustomNameInfo
                             {
                                 English = "Steel Apple shell",
-                                Russian = "Оболочка от Стального Яблока"
+                                Russian = "Оболочка Стального Яблока"
                             })
                             .WithDescription(new CustomNameInfo
                             {
-                                English = "Now inside you and your organs are protected from bullets, enjoy the weight of it!",
-                                Russian = "Теперь внутри вы и ваши органы защищены от пуль, наслаждайтесь это тяжестью!"
+                                English = "<color=#093794>Now you and your organs are protected from bullets, enjoy the weight of it!</color>",
+                                Russian = "<color=#093794>Теперь вы и ваши органы защищены от пуль и огня, наслаждайтесь это тяжестью!</color>"
                             });
             }
             public override int GetEffectTime() => 9999;
@@ -216,17 +219,25 @@ namespace TBB
             public override void OnAdded()
             {
                 Owner.AddTrait("ResistBullets");
-                Owner.SetSpeed(Owner.speedStatMod -= 1);
+                Owner.AddTrait("ResistDamageLarge");
+                Owner.AddTrait("ResistFire");
+                Owner.SetSpeed(Owner.speedStatMod - 3);
+                Owner.SetStrength(Owner.strengthStatMod + 2);
             }
             public override void OnRemoved() 
             {
                 Owner.statusEffects.RemoveTrait("ResistBullets");
-                Owner.SetSpeed(Owner.speedStatMod += 1);
+                Owner.statusEffects.RemoveTrait("ResistDamageLarge");
+                Owner.statusEffects.RemoveTrait("ResistFire");
+                Owner.SetSpeed(Owner.speedStatMod + 3);
+                Owner.SetStrength(Owner.strengthStatMod - 2);
             }
-            public override void OnUpdated(EffectUpdatedArgs e) 
+            public override void OnUpdated(EffectUpdatedArgs e)
             {
-                e.UpdateDelay = 0.5f;
-                CurrentTime--;
+                    e.UpdateDelay = 4f;
+                    gc.audioHandler.Play(Owner, "Steel_Apple_Walk");
+                    Noise noise = gc.spawnerMain.SpawnNoise(Owner.tr.position, 1f, Owner, "Attract", Owner);
+                    noise.distraction = true;
             }
         }
         public class Tentacle_Kraken_Effect : CustomEffect
@@ -234,7 +245,7 @@ namespace TBB
             [RLSetup]
             public static void Setup()
             {
-                RogueLibs.CreateCustomEffect<Steal_Apple_Effect>()
+                RogueLibs.CreateCustomEffect<Tentacle_Kraken_Effect>()
                             .WithName(new CustomNameInfo
                             {
                                 English = "Seasickness",
@@ -250,13 +261,20 @@ namespace TBB
             public override int GetEffectHate() => 5;
             public override void OnAdded()
             {
-                Owner.AddTrait("Poisoned");
-                Owner.SetSpeed(Owner.speedStatMod -= 3);
+                Owner.hasSecretKiller = true;
+                Owner.lastHitByAgent = Effect.causingAgent;
+                Owner.justHitByAgent2 = Effect.causingAgent;
+                Owner.deathMethod = "Poison";
+                if (Effect.causingAgent != null)
+                    Owner.deathKiller = Effect.causingAgent.agentName;
+                if (Effect.curTime != Effect.startTime - 1)
+                    Owner.gc.audioHandler.Play(Owner, "WithdrawalDamage");
+                Owner.ChangeHealth(Owner.gc.challenges.Contains("LowHealth") ? -1f : -2f);
+                Owner.SetSpeed(Owner.speedStatMod - 3);
             }
             public override void OnRemoved()
             {
-                Owner.statusEffects.RemoveTrait("Poisoned");
-                Owner.SetSpeed(Owner.speedStatMod += 3);
+                Owner.SetSpeed(Owner.speedStatMod + 3);
             }
             public override void OnUpdated(EffectUpdatedArgs e)
             {

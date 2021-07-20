@@ -31,7 +31,7 @@ namespace TBB
         public const string pluginVersion = "0.0.1";
         public void Awake()
         {
-            RogueFramework.DebugFlags |= DebugFlags.Names;
+            RogueFramework.DebugFlags |= DebugFlags.Effects;
             RogueLibs.LoadFromAssembly();
             RoguePatcher Patcher = new RoguePatcher(this);
             MainInstance = this;

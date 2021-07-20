@@ -52,6 +52,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -94,6 +95,9 @@
     <None Include="Resources\Blind_Mushroom.bin" />
     <None Include="Resources\Blind_Mushroom_Use.bin" />
     <None Include="Resources\JoCake.bin" />
+    <None Include="Resources\steal_apple.bin" />
+    <None Include="Resources\Steel_Apple_Walk.bin" />
+    <None Include="Resources\tentacle_kraken.bin" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
