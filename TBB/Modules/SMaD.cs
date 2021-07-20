@@ -60,7 +60,7 @@ namespace TBB
                    English = "The latest development of Mech.Food.Industrial and yes.. this apple... steel apple.. The essence is simple when eaten, it envelops the organs and skin with a special alloy that can delay bullets and reduce damage from them. However, it big damages the body from the inside..It is usefull, isn't it?",
                    Russian = "Новейшая разработка Mech.Food.Industrial и да.. это яблоко... стальное яблоко.. Суть проста при съедении обволакивает органы и кожу особым сплавом который способен задерживать пули и снижать ущерб от них. Однако крайне сильно повреждает тело изнутри..Полезно, не правда ли?"
                })
-               .WithSprite(Properties.Resources.steal_apple)
+               .WithSprite(Properties.Resources.Steal_Apple)
                .WithUnlock(new ItemUnlock { UnlockCost = 0, CharacterCreationCost = 8 });
             Items.Add(builder.Unlock);
             builder = RogueLibs.CreateCustomItem<Tentacle_Kraken>()
@@ -73,7 +73,7 @@ namespace TBB
                    English = "Any Chinese would give a fortune for such a tentacle! What is unique about it? It has strong healing properties,heals all wounds, but gives you a taste of seasickness. Bon Appetit!",
                    Russian = "За такое щупальце любой китаец отдал бы состояние! Что в нём уникального? Оно обладая сильными целительными свойствами,залечивает все раны, но даёт вам попробовать на вкус морскую болезнь. Приятного аппетита!"
                })
-               .WithSprite(Properties.Resources.tentacle_kraken)
+               .WithSprite(Properties.Resources.Kraken_Tentacle)
                .WithUnlock(new ItemUnlock { UnlockCost = 0, CharacterCreationCost = 5 });
             Items.Add(builder.Unlock);
             RoguePatcher Patcher = new RoguePatcher(Main.MainInstance, typeof(SMaD));

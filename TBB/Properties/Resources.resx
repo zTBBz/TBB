@@ -133,14 +133,14 @@
   <data name="JoCake" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\JoCake.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="steal_apple" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\steal_apple.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="Kraken_Tentacle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Kraken_Tentacle.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Steal_Apple" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Steal_Apple.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Steel_Apple_Walk" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Steel_Apple_Walk.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="tentacle_kraken" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\tentacle_kraken.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Thief_Bag" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Thief_Bag.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
