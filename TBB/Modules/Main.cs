@@ -31,7 +31,7 @@ namespace TBB
         public const string pluginVersion = "0.0.1";
         public void Awake()
         {
-            RogueFramework.DebugFlags |= DebugFlags.Effects;
+            RogueFramework.DebugFlags |= DebugFlags.Items;
             RogueLibs.LoadFromAssembly();
             RoguePatcher Patcher = new RoguePatcher(this);
             MainInstance = this;
@@ -243,7 +243,7 @@ namespace TBB
                 Russian = "Мешок из далёких земель, что же в нём?"
             })
             .WithSprite(Properties.Resources.Thief_Bag)
-            .WithUnlock(new ItemUnlock { UnlockCost = 20, CharacterCreationCost = 9999 });
+            .WithUnlock(new ItemUnlock { UnlockCost = 0, CharacterCreationCost = 20 });
             }
             public override void SetupDetails()
             {
@@ -301,7 +301,7 @@ namespace TBB
                      Russian = "Мешок из далёких земель, что же в нём?"
                 })
                 .WithSprite(Properties.Resources.Thief_Bag)
-                .WithUnlock(new ItemUnlock { UnlockCost = 20, CharacterCreationCost = 9999 });
+                .WithUnlock(new ItemUnlock { UnlockCost = 0, CharacterCreationCost = 20 });
             }
             public override void SetupDetails()
             {
@@ -348,21 +348,21 @@ namespace TBB
         public class Thief_Bag_Lega : CustomItem, IItemUsable
         {
             [RLSetup]
-            public void Setuo()
+            public static void Setup()
             {
-            RogueLibs.CreateCustomItem<Thief_Bag_Lega>()
-            .WithName(new CustomNameInfo
-            {
-                English = "<color=#c0c0c0ff>Argent</color> Thief Bag",
-                Russian = "<color=#c0c0c0ff>Серебристый</color> Мешок Вора"
-            })
-            .WithDescription(new CustomNameInfo
-            {
-                English = "That bag from far lands, what does he contains?",
-                Russian = "Мешок из далёких земель, что же в нём?"
-            })
-            .WithSprite(Properties.Resources.Thief_Bag)
-            .WithUnlock(new ItemUnlock { UnlockCost = 20, CharacterCreationCost = 9999 });
+                 RogueLibs.CreateCustomItem<Thief_Bag_Lega>()
+                .WithName(new CustomNameInfo
+                {
+                    English = "<color=#c0c0c0ff>Argent</color> Thief Bag",
+                    Russian = "<color=#c0c0c0ff>Серебристый</color> Мешок Вора"
+                })
+                .WithDescription(new CustomNameInfo
+                {
+                  English = "That bag from far lands, what does he contains?",
+                  Russian = "Мешок из далёких земель, что же в нём?"
+                })
+                .WithSprite(Properties.Resources.Thief_Bag)
+                .WithUnlock(new ItemUnlock { UnlockCost = 0, CharacterCreationCost = 20 });
             }
             public override void SetupDetails()
             {

@@ -136,7 +136,6 @@ namespace TBB
                 return true;
             }
         }
-        [EffectParameters(EffectLimitations.RemoveOnDeath | EffectLimitations.RemoveOnKnockOut)]
         public class Tentacle_Kraken : CustomItem, IItemUsable
         {
             public override void SetupDetails()
@@ -240,6 +239,7 @@ namespace TBB
                     noise.distraction = true;
             }
         }
+        [EffectParameters(EffectLimitations.RemoveOnDeath | EffectLimitations.RemoveOnKnockOut)]
         public class Tentacle_Kraken_Effect : CustomEffect
         {
             [RLSetup]
