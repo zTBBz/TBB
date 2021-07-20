@@ -98,6 +98,7 @@
     <None Include="Resources\steal_apple.bin" />
     <None Include="Resources\Steel_Apple_Walk.bin" />
     <None Include="Resources\tentacle_kraken.bin" />
+    <None Include="Resources\Thief_Bag.bin" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
