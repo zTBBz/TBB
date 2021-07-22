@@ -80,7 +80,7 @@ Current priority:
     2.  Drag all files from the archive into directory /Steam/SteamApps/common/Streets of Rogue/;
     3.  Run the game, so BepInEx can create needed files and directories, and close the game;
 2.  Install RogueLibs:
-    1.  [Download RogueLibs v3.0.0-rc.4](https://github.com/Abbysssal/RogueLibs/releases);
+    1.  [Download RogueLibs v3.0.0](https://github.com/Abbysssal/RogueLibs/releases);
     2.  Drag the file "RogueLibsCore.dll" into directory /Steam/SteamApps/common/Streets of Rogue/BepInEx/plugins;
     3.  Drag the file "RogueLibsPatcher.dll" into directory /Steam/SteamApps/common/Streets of Rogue/BepInEx/patchers;
 3.  [Download the latest version of TBB](https://github.com/zTBBz/TBB/releases/latest);

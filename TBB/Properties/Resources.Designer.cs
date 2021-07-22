@@ -103,9 +103,19 @@ namespace TBB.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Byte[].
         /// </summary>
-        internal static byte[] JoCake {
+        internal static byte[] Evil_Cake {
             get {
-                object obj = ResourceManager.GetObject("JoCake", resourceCulture);
+                object obj = ResourceManager.GetObject("Evil_Cake", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] Evil_Cake_Use {
+            get {
+                object obj = ResourceManager.GetObject("Evil_Cake_Use", resourceCulture);
                 return ((byte[])(obj));
             }
         }

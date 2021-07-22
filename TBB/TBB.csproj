@@ -94,6 +94,8 @@
     <None Include="Resources\Bag_Use.bin" />
     <None Include="Resources\Blind_Mushroom.bin" />
     <None Include="Resources\Blind_Mushroom_Use.bin" />
+    <None Include="Resources\Evil_Cake.bin" />
+    <None Include="Resources\Evil_Cake_Use.bin" />
     <None Include="Resources\JoCake.bin" />
     <None Include="Resources\Kraken_Tentacle.bin" />
     <None Include="Resources\Steal_Apple.bin" />

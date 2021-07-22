@@ -130,8 +130,11 @@
   <data name="Blind_Mushroom_Use" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Blind_Mushroom_Use.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="JoCake" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\JoCake.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="Evil_Cake" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Evil_Cake.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Evil_Cake_Use" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Evil_Cake_Use.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Kraken_Tentacle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Kraken_Tentacle.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

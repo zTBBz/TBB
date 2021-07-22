@@ -37,17 +37,17 @@ namespace TBB
                        .WithSprite(Properties.Resources.Blind_Mushroom)
                        .WithUnlock(new ItemUnlock { UnlockCost = 0, CharacterCreationCost = 5 });
             Items.Add(builder.Unlock);
-            builder = RogueLibs.CreateCustomItem<JoCake>()
+            builder = RogueLibs.CreateCustomItem<EvilCake>()
                            .WithName(new CustomNameInfo
                            {
-                               English = "JoCake",
-                               Russian = "Шуторт"
+                               English = "Suspicious cake",
+                               Russian = "Подозрительный торт"
                            }).WithDescription(new CustomNameInfo
                            {
                                English = "This cake was made by 3 unknown comedians, being very fat and nutritious makes the eater immediately make a joke. The party with these cakes will be very fun!",
                                Russian = "Этот торт был изготовлен 3 неизвестными комиками, будучи весьма жирным и питательным заставляет съевшего немедленно пошутить. Вечеринка с такими тортами будет очень веселая!"
                            })
-                           .WithSprite(Properties.Resources.JoCake)
+                           .WithSprite(Properties.Resources.Evil_Cake)
                            .WithUnlock(new ItemUnlock { UnlockCost = 0, CharacterCreationCost = 3 });
             Items.Add(builder.Unlock);
             builder = RogueLibs.CreateCustomItem<Steal_Apple>()
@@ -79,6 +79,7 @@ namespace TBB
             RoguePatcher Patcher = new RoguePatcher(Main.MainInstance, typeof(SMaD));
             RogueLibs.CreateCustomAudio("Blind_Mushroom_Use", Properties.Resources.Blind_Mushroom_Use, AudioType.OGGVORBIS);
             RogueLibs.CreateCustomAudio("Steel_Apple_Walk", Properties.Resources.Steel_Apple_Walk, AudioType.OGGVORBIS);
+            RogueLibs.CreateCustomAudio("Evil_Cake_Use", Properties.Resources.Evil_Cake_Use, AudioType.OGGVORBIS);
         }
         public class Blind_Mushroom : CustomItem, IItemUsable
         {
@@ -164,7 +165,7 @@ namespace TBB
                 return true;
             }
         }
-        public class JoCake : CustomItem, IItemUsable
+        public class EvilCake : CustomItem, IItemUsable
         {
             public override void SetupDetails()
             {
@@ -172,7 +173,6 @@ namespace TBB
                 Item.itemValue = 25;
                 Item.initCount = 1;
                 Item.rewardCount = 1;
-                Item.healthChange = 15;
                 Item.stackable = true;
                 Item.hasCharges = true;
                 Item.goesInToolbar = true;
@@ -180,18 +180,9 @@ namespace TBB
             }
             public bool UseItem()
             {
-                string prev = Owner.specialAbility;
-                Owner.specialAbility = "Joke";
-                Owner.statusEffects.PressedSpecialAbility();
-                Owner.specialAbility = prev;
-                int heal = new ItemFunctions().DetermineHealthChange(Item, Owner);
-                Owner.statusEffects.ChangeHealth(heal);
-                if (Owner.HasTrait("HealthItemsGiveFollowersExtraHealth") || Owner.HasTrait("HealthItemsGiveFollowersExtraHealth2"))
-                {
-                    new ItemFunctions().GiveFollowersHealth(Owner, heal);
-                }
                 Count--;
-                //gc.audioHandler.Play(Owner, "UseFood");
+                Owner.statusEffects.AddStatusEffect("Evil_Cake_Effect");
+                gc.audioHandler.Play(Owner, "Evil_Cake_Use");
                 return true;
             }
         }
@@ -261,15 +252,6 @@ namespace TBB
             public override int GetEffectHate() => 5;
             public override void OnAdded()
             {
-                Owner.hasSecretKiller = true;
-                Owner.lastHitByAgent = Effect.causingAgent;
-                Owner.justHitByAgent2 = Effect.causingAgent;
-                Owner.deathMethod = "Poison";
-                if (Effect.causingAgent != null)
-                    Owner.deathKiller = Effect.causingAgent.agentName;
-                if (Effect.curTime != Effect.startTime - 1)
-                    Owner.gc.audioHandler.Play(Owner, "WithdrawalDamage");
-                Owner.ChangeHealth(Owner.gc.challenges.Contains("LowHealth") ? -1f : -2f);
                 Owner.SetSpeed(Owner.speedStatMod - 3);
             }
             public override void OnRemoved()
@@ -279,7 +261,70 @@ namespace TBB
             public override void OnUpdated(EffectUpdatedArgs e)
             {
                 e.UpdateDelay = 0.5f;
+                Owner.hasSecretKiller = true;
+                Owner.lastHitByAgent = Effect.causingAgent;
+                Owner.justHitByAgent2 = Effect.causingAgent;
+                Owner.deathMethod = "Poison";
+                if (Effect.causingAgent != null)
+                    Owner.deathKiller = Effect.causingAgent.agentName;
+                if (Effect.curTime != Effect.startTime - 1)
+                    Owner.gc.audioHandler.Play(Owner, "WithdrawalDamage");
+                Owner.ChangeHealth(Owner.gc.challenges.Contains("LowHealth") ? -1f : -2f);
                 CurrentTime--;
+            }
+        }
+        [EffectParameters(EffectLimitations.RemoveOnDeath)]
+        public class Evil_Cake_Effect : CustomEffect
+        {
+            [RLSetup]
+            public static void Setup()
+            {
+                RogueLibs.CreateCustomEffect<Evil_Cake_Effect>()
+                            .WithName(new CustomNameInfo
+                            {
+                                English = "Container for soul",
+                                Russian = "Сосуд для души"
+                            })
+                            .WithDescription(new CustomNameInfo
+                            {
+                                English = "<color=#000000>*It soon be reborn...</color>",
+                                Russian = "<color=#000000>Оно скоро переродится...</color>"
+                            });
+            }
+            public override int GetEffectTime() => 9999;
+            public override int GetEffectHate() => 5;
+            public override void OnAdded()
+            {
+                Owner.SetEndurance(Owner.enduranceStatMod - 2);
+                Owner.hasSecretKiller = true;
+                Owner.lastHitByAgent = Effect.causingAgent;
+                Owner.justHitByAgent2 = Effect.causingAgent;
+                Owner.deathMethod = "Resurrection";
+                if (Effect.causingAgent != null)
+                    Owner.deathKiller = Effect.causingAgent.agentName;
+                //Owner.statusEffects.AddTrait("Resurrection");
+            }
+            public override void OnRemoved()
+            {
+                Owner.SetEndurance(Owner.enduranceStatMod + 3);
+                Owner.SetAccuracy(Owner.accuracyStatMod + 3);
+                Owner.SetStrength(Owner.strengthStatMod + 3);
+                Owner.SetSpeed(Owner.speedStatMod + 3);
+                Owner.statusEffects.RemoveAllTraits();
+                //Owner.statusEffects.AddTrait("");
+            }
+            public override void OnUpdated(EffectUpdatedArgs e)
+            {
+                e.UpdateDelay = 0.5f;
+                Owner.hasSecretKiller = true;
+                Owner.lastHitByAgent = Effect.causingAgent;
+                Owner.justHitByAgent2 = Effect.causingAgent;
+                Owner.deathMethod = "Poison";
+                if (Effect.causingAgent != null)
+                    Owner.deathKiller = Effect.causingAgent.agentName;
+                if (Effect.curTime != Effect.startTime - 1)
+                    Owner.gc.audioHandler.Play(Owner, "WithdrawalDamage");
+                Owner.ChangeHealth(Owner.gc.challenges.Contains("LowHealth") ? -1f : -2f);
             }
         }
     }
