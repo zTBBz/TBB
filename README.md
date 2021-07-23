@@ -53,10 +53,10 @@ Current priority:
     1.  Check the correct installation, your version of the game, you have installed [Networking DLL Fix](https://discord.com/channels/187414758536773632/433748059172896769/764059349000781874)
 
 5.  I've seen SMaD sprites - they're terrible, I'm a pixel artist can I help?
-    1.  Sure. Sprites are always needed. Write to me in DM Discord (T.B.B#3317)
+    1.  Sure. Sprites are always needed. Write to me in DM Discord ([T.B.B#3317](https://discord.com/users/580833779371868161))
 
 6.  I want to write sounds for items and others, where should I turn?
-    1.  Write to me in DM Discord (T.B.B#3317)
+    1.  Write to me in DM Discord ([T.B.B#3317](https://discord.com/users/580833779371868161))
 
 <div align="left">
 <img src="./images/Links.png" width=35%/>
@@ -69,7 +69,7 @@ Current priority:
 *  [MTP Traits table](https://docs.google.com/spreadsheets/d/1kySq44n0-29RoTd5aPPAJifNcYvBeIGS0MIgwUOwTv4/edit#gid=0)
 *  [Official SoR Discord](https://discord.gg/AMww6nP2Af)
 *  [Official RU SoR Discord](https://discord.gg/neDvsmk)
-*  [Me in Discord](https://discord.com/channels/@me/866959877414060042)
+*  [Me in Discord]([T.B.B#3317](https://discord.com/users/580833779371868161))
 
 <div align="left">
 <img src="./images/Installation.png" width=35%/>
