@@ -7,6 +7,7 @@ using HarmonyLib;
 using System.Reflection.Emit;
 using System.Collections.Generic;
 using System.IO;
+using System.Collections;
 
 namespace TBB
 {
@@ -220,6 +221,55 @@ namespace TBB
                 }
                 hook = null;
                 return false;
+            }
+        }
+        public class Evil_Cake_Trait : CustomTrait, ITraitUpdateable
+        {
+            [RLSetup]
+            public static void Setup()
+            {
+                RogueLibs.CreateCustomTrait<Evil_Cake_Trait>()
+                    .WithName(new CustomNameInfo
+                    {
+                        English = "<color=#000000>Unknown soul</color>",
+                        Russian = "<color=#000000>Неизвестная душа</color>"
+                    })
+                    .WithDescription(new CustomNameInfo
+                    {
+                        English = "<color=#000000>Inside you unknown soul..</color>",
+                        Russian = "<color=#000000>Внутри вас неизвестная душа..</color>"
+                    })
+                    .WithUnlock(new TraitUnlock { IsAvailableInCC = false });
+            }
+            public override void OnAdded() 
+            {
+                Owner.statusEffects.ChangeHealth(500, Owner);
+            }
+            public override void OnRemoved() { }
+            public void OnUpdated(TraitUpdatedArgs e)
+            {
+                e.UpdateDelay = 15;
+                StatusEffects.StartCoroutine(ParalyzedEnumerator());
+                Owner.ChangeHealth(Owner.gc.challenges.Contains("LowHealth") ? +10f : +10f);
+            }
+            public IEnumerator ParalyzedEnumerator()
+            {
+                Owner.AddEffect("Enraged", new CreateEffectInfo { SpecificTime = 10, DontShowText = true });
+                Owner.SetAccuracy(Owner.accuracyStatMod + 3);
+                Owner.SetStrength(Owner.strengthStatMod + 3);
+                Owner.SetSpeed(Owner.speedStatMod + 3);
+                /*AgentHitbox agenthitbox = new AgentHitbox();
+                agenthitbox.headAnim.gameObject.SetActive(false);
+                agenthitbox.bodyAnim.gameObject.SetActive(false);
+                agenthitbox.armsAnim.gameObject.SetActive(false);
+                agenthitbox.legsAnim.gameObject.SetActive(false);
+                agenthitbox.bodyH.gameObject.SetActive(false);
+                agenthitbox.wholeBodyGo.SetActive(true);*/
+                yield return new WaitForSeconds(10f);
+                Owner.SetEndurance(Owner.enduranceStatMod - 3);
+                Owner.SetAccuracy(Owner.accuracyStatMod - 3);
+                Owner.SetStrength(Owner.strengthStatMod - 3);
+                Owner.SetSpeed(Owner.speedStatMod - 3);
             }
         }
     }

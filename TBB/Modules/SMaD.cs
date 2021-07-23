@@ -282,12 +282,12 @@ namespace TBB
                 RogueLibs.CreateCustomEffect<Evil_Cake_Effect>()
                             .WithName(new CustomNameInfo
                             {
-                                English = "Container for soul",
-                                Russian = "Сосуд для души"
+                                English = "<color=#000000>Container for soul</color>",
+                                Russian = "<color=#000000>Сосуд для души</color>"
                             })
                             .WithDescription(new CustomNameInfo
                             {
-                                English = "<color=#000000>*It soon be reborn...</color>",
+                                English = "<color=#000000>It soon be reborn...</color>",
                                 Russian = "<color=#000000>Оно скоро переродится...</color>"
                             });
             }
@@ -296,22 +296,13 @@ namespace TBB
             public override void OnAdded()
             {
                 Owner.SetEndurance(Owner.enduranceStatMod - 2);
-                Owner.hasSecretKiller = true;
-                Owner.lastHitByAgent = Effect.causingAgent;
-                Owner.justHitByAgent2 = Effect.causingAgent;
-                Owner.deathMethod = "Resurrection";
-                if (Effect.causingAgent != null)
-                    Owner.deathKiller = Effect.causingAgent.agentName;
-                //Owner.statusEffects.AddTrait("Resurrection");
+                Owner.resurrect = true;
             }
             public override void OnRemoved()
             {
-                Owner.SetEndurance(Owner.enduranceStatMod + 3);
-                Owner.SetAccuracy(Owner.accuracyStatMod + 3);
-                Owner.SetStrength(Owner.strengthStatMod + 3);
-                Owner.SetSpeed(Owner.speedStatMod + 3);
+                Owner.statusEffects.RemoveAllStatusEffects();
                 Owner.statusEffects.RemoveAllTraits();
-                //Owner.statusEffects.AddTrait("");
+                Owner.statusEffects.AddTrait("Evil_Cake_Trait");
             }
             public override void OnUpdated(EffectUpdatedArgs e)
             {
