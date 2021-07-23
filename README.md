@@ -69,7 +69,7 @@ Current priority:
 *  [MTP Traits table](https://docs.google.com/spreadsheets/d/1kySq44n0-29RoTd5aPPAJifNcYvBeIGS0MIgwUOwTv4/edit#gid=0)
 *  [Official SoR Discord](https://discord.gg/AMww6nP2Af)
 *  [Official RU SoR Discord](https://discord.gg/neDvsmk)
-*  [Me in Discord]([T.B.B#3317](https://discord.com/users/580833779371868161))
+*  [Me in Discord](https://discord.com/users/580833779371868161)
 
 <div align="left">
 <img src="./images/Installation.png" width=35%/>
