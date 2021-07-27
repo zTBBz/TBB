@@ -103,6 +103,36 @@ namespace TBB.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Byte[].
         /// </summary>
+        internal static byte[] BOOMCorn_Use {
+            get {
+                object obj = ResourceManager.GetObject("BOOMCorn_Use", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] Boomkorn {
+            get {
+                object obj = ResourceManager.GetObject("Boomkorn", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] CIceCream_Use {
+            get {
+                object obj = ResourceManager.GetObject("CIceCream_Use", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
         internal static byte[] Evil_Cake {
             get {
                 object obj = ResourceManager.GetObject("Evil_Cake", resourceCulture);
@@ -143,6 +173,16 @@ namespace TBB.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Byte[].
         /// </summary>
+        internal static byte[] Steal_Apple_Use {
+            get {
+                object obj = ResourceManager.GetObject("Steal_Apple_Use", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
         internal static byte[] Steel_Apple_Walk {
             get {
                 object obj = ResourceManager.GetObject("Steel_Apple_Walk", resourceCulture);
@@ -156,6 +196,16 @@ namespace TBB.Properties {
         internal static byte[] Thief_Bag {
             get {
                 object obj = ResourceManager.GetObject("Thief_Bag", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] Vent_Icecream {
+            get {
+                object obj = ResourceManager.GetObject("Vent_Icecream", resourceCulture);
                 return ((byte[])(obj));
             }
         }

@@ -130,6 +130,15 @@
   <data name="Blind_Mushroom_Use" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Blind_Mushroom_Use.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="BOOMCorn_Use" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BOOMCorn_Use.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Boomkorn" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Boomkorn.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="CIceCream_Use" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CIceCream_Use.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="Evil_Cake" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Evil_Cake.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -142,10 +151,16 @@
   <data name="Steal_Apple" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Steal_Apple.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="Steal_Apple_Use" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Steal_Apple_Use.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="Steel_Apple_Walk" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Steel_Apple_Walk.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Thief_Bag" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Thief_Bag.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Vent_Icecream" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Vent_Icecream.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

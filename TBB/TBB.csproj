@@ -97,14 +97,19 @@
     <None Include="Resources\Bag_Use.bin" />
     <None Include="Resources\Blind_Mushroom.bin" />
     <None Include="Resources\Blind_Mushroom_Use.bin" />
+    <None Include="Resources\BOOMCorn_Use.bin" />
+    <None Include="Resources\Boomkorn.bin" />
+    <None Include="Resources\CIceCream_Use.bin" />
     <None Include="Resources\Evil_Cake.bin" />
     <None Include="Resources\Evil_Cake_Use.bin" />
     <None Include="Resources\JoCake.bin" />
     <None Include="Resources\Kraken_Tentacle.bin" />
     <None Include="Resources\Steal_Apple.bin" />
+    <None Include="Resources\Steal_Apple_Use.bin" />
     <None Include="Resources\Steel_Apple_Walk.bin" />
     <None Include="Resources\tentacle_kraken.bin" />
     <None Include="Resources\Thief_Bag.bin" />
+    <None Include="Resources\Vent_Icecream.bin" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

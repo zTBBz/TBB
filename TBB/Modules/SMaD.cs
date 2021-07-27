@@ -76,10 +76,40 @@ namespace TBB
                .WithSprite(Properties.Resources.Kraken_Tentacle)
                .WithUnlock(new ItemUnlock { UnlockCost = 0, CharacterCreationCost = 5 });
             Items.Add(builder.Unlock);
+            builder = RogueLibs.CreateCustomItem<BOOMCorn>()
+               .WithName(new CustomNameInfo
+               {
+                   English = "BOOMcorn",
+                   Russian = "BOOMкорн"
+               }).WithDescription(new CustomNameInfo
+               {
+                   English = "This item was still in the Hitman beta, but for their game it is too refined a way to kill. If you wanted to become a kamikaze, here's your chance.  As you can understand, this is not popcorn, but just a bomb in a XXL popcorn bag.",
+                   Russian = "Этот BOOMкорн был ещё в бете Hitman`а, но для их игры это слишком изысканный способ убийства. Если вы хотели стать камикадзе, то вот ваш шанс.  Как можно понять это не попкорн, а всего лишь бомба в XXL пакете от попкорна."
+               })
+               .WithSprite(Properties.Resources.Boomkorn)
+               .WithUnlock(new ItemUnlock { UnlockCost = 0, CharacterCreationCost = 3 });
+            Items.Add(builder.Unlock);
+            builder = RogueLibs.CreateCustomItem<Vent_IceCream>()
+               .WithName(new CustomNameInfo
+               {
+                   English = "Conditioner Icecream",
+                   Russian = "Самоохлаждающееся мороженое"
+               }).WithDescription(new CustomNameInfo
+               {
+                   English = "Is someone tired of their ice cream constantly melting? Well, now it will freeze together with the ice cream, because the ice cream has a built-in air conditioner! Yes, you heard right!",
+                   Russian = "Кому-то надоело что его мороженное постоянно тает? Ну, теперь он замёрзнет вместе с мороженным, ведь в мороженное встроен кондиционер! Да-да вы не ослышались!"
+               })
+               .WithSprite(Properties.Resources.Vent_Icecream)
+               .WithUnlock(new ItemUnlock { UnlockCost = 0, CharacterCreationCost = 5 });
+            Items.Add(builder.Unlock);
             RoguePatcher Patcher = new RoguePatcher(Main.MainInstance, typeof(SMaD));
             RogueLibs.CreateCustomAudio("Blind_Mushroom_Use", Properties.Resources.Blind_Mushroom_Use, AudioType.OGGVORBIS);
             RogueLibs.CreateCustomAudio("Steel_Apple_Walk", Properties.Resources.Steel_Apple_Walk, AudioType.OGGVORBIS);
+            RogueLibs.CreateCustomAudio("Steal_Apple_Use", Properties.Resources.Steal_Apple_Use, AudioType.OGGVORBIS);
+            RogueLibs.CreateCustomAudio("Steel_Apple_Walk", Properties.Resources.Steel_Apple_Walk, AudioType.OGGVORBIS);
             RogueLibs.CreateCustomAudio("Evil_Cake_Use", Properties.Resources.Evil_Cake_Use, AudioType.OGGVORBIS);
+            RogueLibs.CreateCustomAudio("BOOMCorn_Use", Properties.Resources.BOOMCorn_Use, AudioType.OGGVORBIS);
+            RogueLibs.CreateCustomAudio("Vent_IceCream_Use", Properties.Resources.CIceCream_Use, AudioType.OGGVORBIS);
         }
         public class Blind_Mushroom : CustomItem, IItemUsable
         {
@@ -133,7 +163,7 @@ namespace TBB
                 }
                 Owner.statusEffects.AddStatusEffect("Steal_Apple_Effect", 9999);
                 Count--;
-                gc.audioHandler.Play(Owner, "UseFood");
+                gc.audioHandler.Play(Owner, "Steal_Apple_Use");
                 return true;
             }
         }
@@ -162,6 +192,55 @@ namespace TBB
                 Owner.statusEffects.AddStatusEffect("Tentacle_Kraken_Effect", 25);
                 Count--;
                 gc.audioHandler.Play(Owner, "AgentAnnoyed");
+                return true;
+            }
+        }
+        public class BOOMCorn : CustomItem, IItemUsable
+        {
+            public override void SetupDetails()
+            {
+                Item.itemType = ItemTypes.Food;
+                Item.itemValue = 25;
+                Item.initCount = 1;
+                Item.rewardCount = 1;
+                Item.stackable = true;
+                Item.hasCharges = true;
+                Item.goesInToolbar = true;
+                Item.cantBeCloned = false;
+            }
+            public bool UseItem()
+            {
+                Count--;
+                gc.audioHandler.Play(Owner, "BOOMCorn_Use");
+                Owner.gc.spawnerMain.SpawnExplosion(Owner, Owner.tr.position, "Normal", false, -1, false, true).agent = Owner;
+                return true;
+            }
+        }
+        public class Vent_IceCream : CustomItem, IItemUsable
+        {
+            public override void SetupDetails()
+            {
+                Item.itemType = ItemTypes.Food;
+                Item.itemValue = 30;
+                Item.initCount = 1;
+                Item.rewardCount = 1;
+                Item.healthChange = 20;
+                Item.stackable = true;
+                Item.hasCharges = true;
+                Item.goesInToolbar = true;
+                Item.cantBeCloned = false;
+            }
+            public bool UseItem()
+            {
+                int heal = new ItemFunctions().DetermineHealthChange(Item, Owner);
+                Owner.statusEffects.ChangeHealth(heal);
+                if (Owner.HasTrait("HealthItemsGiveFollowersExtraHealth") || Owner.HasTrait("HealthItemsGiveFollowersExtraHealth2"))
+                {
+                    new ItemFunctions().GiveFollowersHealth(Owner, heal);
+                }
+                Owner.statusEffects.AddStatusEffect("Frozen" , 10);
+                Count--;
+                gc.audioHandler.Play(Owner, "Vent_IceCream_Use");
                 return true;
             }
         }
