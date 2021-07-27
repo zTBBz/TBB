@@ -2,7 +2,7 @@ import React from 'react';
 import clsx from 'clsx';
 import styles from './HomepageFeatures.module.css';
 import Translate, {translate} from '@docusaurus/Translate';
-import svg1 from '@site/static/img/undraw_docusaurus_mountain.png';
+import svg1 from '@site/static/img/We_are_the_first!.png';
 import svg2 from '@site/static/img/undraw_docusaurus_tree.png';
 
 const FeatureList = [
@@ -22,22 +22,14 @@ const FeatureList = [
   {
     title: (
       <Translate id="features.2">
-        Feature 2
+        Module system
       </Translate>
     ),
     svg: svg2,
     description: (
-      <span>
         <Translate id="features.2.description">
-          Feature 2 description
+        You can disable any module in Union
         </Translate>
-        {' '}
-        <b>
-          <Translate id="features.2.description.bold">
-            (Feature 2 description part 2)
-          </Translate>
-        </b>
-      </span>
     ),
   },
 ];

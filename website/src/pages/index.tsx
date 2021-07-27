@@ -42,7 +42,7 @@ export default function Home() {
   return (
     <Layout
       title={`${siteConfig.title}`}
-      description="RogueLibs Modding Library for Streets of Rogue">
+      description="Traveler's Bag Build or Mod-Union - Streets of Rogue big project-mod, who unite MTP and SMaD and other future mods.">
       <HomepageHeader/>
       <main>
         <HomepageFeatures/>
