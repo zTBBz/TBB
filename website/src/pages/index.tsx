@@ -19,7 +19,7 @@ function HomepageHeader() {
         <img src={isDarkTheme ? LogoDark : Logo} width='20%'/>
         <p className="hero__subtitle">
           <Translate id="homepage.tagline">
-            [Your tagline here]
+            [Perfect Union of mods.]
           </Translate>
         </p>
         <div className={styles.buttons}>

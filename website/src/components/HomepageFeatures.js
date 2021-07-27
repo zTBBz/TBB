@@ -9,13 +9,13 @@ const FeatureList = [
   {
     title: (
       <Translate id="features.1">
-        Feature 1
+        We are the first!
       </Translate>
     ),
     svg: svg1,
     description: (
       <Translate id="features.1.description">
-        Feature 1 description
+        The first union of mods for SoR
       </Translate>
     ),
   },
