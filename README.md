@@ -64,7 +64,7 @@ Current priority:
 
 *  [Download TBB](https://github.com/zTBBz/MTP/releases)
 *  [RogueLibs on GitHub](https://github.com/Abbysssal/RogueLibs)
-*  [aToI on GitHub](https://github.com/Abbysssal/aToI)
+*  [Official Mod Website](https://ztbbz.github.io/TBB/)
 *  [Networking DLL Fix](https://discord.com/channels/187414758536773632/433748059172896769/764059349000781874)
 *  [MTP Traits table](https://docs.google.com/spreadsheets/d/1kySq44n0-29RoTd5aPPAJifNcYvBeIGS0MIgwUOwTv4/edit#gid=0)
 *  [Official SoR Discord](https://discord.gg/AMww6nP2Af)
