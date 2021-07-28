@@ -51,7 +51,14 @@ module.exports = {
         {
           title: 'Community',
           items: [
-            
+            {
+              label: 'Streets of Rogue Discord',
+              href: 'https://discord.com/invite/streetsofrogue',
+            },
+            {
+              label: 'RU Streets of Rogue Discord',
+              href: 'https://discord.gg/neDvsmk',
+            },
           ],
         },
         {
