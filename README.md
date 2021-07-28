@@ -32,7 +32,7 @@ Mod-Union is a big project, it will include MTP and SMaD, as well as all new mod
 </div>
 
 Current priority:
-1.  Moving main content of SMaD and MTP to new version of RogueLibs. SMaD - 17,39% and MTP - 23,91%.
+1.  Moving main content of SMaD and MTP to new version of RogueLibs. SMaD - 57.89% and MTP - 23,91%.
 2.  Make normal custom status effects for SMaD. Search pixel-artist for items sprites.
 3.  Refactoring desc. traits for MTP. Search pixel-artist for traits sprites.
 

@@ -123,6 +123,16 @@ namespace TBB.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Byte[].
         /// </summary>
+        internal static byte[] Boom_Pumpkin {
+            get {
+                object obj = ResourceManager.GetObject("Boom_Pumpkin", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
         internal static byte[] BOOMCorn_Use {
             get {
                 object obj = ResourceManager.GetObject("BOOMCorn_Use", resourceCulture);
@@ -143,9 +153,39 @@ namespace TBB.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Byte[].
         /// </summary>
+        internal static byte[] Botex_Chicken {
+            get {
+                object obj = ResourceManager.GetObject("Botex_Chicken", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] BotexLeg_Use {
+            get {
+                object obj = ResourceManager.GetObject("BotexLeg_Use", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
         internal static byte[] Brain_Jellyfish {
             get {
                 object obj = ResourceManager.GetObject("Brain_Jellyfish", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] Brain_Jellyfish_Use {
+            get {
+                object obj = ResourceManager.GetObject("Brain_Jellyfish_Use", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -176,6 +216,16 @@ namespace TBB.Properties {
         internal static byte[] Evil_Cake_Use {
             get {
                 object obj = ResourceManager.GetObject("Evil_Cake_Use", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] KC_Fuzzi {
+            get {
+                object obj = ResourceManager.GetObject("KC_Fuzzi", resourceCulture);
                 return ((byte[])(obj));
             }
         }

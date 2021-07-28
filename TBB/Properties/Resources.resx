@@ -142,8 +142,20 @@
   <data name="Boomkorn" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Boomkorn.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="Boom_Pumpkin" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Boom_Pumpkin.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="BotexLeg_Use" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BotexLeg_Use.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Botex_Chicken" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Botex_Chicken.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="Brain_Jellyfish" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Brain_Jellyfish.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Brain_Jellyfish_Use" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Brain_Jellyfish_Use.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="CIceCream_Use" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CIceCream_Use.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -153,6 +165,9 @@
   </data>
   <data name="Evil_Cake_Use" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Evil_Cake_Use.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="KC_Fuzzi" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\KC_Fuzzi.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Kraken_Tentacle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Kraken_Tentacle.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

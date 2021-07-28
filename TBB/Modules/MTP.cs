@@ -258,13 +258,6 @@ namespace TBB
                 Owner.SetAccuracy(Owner.accuracyStatMod + 3);
                 Owner.SetStrength(Owner.strengthStatMod + 3);
                 Owner.SetSpeed(Owner.speedStatMod + 3);
-                /*AgentHitbox agenthitbox = new AgentHitbox();
-                agenthitbox.headAnim.gameObject.SetActive(false);
-                agenthitbox.bodyAnim.gameObject.SetActive(false);
-                agenthitbox.armsAnim.gameObject.SetActive(false);
-                agenthitbox.legsAnim.gameObject.SetActive(false);
-                agenthitbox.bodyH.gameObject.SetActive(false);
-                agenthitbox.wholeBodyGo.SetActive(true);*/
                 yield return new WaitForSeconds(10f);
                 Owner.SetEndurance(Owner.enduranceStatMod - 3);
                 Owner.SetAccuracy(Owner.accuracyStatMod - 3);

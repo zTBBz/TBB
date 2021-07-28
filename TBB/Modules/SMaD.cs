@@ -118,15 +118,54 @@ namespace TBB
             builder = RogueLibs.CreateCustomItem<Brain_Jellyfish>()
                .WithName(new CustomNameInfo
                {
-                   English = "Blood Donut",
-                   Russian = "Кровавый пончик"
+                   English = "Brain jellyfish",
+                   Russian = "Мозговая медуза"
                }).WithDescription(new CustomNameInfo
                {
-                   English = "Doughnuts themselves are very nutritious, but only energetically, now imagine that there is a doughnut that will be nutritious for your blood, replenishing the number of red blood cells in it, but this all takes time and it is better not to move during the replenishment of red blood cells.",
-                   Russian = "Сами по себе пончики очень питательны, но только энергетически, теперь представьте что есть пончик который будет питателен и для вашей крови восполняя количество эритроцитов в ней, однако это всё занимает время и лучше не двигаться во время восполнения эритроцитов."
+                   English = "A fairly decent-sized jellyfish that can control the host's brain, transmitting its properties to the host's body, even if not for long.",
+                   Russian = "Достаточно приличных размеров медуза способная контролировать мозг носителя, передавая свои свойства телу носителя, пускай и не надолго."
                })
                .WithSprite(Properties.Resources.Brain_Jellyfish)
                .WithUnlock(new ItemUnlock { UnlockCost = 0, CharacterCreationCost = 4 });
+            Items.Add(builder.Unlock);
+            builder = RogueLibs.CreateCustomItem<BotexLeg>()
+               .WithName(new CustomNameInfo
+               {
+                   English = "Botex leg",
+                   Russian = "Ботексная ножка"
+               }).WithDescription(new CustomNameInfo
+               {
+                   English = "Chicken leg straight from one of the most famous fast food restaurants with a secret ingredient. Oversaturating the body.",
+                   Russian = "Куриная ножка прямиком из одного из самых известных ресторанов быстрого питания с секретным ингредиентом. Перенасыщает организм."
+               })
+               .WithSprite(Properties.Resources.Botex_Chicken)
+               .WithUnlock(new ItemUnlock { UnlockCost = 0, CharacterCreationCost = 6 });
+            Items.Add(builder.Unlock);
+            builder = RogueLibs.CreateCustomItem<Boompkin>()
+               .WithName(new CustomNameInfo
+               {
+                   English = "Boompkin",
+                   Russian = "Бумква"
+               }).WithDescription(new CustomNameInfo
+               {
+                   English = "Is it just me, or is there something wrong with this pumpkin?",
+                   Russian = "Мне кажется или что-то с этой тыквой не так?"
+               })
+               .WithSprite(Properties.Resources.Boom_Pumpkin)
+               .WithUnlock(new ItemUnlock { UnlockCost = 0, CharacterCreationCost = 3 });
+            Items.Add(builder.Unlock);
+            builder = RogueLibs.CreateCustomItem<KC_Drink>()
+               .WithName(new CustomNameInfo
+               {
+                   English = "KC Drink",
+                   Russian = "Газировка KC"
+               }).WithDescription(new CustomNameInfo
+               {
+                   English = "A unique soda of its kind. KC is King of Caramel, according to rumors, when you drink it, you feel like your body is filled with caramel. Although scientists are not sure that this is caramel, but whatever it is, it move speed.",
+                   Russian = "Уникальная в своём роде газировка. KC это King of Сaramel или же Король Карамели, со слухов когда выпиваешь её, то чувствуешь как твоё тело наливается карамелью. Хотя учёные не уверены что это карамель, но чтобы это не было оно ускоряет движения."
+               })
+               .WithSprite(Properties.Resources.KC_Fuzzi)
+               .WithUnlock(new ItemUnlock { UnlockCost = 0, CharacterCreationCost = 5 });
             Items.Add(builder.Unlock);
             RoguePatcher Patcher = new RoguePatcher(Main.MainInstance, typeof(SMaD));
             RogueLibs.CreateCustomAudio("Blind_Mushroom_Use", Properties.Resources.Blind_Mushroom_Use, AudioType.OGGVORBIS);
@@ -136,6 +175,8 @@ namespace TBB
             RogueLibs.CreateCustomAudio("BOOMCorn_Use", Properties.Resources.BOOMCorn_Use, AudioType.OGGVORBIS);
             RogueLibs.CreateCustomAudio("Vent_IceCream_Use", Properties.Resources.CIceCream_Use, AudioType.OGGVORBIS);
             RogueLibs.CreateCustomAudio("BloodDonut_Use", Properties.Resources.BloodDonut_Use, AudioType.OGGVORBIS);
+            RogueLibs.CreateCustomAudio("Brain_Jellyfish_Use", Properties.Resources.Brain_Jellyfish_Use, AudioType.OGGVORBIS);
+            RogueLibs.CreateCustomAudio("BotexLeg_Use", Properties.Resources.BotexLeg_Use, AudioType.OGGVORBIS);
         }
         public class Blind_Mushroom : CustomItem, IItemUsable
         {
@@ -315,6 +356,85 @@ namespace TBB
                 return true;
             }
         }
+        public class BotexLeg : CustomItem, IItemUsable
+        {
+            public override void SetupDetails()
+            {
+                Item.itemType = ItemTypes.Food;
+                Item.itemValue = 60;
+                Item.initCount = 1;
+                Item.rewardCount = 1;
+                Item.healthChange = 35;
+                Item.stackable = true;
+                Item.hasCharges = true;
+                Item.goesInToolbar = true;
+                Item.cantBeCloned = true;
+            }
+            public bool UseItem()
+            {
+                int heal = new ItemFunctions().DetermineHealthChange(Item, Owner);
+                Owner.statusEffects.ChangeHealth(heal);
+                if (Owner.HasTrait("HealthItemsGiveFollowersExtraHealth") || Owner.HasTrait("HealthItemsGiveFollowersExtraHealth2"))
+                {
+                    new ItemFunctions().GiveFollowersHealth(Owner, heal);
+                }
+                Owner.statusEffects.AddStatusEffect("BotexLeg_Effect");
+                Count--;
+                gc.audioHandler.Play(Owner, "BotexLeg_Use");
+                return true;
+            }
+        }
+        public class Boompkin : CustomItem, IItemUsable
+        {
+            public override void SetupDetails()
+            {
+                Item.itemType = ItemTypes.Food;
+                Item.itemValue = 35;
+                Item.initCount = 1;
+                Item.rewardCount = 1;
+                Item.stackable = true;
+                Item.hasCharges = true;
+                Item.goesInToolbar = true;
+                Item.cantBeCloned = true;
+            }
+            public bool UseItem()
+            {
+                Count--;
+                Owner.gc.spawnerMain.SpawnExplosion(Owner, Owner.tr.position, "Normal", false, -1, false, true).agent = Owner;
+                Owner.gc.spawnerMain.SpawnExplosion(Owner, Owner.tr.position, "Normal", false, -1, false, true).agent = Owner;
+                Owner.gc.spawnerMain.SpawnExplosion(Owner, Owner.tr.position, "Normal", false, -1, false, true).agent = Owner;
+                Owner.gc.spawnerMain.SpawnExplosion(Owner, Owner.tr.position, "Normal", false, -1, false, true).agent = Owner;
+                return true;
+            }
+        }
+        public class KC_Drink : CustomItem, IItemUsable
+        {
+            public override void SetupDetails()
+            {
+                Item.itemType = ItemTypes.Food;
+                Item.itemValue = 30;
+                Item.initCount = 3;
+                Item.rewardCount = 3;
+                Item.healthChange = 5;
+                Item.stackable = true;
+                Item.hasCharges = true;
+                Item.goesInToolbar = true;
+                Item.cantBeCloned = true;
+            }
+            public bool UseItem()
+            {
+                int heal = new ItemFunctions().DetermineHealthChange(Item, Owner);
+                Owner.statusEffects.ChangeHealth(heal);
+                if (Owner.HasTrait("HealthItemsGiveFollowersExtraHealth") || Owner.HasTrait("HealthItemsGiveFollowersExtraHealth2"))
+                {
+                    new ItemFunctions().GiveFollowersHealth(Owner, heal);
+                }
+                Owner.statusEffects.AddStatusEffect("KC_Drink_Effect");
+                Count--;
+                gc.audioHandler.Play(Owner, "Drink");
+                return true;
+            }
+        }
         public class EvilCake : CustomItem, IItemUsable
         {
             public override void SetupDetails()
@@ -449,7 +569,8 @@ namespace TBB
             }
             public override void OnRemoved()
             {
-
+                int a = Owner.FindSpeed();
+                Owner.speedMax = a;
             }
             public override void OnUpdated(EffectUpdatedArgs e)
             {
@@ -487,7 +608,75 @@ namespace TBB
             }
             public override void OnUpdated(EffectUpdatedArgs e)
             {
-                Owner.AddEffect("Enraged", new CreateEffectInfo { SpecificTime = 20, DontShowText = true });
+                Owner.AddEffect("Enraged", new CreateEffectInfo { SpecificTime = 25, DontShowText = true });
+                CurrentTime--;
+            }
+        }
+        [EffectParameters(EffectLimitations.RemoveOnDeath | EffectLimitations.RemoveOnKnockOut)]
+        public class BotexLeg_Effect : CustomEffect
+        {
+            [RLSetup]
+            public static void Setup()
+            {
+                RogueLibs.CreateCustomEffect<BloodDonut_Effect>()
+                            .WithName(new CustomNameInfo
+                            {
+                                English = "Oversaturated body",
+                                Russian = "Перенасыщенный организм"
+                            })
+                            .WithDescription(new CustomNameInfo
+                            {
+                                English = "How do you look.. very plump",
+                                Russian = "Как то вы выглядите.. очень пухло"
+                            });
+            }
+            public override int GetEffectTime() => 20;
+            public override int GetEffectHate() => 0;
+            public override void OnAdded()
+            {
+                Owner.statusEffects.AddTrait("Giant");
+                Owner.SetSpeed(Owner.speedStatMod - 3);
+            }
+            public override void OnRemoved()
+            {
+                Owner.statusEffects.RemoveTrait("Giant");
+                Owner.SetSpeed(Owner.speedStatMod + 3);
+            }
+            public override void OnUpdated(EffectUpdatedArgs e)
+            {
+                CurrentTime--;
+            }
+        }
+        [EffectParameters(EffectLimitations.RemoveOnDeath | EffectLimitations.RemoveOnKnockOut)]
+        public class KC_Drink_Effect : CustomEffect
+        {
+            [RLSetup]
+            public static void Setup()
+            {
+                RogueLibs.CreateCustomEffect<BloodDonut_Effect>()
+                            .WithName(new CustomNameInfo
+                            {
+                                English = "Under KC drink",
+                                Russian = "Под действием KC газировки"
+                            })
+                            .WithDescription(new CustomNameInfo
+                            {
+                                English = "You drank KC drink",
+                                Russian = "Вы выпили KC газировку, больше не пейте, а то жопа слипнется"
+                            });
+            }
+            public override int GetEffectTime() => 15;
+            public override int GetEffectHate() => 0;
+            public override void OnAdded()
+            {
+                Owner.SetSpeed(Owner.speedStatMod + 2);
+            }
+            public override void OnRemoved()
+            {
+                Owner.SetSpeed(Owner.speedStatMod - 2);
+            }
+            public override void OnUpdated(EffectUpdatedArgs e)
+            {
                 CurrentTime--;
             }
         }
@@ -513,7 +702,6 @@ namespace TBB
             public override int GetEffectHate() => 5;
             public override void OnAdded()
             {
-                Owner.SetEndurance(Owner.enduranceStatMod - 2);
                 Owner.resurrect = true;
             }
             public override void OnRemoved()
