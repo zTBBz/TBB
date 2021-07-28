@@ -83,6 +83,16 @@ namespace TBB.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Byte[].
         /// </summary>
+        internal static byte[] Black_Question {
+            get {
+                object obj = ResourceManager.GetObject("Black_Question", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
         internal static byte[] Blind_Mushroom {
             get {
                 object obj = ResourceManager.GetObject("Blind_Mushroom", resourceCulture);
@@ -276,6 +286,16 @@ namespace TBB.Properties {
         internal static byte[] Thief_Bag {
             get {
                 object obj = ResourceManager.GetObject("Thief_Bag", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] Valery_Sablin_Non_A {
+            get {
+                object obj = ResourceManager.GetObject("Valery_Sablin_Non_A", resourceCulture);
                 return ((byte[])(obj));
             }
         }

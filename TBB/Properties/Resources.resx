@@ -124,6 +124,9 @@
   <data name="Bag_Use" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Bag_Use.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="Black_Question" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Black_Question.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="Blind_Mushroom" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Blind_Mushroom.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -183,6 +186,9 @@
   </data>
   <data name="Thief_Bag" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Thief_Bag.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Valery_Sablin_Non_A" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Valery_Sablin_Non_A.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Vent_Icecream" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Vent_Icecream.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

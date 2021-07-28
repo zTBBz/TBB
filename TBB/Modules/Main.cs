@@ -105,6 +105,7 @@ namespace TBB
             RogueLibs.CreateCustomUnlock(new SMaD_Switch());
             RogueLibs.CreateCustomUnlock(new MTP_Switch());
             RogueLibs.CreateCustomAudio("Bag_Use", Properties.Resources.Bag_Use, AudioType.OGGVORBIS);
+            RogueLibs.CreateCustomAudio("Valery_Sablin_Non_A", Properties.Resources.Valery_Sablin_Non_A, AudioType.OGGVORBIS);
         }
         public class SMaD_Switch : MutatorUnlock
         {
@@ -407,8 +408,48 @@ namespace TBB
                 }
                 Inventory.AddItem(pool[0]);
                 Inventory.AddItem(selected);
+                int chance = new System.Random().Next(100);
+                if (chance > 90) // 10%
+                    Inventory.AddItem("Sablin_Item", 1);
                 Count--;
                 gc.audioHandler.Play(Owner, "Bag_Use");
+                return true;
+            }
+        }
+        public class Sablin_Item : CustomItem, IItemUsable
+        {
+            [RLSetup]
+            public static void Setup()
+            {
+                RogueLibs.CreateCustomItem<Sablin_Item>()
+               .WithName(new CustomNameInfo
+               {
+                   English = "<color=#ff0000>Click</color>",
+                   Russian = "<color=#ff0000>Кликни</color>"
+               })
+               .WithDescription(new CustomNameInfo
+               {
+                   English = "CLICK CLICK CLICK CLICK",
+                   Russian = "КЛИКНИ КЛИКНИ КЛИКНИ КЛИКНИ"
+               })
+               .WithSprite(Properties.Resources.Black_Question)
+               .WithUnlock(new ItemUnlock { UnlockCost = 0, IsAvailableInCC = false, IsAvailable = false, IsAvailableInItemTeleporter = false });
+            }
+            public override void SetupDetails()
+            {
+                Item.itemType = ItemTypes.Tool;
+                Item.itemValue = 0;
+                Item.initCount = 1;
+                Item.rewardCount = 1;
+                Item.stackable = true;
+                Item.hasCharges = true;
+                Item.goesInToolbar = true;
+                Item.cantBeCloned = false;
+            }
+            public bool UseItem()
+            {
+                Count--;
+                gc.audioHandler.Play(Owner, "Valery_Sablin_Non_A");
                 return true;
             }
         }
