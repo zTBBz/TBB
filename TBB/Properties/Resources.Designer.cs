@@ -103,6 +103,26 @@ namespace TBB.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Byte[].
         /// </summary>
+        internal static byte[] Blood_Donut {
+            get {
+                object obj = ResourceManager.GetObject("Blood_Donut", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] BloodDonut_Use {
+            get {
+                object obj = ResourceManager.GetObject("BloodDonut_Use", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
         internal static byte[] BOOMCorn_Use {
             get {
                 object obj = ResourceManager.GetObject("BOOMCorn_Use", resourceCulture);
@@ -116,6 +136,16 @@ namespace TBB.Properties {
         internal static byte[] Boomkorn {
             get {
                 object obj = ResourceManager.GetObject("Boomkorn", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] Brain_Jellyfish {
+            get {
+                object obj = ResourceManager.GetObject("Brain_Jellyfish", resourceCulture);
                 return ((byte[])(obj));
             }
         }

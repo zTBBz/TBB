@@ -97,8 +97,11 @@
     <None Include="Resources\Bag_Use.bin" />
     <None Include="Resources\Blind_Mushroom.bin" />
     <None Include="Resources\Blind_Mushroom_Use.bin" />
+    <None Include="Resources\BloodDonut_Use.bin" />
+    <None Include="Resources\Blood_Donut.bin" />
     <None Include="Resources\BOOMCorn_Use.bin" />
     <None Include="Resources\Boomkorn.bin" />
+    <None Include="Resources\Brain_Jellyfish.bin" />
     <None Include="Resources\CIceCream_Use.bin" />
     <None Include="Resources\Evil_Cake.bin" />
     <None Include="Resources\Evil_Cake_Use.bin" />

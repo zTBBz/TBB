@@ -102,14 +102,40 @@ namespace TBB
                .WithSprite(Properties.Resources.Vent_Icecream)
                .WithUnlock(new ItemUnlock { UnlockCost = 0, CharacterCreationCost = 5 });
             Items.Add(builder.Unlock);
+            builder = RogueLibs.CreateCustomItem<BloodDonut>()
+               .WithName(new CustomNameInfo
+               {
+                   English = "Blood Donut",
+                   Russian = "Кровавый пончик"
+               }).WithDescription(new CustomNameInfo
+               {
+                   English = "Doughnuts themselves are very nutritious, but only energetically, now imagine that there is a doughnut that will be nutritious for your blood, replenishing the number of red blood cells in it, but this all takes time and it is better not to move during the replenishment of red blood cells.",
+                   Russian = "Сами по себе пончики очень питательны, но только энергетически, теперь представьте что есть пончик который будет питателен и для вашей крови восполняя количество эритроцитов в ней, однако это всё занимает время и лучше не двигаться во время восполнения эритроцитов."
+               })
+               .WithSprite(Properties.Resources.Blood_Donut)
+               .WithUnlock(new ItemUnlock { UnlockCost = 0, CharacterCreationCost = 5 });
+            Items.Add(builder.Unlock);
+            builder = RogueLibs.CreateCustomItem<Brain_Jellyfish>()
+               .WithName(new CustomNameInfo
+               {
+                   English = "Blood Donut",
+                   Russian = "Кровавый пончик"
+               }).WithDescription(new CustomNameInfo
+               {
+                   English = "Doughnuts themselves are very nutritious, but only energetically, now imagine that there is a doughnut that will be nutritious for your blood, replenishing the number of red blood cells in it, but this all takes time and it is better not to move during the replenishment of red blood cells.",
+                   Russian = "Сами по себе пончики очень питательны, но только энергетически, теперь представьте что есть пончик который будет питателен и для вашей крови восполняя количество эритроцитов в ней, однако это всё занимает время и лучше не двигаться во время восполнения эритроцитов."
+               })
+               .WithSprite(Properties.Resources.Brain_Jellyfish)
+               .WithUnlock(new ItemUnlock { UnlockCost = 0, CharacterCreationCost = 4 });
+            Items.Add(builder.Unlock);
             RoguePatcher Patcher = new RoguePatcher(Main.MainInstance, typeof(SMaD));
             RogueLibs.CreateCustomAudio("Blind_Mushroom_Use", Properties.Resources.Blind_Mushroom_Use, AudioType.OGGVORBIS);
             RogueLibs.CreateCustomAudio("Steel_Apple_Walk", Properties.Resources.Steel_Apple_Walk, AudioType.OGGVORBIS);
             RogueLibs.CreateCustomAudio("Steal_Apple_Use", Properties.Resources.Steal_Apple_Use, AudioType.OGGVORBIS);
-            RogueLibs.CreateCustomAudio("Steel_Apple_Walk", Properties.Resources.Steel_Apple_Walk, AudioType.OGGVORBIS);
             RogueLibs.CreateCustomAudio("Evil_Cake_Use", Properties.Resources.Evil_Cake_Use, AudioType.OGGVORBIS);
             RogueLibs.CreateCustomAudio("BOOMCorn_Use", Properties.Resources.BOOMCorn_Use, AudioType.OGGVORBIS);
             RogueLibs.CreateCustomAudio("Vent_IceCream_Use", Properties.Resources.CIceCream_Use, AudioType.OGGVORBIS);
+            RogueLibs.CreateCustomAudio("BloodDonut_Use", Properties.Resources.BloodDonut_Use, AudioType.OGGVORBIS);
         }
         public class Blind_Mushroom : CustomItem, IItemUsable
         {
@@ -244,6 +270,51 @@ namespace TBB
                 return true;
             }
         }
+        public class BloodDonut : CustomItem, IItemUsable
+        {
+            public override void SetupDetails()
+            {
+                Item.itemType = ItemTypes.Food;
+                Item.itemValue = 45;
+                Item.initCount = 1;
+                Item.rewardCount = 1;
+                Item.stackable = true;
+                Item.hasCharges = true;
+                Item.goesInToolbar = true;
+                Item.cantBeCloned = true;
+            }
+            public bool UseItem()
+            {
+                gc.audioHandler.Play(Owner, "BloodDonut_Use");
+                Owner.statusEffects.AddStatusEffect("BloodDonut_Effect");
+                Count--;
+                return true;
+            }
+        }
+        public class Brain_Jellyfish : CustomItem, IItemUsable
+        {
+            public override void SetupDetails()
+            {
+                Item.itemType = ItemTypes.Food;
+                Item.itemValue = 40;
+                Item.initCount = 1;
+                Item.rewardCount = 1;
+                Item.healthChange = -15;
+                Item.stackable = true;
+                Item.hasCharges = true;
+                Item.goesInToolbar = true;
+                Item.cantBeCloned = true;
+            }
+            public bool UseItem()
+            {
+                int heal = new ItemFunctions().DetermineHealthChange(Item, Owner);
+                Owner.statusEffects.ChangeHealth(heal);
+                Owner.statusEffects.AddStatusEffect("Brain_Jellyfish_Effect", 25);
+                Count--;
+                gc.audioHandler.Play(Owner, "Blind_Mushroom_Use");
+                return true;
+            }
+        }
         public class EvilCake : CustomItem, IItemUsable
         {
             public override void SetupDetails()
@@ -349,6 +420,74 @@ namespace TBB
                 if (Effect.curTime != Effect.startTime - 1)
                     Owner.gc.audioHandler.Play(Owner, "WithdrawalDamage");
                 Owner.ChangeHealth(Owner.gc.challenges.Contains("LowHealth") ? -1f : -2f);
+                CurrentTime--;
+            }
+        }
+        [EffectParameters(EffectLimitations.RemoveOnDeath | EffectLimitations.RemoveOnKnockOut)]
+        public class BloodDonut_Effect : CustomEffect
+        {
+            [RLSetup]
+            public static void Setup()
+            {
+                RogueLibs.CreateCustomEffect<BloodDonut_Effect>()
+                            .WithName(new CustomNameInfo
+                            {
+                                English = "Erythrocyte replenishment",
+                                Russian = "Восполнение эритроцитов"
+                            })
+                            .WithDescription(new CustomNameInfo
+                            {
+                                English = "Yes, you will now have red blood cells that you can bathe a whole zoo in them!",
+                                Russian = "Да, у вас сейчас будет эритроцитов что вы сможете в них искупать целый зоопарк!"
+                            });
+            }
+            public override int GetEffectTime() => 60;
+            public override int GetEffectHate() => 0;
+            public override void OnAdded()
+            {
+                Owner.speedMax = 0;
+            }
+            public override void OnRemoved()
+            {
+
+            }
+            public override void OnUpdated(EffectUpdatedArgs e)
+            {
+                Owner.ChangeHealth(Owner.gc.challenges.Contains("LowHealth") ? +1f : +1f);
+                CurrentTime--;
+            }
+        }
+        [EffectParameters(EffectLimitations.RemoveOnDeath | EffectLimitations.RemoveOnKnockOut)]
+        public class Brain_Jellyfish_Effect : CustomEffect
+        {
+            [RLSetup]
+            public static void Setup()
+            {
+                RogueLibs.CreateCustomEffect<BloodDonut_Effect>()
+                            .WithName(new CustomNameInfo
+                            {
+                                English = "Controlled by Brain Jellyfish",
+                                Russian = "Контролируется Мозговой Медузой"
+                            })
+                            .WithDescription(new CustomNameInfo
+                            {
+                                English = "TO STING TO STING TO STING!",
+                                Russian = "УЖАЛИТЬ УЖАЛИТЬ УЖАЛИТЬ!"
+                            });
+            }
+            public override int GetEffectTime() => 20;
+            public override int GetEffectHate() => 5;
+            public override void OnAdded()
+            {
+                Owner.statusEffects.AddTrait("ElectroTouch");
+            }
+            public override void OnRemoved()
+            {
+                Owner.statusEffects.RemoveTrait("ElectroTouch");
+            }
+            public override void OnUpdated(EffectUpdatedArgs e)
+            {
+                Owner.AddEffect("Enraged", new CreateEffectInfo { SpecificTime = 20, DontShowText = true });
                 CurrentTime--;
             }
         }
