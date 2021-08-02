@@ -41,7 +41,7 @@ Current priority:
 </div>
 
 1.  When will Mod-Union be released????
-    1.  Well, the work continues. The Mod-Union will be released soon, you will be able to look at the progress and some new features.
+    1.  Already released, check releases.
 
 2.  Why aren't SMaD and MTP updated?
     1.  SMaD and MTP are updated. Just on their pages on GameBanana and on GitHub, they will not be updated.
