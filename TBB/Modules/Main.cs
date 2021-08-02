@@ -409,7 +409,7 @@ namespace TBB
                 Inventory.AddItem(pool[0]);
                 Inventory.AddItem(selected);
                 int chance = new System.Random().Next(100);
-                if (chance > 90) // 10%
+                if (chance < 1) // 1%
                     Inventory.AddItem("Sablin_Item", 1);
                 Count--;
                 gc.audioHandler.Play(Owner, "Bag_Use");
@@ -432,8 +432,7 @@ namespace TBB
                    English = "CLICK CLICK CLICK CLICK",
                    Russian = "КЛИКНИ КЛИКНИ КЛИКНИ КЛИКНИ"
                })
-               .WithSprite(Properties.Resources.Black_Question)
-               .WithUnlock(new ItemUnlock { UnlockCost = 0, IsAvailableInCC = false, IsAvailable = false, IsAvailableInItemTeleporter = false });
+               .WithSprite(Properties.Resources.Black_Question);
             }
             public override void SetupDetails()
             {

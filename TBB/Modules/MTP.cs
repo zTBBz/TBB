@@ -259,7 +259,6 @@ namespace TBB
                 Owner.SetStrength(Owner.strengthStatMod + 3);
                 Owner.SetSpeed(Owner.speedStatMod + 3);
                 yield return new WaitForSeconds(10f);
-                Owner.SetEndurance(Owner.enduranceStatMod - 3);
                 Owner.SetAccuracy(Owner.accuracyStatMod - 3);
                 Owner.SetStrength(Owner.strengthStatMod - 3);
                 Owner.SetSpeed(Owner.speedStatMod - 3);

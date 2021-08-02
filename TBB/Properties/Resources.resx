@@ -139,6 +139,9 @@
   <data name="Blood_Donut" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Blood_Donut.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="Blood_Watermelon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Blood_Watermelon.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="BOOMCorn_Use" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BOOMCorn_Use.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -163,17 +166,38 @@
   <data name="CIceCream_Use" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CIceCream_Use.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="Divine_Honey_Use" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Divine_Honey_Use.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="Evil_Cake" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Evil_Cake.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Evil_Cake_Use" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Evil_Cake_Use.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="Fire_Salamander_Heart_Use" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Fire_Salamander_Heart_Use.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="FishOfLuck_Use" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FishOfLuck_Use.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fish_Fat" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Fish_Fat.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Heaven_Tears" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Heaven_Tears.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Honey" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Honey.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="KC_Fuzzi" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\KC_Fuzzi.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Kraken_Tentacle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Kraken_Tentacle.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Luck_Fish" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Luck_Fish.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Steal_Apple" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Steal_Apple.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -183,6 +207,9 @@
   </data>
   <data name="Steel_Apple_Walk" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Steel_Apple_Walk.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Tears_Heaven_Use" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tears_Heaven_Use.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Thief_Bag" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Thief_Bag.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

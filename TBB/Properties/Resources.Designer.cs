@@ -123,6 +123,16 @@ namespace TBB.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Byte[].
         /// </summary>
+        internal static byte[] Blood_Watermelon {
+            get {
+                object obj = ResourceManager.GetObject("Blood_Watermelon", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
         internal static byte[] BloodDonut_Use {
             get {
                 object obj = ResourceManager.GetObject("BloodDonut_Use", resourceCulture);
@@ -213,6 +223,16 @@ namespace TBB.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Byte[].
         /// </summary>
+        internal static byte[] Divine_Honey_Use {
+            get {
+                object obj = ResourceManager.GetObject("Divine_Honey_Use", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
         internal static byte[] Evil_Cake {
             get {
                 object obj = ResourceManager.GetObject("Evil_Cake", resourceCulture);
@@ -233,6 +253,56 @@ namespace TBB.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Byte[].
         /// </summary>
+        internal static byte[] Fire_Salamander_Heart_Use {
+            get {
+                object obj = ResourceManager.GetObject("Fire_Salamander_Heart_Use", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] Fish_Fat {
+            get {
+                object obj = ResourceManager.GetObject("Fish_Fat", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] FishOfLuck_Use {
+            get {
+                object obj = ResourceManager.GetObject("FishOfLuck_Use", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] Heaven_Tears {
+            get {
+                object obj = ResourceManager.GetObject("Heaven_Tears", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] Honey {
+            get {
+                object obj = ResourceManager.GetObject("Honey", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
         internal static byte[] KC_Fuzzi {
             get {
                 object obj = ResourceManager.GetObject("KC_Fuzzi", resourceCulture);
@@ -246,6 +316,16 @@ namespace TBB.Properties {
         internal static byte[] Kraken_Tentacle {
             get {
                 object obj = ResourceManager.GetObject("Kraken_Tentacle", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] Luck_Fish {
+            get {
+                object obj = ResourceManager.GetObject("Luck_Fish", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -276,6 +356,16 @@ namespace TBB.Properties {
         internal static byte[] Steel_Apple_Walk {
             get {
                 object obj = ResourceManager.GetObject("Steel_Apple_Walk", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] Tears_Heaven_Use {
+            get {
+                object obj = ResourceManager.GetObject("Tears_Heaven_Use", resourceCulture);
                 return ((byte[])(obj));
             }
         }

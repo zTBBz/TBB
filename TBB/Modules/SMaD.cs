@@ -24,6 +24,8 @@ namespace TBB
         }
         public void Awake()
         {
+            RoguePatcher Patcher = new RoguePatcher(Main.MainInstance, typeof(SMaD));
+            Patcher.Postfix(typeof(RandomItems), "fillItems");
             ItemBuilder builder = RogueLibs.CreateCustomItem<Blind_Mushroom>()
                        .WithName(new CustomNameInfo
                        {
@@ -44,11 +46,11 @@ namespace TBB
                                Russian = "Подозрительный торт"
                            }).WithDescription(new CustomNameInfo
                            {
-                               English = "This cake was made by 3 unknown comedians, being very fat and nutritious makes the eater immediately make a joke. The party with these cakes will be very fun!",
-                               Russian = "Этот торт был изготовлен 3 неизвестными комиками, будучи весьма жирным и питательным заставляет съевшего немедленно пошутить. Вечеринка с такими тортами будет очень веселая!"
+                               English = "Is it just me, or does this cake look a little suspicious? In any case, you have it.",
+                               Russian = "Мне кажется или, этот торт выглядит немного подозрительно? В любом случае вам его есть."
                            })
                            .WithSprite(Properties.Resources.Evil_Cake)
-                           .WithUnlock(new ItemUnlock { UnlockCost = 0, CharacterCreationCost = 3 });
+                           .WithUnlock(new ItemUnlock { UnlockCost = 0, CharacterCreationCost = 8 });
             Items.Add(builder.Unlock);
             builder = RogueLibs.CreateCustomItem<Steal_Apple>()
                .WithName(new CustomNameInfo
@@ -167,7 +169,84 @@ namespace TBB
                .WithSprite(Properties.Resources.KC_Fuzzi)
                .WithUnlock(new ItemUnlock { UnlockCost = 0, CharacterCreationCost = 5 });
             Items.Add(builder.Unlock);
-            RoguePatcher Patcher = new RoguePatcher(Main.MainInstance, typeof(SMaD));
+            builder = RogueLibs.CreateCustomItem<Fire_Salamander_Heart>()
+               .WithName(new CustomNameInfo
+               {
+                   English = "Fire Salamander Heart",
+                   Russian = "Сердце Огненной Саламандры"
+               }).WithDescription(new CustomNameInfo
+               {
+                   English = "The Salamander heart is an incredibly nasty-tasting organ that pumps blood. I do not think that you need to eat it, although if you are a Pyromancer, it is your best friend, because your blood is saturated with special cells and will spread them throughout the body and you will become less vulnerable to fire. These cells are able to adapt quickly, it is a pity that your body will not accept them immediately.. so that.. Good luck surviving the War inside your body!",
+                   Russian = "Саламандровское сердце - невероятно противный на вкус орган качающий кровь. Не думаю что нужно его есть, хотя если вы пиромант то это ваш лучший друг, ведь ваша кровь насытиться особыми клетками и разнесёт их по всему организму и вы станете менее уязвима к огню. Эти клетки умеют быстро адаптироваться, жаль что ваш организм не примет их сразу.. так что.. Удачи вам пережить Войну внутри вашего организма!"
+               })
+               .WithSprite(Properties.Resources.KC_Fuzzi)
+               .WithUnlock(new ItemUnlock { UnlockCost = 0, CharacterCreationCost = 6 });
+            Items.Add(builder.Unlock);
+            builder = RogueLibs.CreateCustomItem<FishOfLuck>()
+               .WithName(new CustomNameInfo
+               {
+                   English = "Fish from Well",
+                   Russian = "Рыба из Колодца"
+               }).WithDescription(new CustomNameInfo
+               {
+                   English = "The legendary fish that was caught from the very Well. it's all dry, but so warm.. Is it edible? Is unknown.. no one has tried it, but you can be the first! But according to the legends, it gives a surge of strength, heals all wounds and gives a sense of good luck.",
+                   Russian = "Легендарная рыба которую выловили из того самого Колодца.. она вся сухая, но такая тёплая.. Возможно она съедобная? Неизвестно.. никто не пробовал, но вы можете стать первым! Но судя по легендам она даёт прилив сил, залечивает все раны и даёт ощущение удачи."
+               })
+               .WithSprite(Properties.Resources.Luck_Fish)
+               .WithUnlock(new ItemUnlock { UnlockCost = 0, CharacterCreationCost = 10 });
+            Items.Add(builder.Unlock);
+            builder = RogueLibs.CreateCustomItem<Tears_Heaven>()
+               .WithName(new CustomNameInfo
+               {
+                   English = "Tear of Heaven",
+                   Russian = "Слезы Небес"
+               }).WithDescription(new CustomNameInfo
+               {
+                   English = "Heaven's tears are granted if the gods like your soul. A person who receives the Tears of Heaven at a critical moment can drink them to get even temporary, but the power of God, and restore the body, but his body is not able to withstand the power of the gods,which is why it is not able to move.",
+                   Russian = "Слезы Небес даруются, если богам понравилась твоя душа. Человек получивший Слезы Небес в критический момент может выпить их что бы получить пускай и временную, но силу бога, и восстановить организм, однако его тело не способно выдержать мощь богов из-за чего не способно двигаться."
+               })
+               .WithSprite(Properties.Resources.Heaven_Tears)
+               .WithUnlock(new ItemUnlock { UnlockCost = 0, CharacterCreationCost = 10 });
+            Items.Add(builder.Unlock);
+            builder = RogueLibs.CreateCustomItem<Tears_Heaven>()
+               .WithName(new CustomNameInfo
+               {
+                   English = "Fish Oil",
+                   Russian = "Рыбий Жир"
+               }).WithDescription(new CustomNameInfo
+               {
+                   English = "Fish oil - as scientists have proven a very useful thing, although people are not completely sure about it. its taste and color are known to many,but few people know that it can restore the cells of human organs, as well as increase your strength, but it is quite a heavy product so that a run is not fatal for you..but still it is not desirable to run. But you did not listen to your mother and did not eat fish oil as a child, even in the game eat.",
+                   Russian = "Рыбий жир - как доказали ученые очень полезная вещь, хотя люди не до конца уверены в этом. его вкус и цвет известен многим,однако мало кто знает что он может восстанавливать клетки человеческих органов, так же увеличивает  вашу силу, но он достаточно тяжёлый продукт так что пробежка для вас не смертельна..но всё таки бегать не желательно. А вы вот не слушались маму и не ели рыбий жир в детстве, хоть в игре поешьте."
+               })
+               .WithSprite(Properties.Resources.Fish_Fat)
+               .WithUnlock(new ItemUnlock { UnlockCost = 0, CharacterCreationCost = 6 });
+            Items.Add(builder.Unlock);
+            builder = RogueLibs.CreateCustomItem<Divine_Honey>()
+               .WithName(new CustomNameInfo
+               {
+                   English = "Divine Honey",
+                   Russian = "Божественный Мёд"
+               }).WithDescription(new CustomNameInfo
+               {
+                   English = "This honey was produced by the legendary divine bees, or so the legends say. This honey was obtained in the most insidious way - Stolen. It has effective regenerative abilities, rejuvenates the skin and regenerates lost cells, but it all takes time. Because of the rush during the Assembly of honey, larvae gather in it.",
+                   Russian = "Этот мед производили легендарные божественных пчелы, по крайней мере так гласят легенды. Этот мёд был добыт самым коварным способом - Украден. Обладает действенными регенерационными способностями, омолаживает кожу и регенерует потерянные клетки, однако это всё занимает время. Из-за спешки во время сборки мёда в нём содержаться личинки."
+               })
+               .WithSprite(Properties.Resources.Honey)
+               .WithUnlock(new ItemUnlock { UnlockCost = 0, CharacterCreationCost = 8 });
+            Items.Add(builder.Unlock);
+            builder = RogueLibs.CreateCustomItem<Juicy_Watermelon>()
+               .WithName(new CustomNameInfo
+               {
+                   English = "Juicy Watermelon",
+                   Russian = "Сочный Арбуз"
+               }).WithDescription(new CustomNameInfo
+               {
+                   English = "Mmmmmmm.. how juicy and delicious this watermelon is..watermelon juice is flowing out of it.. or is it not juice? I won't torment you. It restores 80 HP to Vampires when people are only 30.. keep in mind that vampires are good, people are bad, I'm talking about bloodmixing.",
+                   Russian = "Ммммммм.. какой сочный и вкусный этот арбуз..из него так и течёт арбузный сок.. или это не сок? Не буду томить. Он восстанавливает Вампирам 80 ХП, когда людям только 30.. учтите что вампирам хорошо, людям плохо, я про кровосмешение."
+               })
+               .WithSprite(Properties.Resources.Blood_Watermelon)
+               .WithUnlock(new ItemUnlock { UnlockCost = 0, CharacterCreationCost = 4 });
+            Items.Add(builder.Unlock);
             RogueLibs.CreateCustomAudio("Blind_Mushroom_Use", Properties.Resources.Blind_Mushroom_Use, AudioType.OGGVORBIS);
             RogueLibs.CreateCustomAudio("Steel_Apple_Walk", Properties.Resources.Steel_Apple_Walk, AudioType.OGGVORBIS);
             RogueLibs.CreateCustomAudio("Steal_Apple_Use", Properties.Resources.Steal_Apple_Use, AudioType.OGGVORBIS);
@@ -177,6 +256,10 @@ namespace TBB
             RogueLibs.CreateCustomAudio("BloodDonut_Use", Properties.Resources.BloodDonut_Use, AudioType.OGGVORBIS);
             RogueLibs.CreateCustomAudio("Brain_Jellyfish_Use", Properties.Resources.Brain_Jellyfish_Use, AudioType.OGGVORBIS);
             RogueLibs.CreateCustomAudio("BotexLeg_Use", Properties.Resources.BotexLeg_Use, AudioType.OGGVORBIS);
+            RogueLibs.CreateCustomAudio("Fire_Salamander_Heart_Use", Properties.Resources.Fire_Salamander_Heart_Use, AudioType.OGGVORBIS);
+            RogueLibs.CreateCustomAudio("Divine_Honey_Use", Properties.Resources.Divine_Honey_Use, AudioType.OGGVORBIS);
+            RogueLibs.CreateCustomAudio("Tears_Heaven_Use", Properties.Resources.Tears_Heaven_Use, AudioType.OGGVORBIS);
+            RogueLibs.CreateCustomAudio("FishOfLuck_Use", Properties.Resources.FishOfLuck_Use, AudioType.OGGVORBIS);
         }
         public class Blind_Mushroom : CustomItem, IItemUsable
         {
@@ -435,6 +518,168 @@ namespace TBB
                 return true;
             }
         }
+        public class Fire_Salamander_Heart : CustomItem, IItemUsable
+        {
+            public override void SetupDetails()
+            {
+                Item.itemType = ItemTypes.Food;
+                Item.itemValue = 60;
+                Item.initCount = 1;
+                Item.rewardCount = 1;
+                Item.healthChange = -80;
+                Item.stackable = true;
+                Item.hasCharges = true;
+                Item.goesInToolbar = true;
+                Item.cantBeCloned = true;
+            }
+            public bool UseItem()
+            {
+                int heal = new ItemFunctions().DetermineHealthChange(Item, Owner);
+                Owner.statusEffects.ChangeHealth(heal);
+                Owner.statusEffects.AddTrait("ResistFire");
+                Count--;
+                gc.audioHandler.Play(Owner, "Fire_Salamander_Heart_Use");
+                return true;
+            }
+        }
+        public class FishOfLuck : CustomItem, IItemUsable
+        {
+            public override void SetupDetails()
+            {
+                Item.itemType = ItemTypes.Food;
+                Item.itemValue = 60;
+                Item.initCount = 1;
+                Item.rewardCount = 1;
+                Item.stackable = true;
+                Item.hasCharges = true;
+                Item.goesInToolbar = true;
+                Item.cantBeCloned = true;
+            }
+            public bool UseItem()
+            {
+                int chance = new System.Random().Next(100);
+                if (chance > 55) // 45%
+                    Inventory.AddItem("Money", 20);
+                if (chance > 85) // 15%
+                    Inventory.AddItem("Money", 50);
+                if (chance < 1) // 1%
+                    Inventory.AddItem("Money", 1000);
+                Count--;
+                gc.audioHandler.Play(Owner, "FishOfLuck_Use");
+                return true;
+            }
+        }
+        public class Tears_Heaven : CustomItem, IItemUsable
+        {
+            public override void SetupDetails()
+            {
+                Item.itemType = ItemTypes.Food;
+                Item.itemValue = 45;
+                Item.initCount = 1;
+                Item.rewardCount = 1;
+                Item.healthChange = 99999;
+                Item.stackable = true;
+                Item.hasCharges = true;
+                Item.goesInToolbar = true;
+                Item.cantBeCloned = false;
+            }
+            public bool UseItem()
+            {
+                int heal = new ItemFunctions().DetermineHealthChange(Item, Owner);
+                Owner.statusEffects.ChangeHealth(heal);
+                if (Owner.HasTrait("HealthItemsGiveFollowersExtraHealth") || Owner.HasTrait("HealthItemsGiveFollowersExtraHealth2"))
+                {
+                    new ItemFunctions().GiveFollowersHealth(Owner, heal);
+                }
+                gc.audioHandler.Play(Owner, "Tears_Heaven_Use");
+                Owner.statusEffects.AddStatusEffect("Tears_Heaven_Effect");
+                Count--;
+                return true;
+            }
+        }
+        public class Fish_Oil : CustomItem, IItemUsable
+        {
+            public override void SetupDetails()
+            {
+                Item.itemType = ItemTypes.Food;
+                Item.itemValue = 35;
+                Item.initCount = 2;
+                Item.rewardCount = 2;
+                Item.healthChange = 10;
+                Item.stackable = true;
+                Item.hasCharges = true;
+                Item.goesInToolbar = true;
+                Item.cantBeCloned = true;
+            }
+            public bool UseItem()
+            {
+                int heal = new ItemFunctions().DetermineHealthChange(Item, Owner);
+                Owner.statusEffects.ChangeHealth(heal);
+                if (Owner.HasTrait("HealthItemsGiveFollowersExtraHealth") || Owner.HasTrait("HealthItemsGiveFollowersExtraHealth2"))
+                {
+                    new ItemFunctions().GiveFollowersHealth(Owner, heal);
+                }
+                Owner.statusEffects.AddStatusEffect("Fish_Oil_Effect");
+                Count--;
+                gc.audioHandler.Play(Owner, "UseFood");
+                return true;
+            }
+        }
+        public class Divine_Honey : CustomItem, IItemUsable
+        {
+            public override void SetupDetails()
+            {
+                Item.itemType = ItemTypes.Food;
+                Item.itemValue = 55;
+                Item.initCount = 1;
+                Item.rewardCount = 1;
+                Item.stackable = true;
+                Item.hasCharges = true;
+                Item.goesInToolbar = true;
+                Item.cantBeCloned = true;
+            }
+            public bool UseItem()
+            {
+                Owner.statusEffects.AddStatusEffect("Divine_Honey_Effect");
+                Count--;
+                gc.audioHandler.Play(Owner, "Divine_Honey_Use");
+                return true;
+            }
+        }
+        public class Juicy_Watermelon : CustomItem, IItemUsable
+        {
+            public override void SetupDetails()
+            {
+                Item.itemType = ItemTypes.Food;
+                Item.itemValue = 35;
+                Item.initCount = 1;
+                Item.rewardCount = 1;
+                Item.healthChange = 30;
+                Item.stackable = true;
+                Item.hasCharges = true;
+                Item.goesInToolbar = true;
+                Item.cantBeCloned = true;
+            }
+            public bool UseItem()
+            {
+                if (Owner.statusEffects.hasTrait("BloodRestoresHealth"))
+                    Item.healthChange = 80;
+                else
+                {
+                    Item.healthChange = 30;
+                    Owner.statusEffects.AddStatusEffect("Confused" , false , false , 25);
+                }
+                int heal = new ItemFunctions().DetermineHealthChange(Item, Owner);
+                Owner.statusEffects.ChangeHealth(heal);
+                if (Owner.HasTrait("HealthItemsGiveFollowersExtraHealth") || Owner.HasTrait("HealthItemsGiveFollowersExtraHealth2"))
+                {
+                    new ItemFunctions().GiveFollowersHealth(Owner, heal);
+                }
+                Count--;
+                gc.audioHandler.Play(Owner, "UseFood");
+                return true;
+            }
+        }
         public class EvilCake : CustomItem, IItemUsable
         {
             public override void SetupDetails()
@@ -579,6 +824,41 @@ namespace TBB
             }
         }
         [EffectParameters(EffectLimitations.RemoveOnDeath | EffectLimitations.RemoveOnKnockOut)]
+        public class Tears_Heaven_Effect : CustomEffect
+        {
+            [RLSetup]
+            public static void Setup()
+            {
+                RogueLibs.CreateCustomEffect<Tears_Heaven_Effect>()
+                            .WithName(new CustomNameInfo
+                            {
+                                English = "Mercy of Gods",
+                                Russian = "Милость Богов"
+                            })
+                            .WithDescription(new CustomNameInfo
+                            {
+                                English = "Congratulations, the gods themselves favor you, live.",
+                                Russian = "Поздравляю сами боги вам благоволят, живите."
+                            });
+            }
+            public override int GetEffectTime() => 30;
+            public override int GetEffectHate() => 0;
+            public override void OnAdded()
+            {
+                Owner.speedMax = 0;
+                Owner.statusEffects.AddStatusEffect("Invincible", false , false, 30);
+            }
+            public override void OnRemoved()
+            {
+                int a = Owner.FindSpeed();
+                Owner.speedMax = a;
+            }
+            public override void OnUpdated(EffectUpdatedArgs e)
+            {
+                CurrentTime--;
+            }
+        }
+        [EffectParameters(EffectLimitations.RemoveOnDeath | EffectLimitations.RemoveOnKnockOut)]
         public class Brain_Jellyfish_Effect : CustomEffect
         {
             [RLSetup]
@@ -680,6 +960,77 @@ namespace TBB
                 CurrentTime--;
             }
         }
+        [EffectParameters(EffectLimitations.RemoveOnDeath | EffectLimitations.RemoveOnKnockOut)]
+        public class Fish_Oil_Effect : CustomEffect
+        {
+            [RLSetup]
+            public static void Setup()
+            {
+                RogueLibs.CreateCustomEffect<Fish_Oil_Effect>()
+                            .WithName(new CustomNameInfo
+                            {
+                                English = "Power of Fish Oil",
+                                Russian = "Сила рыбьего жира"
+                            })
+                            .WithDescription(new CustomNameInfo
+                            {
+                                English = "I hope you enjoyed the fish oil!",
+                                Russian = "Надеюсь вам понравился рыбий жир!"
+                            });
+            }
+            public override int GetEffectTime() => 15;
+            public override int GetEffectHate() => 0;
+            public override void OnAdded()
+            {
+                Owner.SetSpeed(Owner.speedStatMod - 2);
+                Owner.SetStrength(Owner.strengthStatMod + 2);
+            }
+            public override void OnRemoved()
+            {
+                Owner.SetSpeed(Owner.speedStatMod + 2);
+                Owner.SetStrength(Owner.strengthStatMod - 2);
+            }
+            public override void OnUpdated(EffectUpdatedArgs e)
+            {
+                CurrentTime--;
+            }
+        }
+        [EffectParameters(EffectLimitations.RemoveOnDeath | EffectLimitations.RemoveOnKnockOut)]
+        public class Divine_Honey_Effect : CustomEffect
+        {
+            [RLSetup]
+            public static void Setup()
+            {
+                RogueLibs.CreateCustomEffect<Divine_Honey_Effect>()
+                            .WithName(new CustomNameInfo
+                            {
+                                English = "Cell regeneration",
+                                Russian = "Регенерация клеток"
+                            })
+                            .WithDescription(new CustomNameInfo
+                            {
+                                English = "Your cells are regenerating.. wait..",
+                                Russian = "Ваши клетки регенерируются.. подождите.."
+                            });
+            }
+            public override int GetEffectTime() => 60;
+            public override int GetEffectHate() => 0;
+            public override void OnAdded()
+            {
+                Owner.speedMax = 0;
+                Owner.statusEffects.AddStatusEffect("Poisoned", false, false, 30);
+            }
+            public override void OnRemoved()
+            {
+                int a = Owner.FindSpeed();
+                Owner.speedMax = a;
+            }
+            public override void OnUpdated(EffectUpdatedArgs e)
+            {
+                Owner.ChangeHealth(Owner.gc.challenges.Contains("LowHealth") ? +1f : +1f);
+                CurrentTime--;
+            }
+        }
         [EffectParameters(EffectLimitations.RemoveOnDeath)]
         public class Evil_Cake_Effect : CustomEffect
         {
@@ -723,6 +1074,27 @@ namespace TBB
                     Owner.gc.audioHandler.Play(Owner, "WithdrawalDamage");
                 Owner.ChangeHealth(Owner.gc.challenges.Contains("LowHealth") ? -1f : -2f);
             }
+        }
+        public static void RandomItems_fillItems(RandomItems __instance)
+        {
+            RandomSelection sel = GameObject.Find("ScriptObject").GetComponent<RandomSelection>();
+            RandomList rList = sel.randomListTable["Food1"];
+            sel.CreateRandomElement(rList, "KC_Drink", 6);
+            sel.CreateRandomElement(rList, "BOOMCorn", 4);
+            rList = sel.randomListTable["Food2"];
+            sel.CreateRandomElement(rList, "Vent_IceCream", 4);
+            sel.CreateRandomElement(rList, "Juicy_Watermelon", 3);
+            sel.CreateRandomElement(rList, "Tentacle_Kraken", 2);
+            sel.CreateRandomElement(rList, "Fish_Oil", 4);
+            sel.CreateRandomElement(rList, "BloodDonut", 5);
+            sel.CreateRandomElement(rList, "Boompkin", 4);
+            sel.CreateRandomElement(rList, "Divine_Honey", 3);
+            sel.CreateRandomElement(rList, "BotexLeg", 4);
+            sel.CreateRandomElement(rList, "Steal_Apple", 1);
+            sel.CreateRandomElement(rList, "FishOfLuck", 1);
+            sel.CreateRandomElement(rList, "Brain_Jellyfish", 3);
+            sel.CreateRandomElement(rList, "Fire_Salamander_Heart", 2);
+            //sel.CreateRandomElement(rList, "EvilCake", 3);
         }
     }
 }
