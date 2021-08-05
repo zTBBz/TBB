@@ -33,8 +33,8 @@ Mod-Union is a big project, it will include MTP and SMaD, as well as all new mod
 
 Current priority:
 1.  Moving main content of MTP and aToI to new version of RogueLibs. MTP - 23,91% aToI - 0%. (SMaD already finish)
-2.  Make normal custom status effects for SMaD. Search pixel-artist for items sprites.
-3.  Refactoring desc. traits for MTP. Search pixel-artist for traits sprites.
+2.  Search pixel-artist for items sprites.
+3.  Refactoring RU desc. traits for MTP. Search pixel-artist for traits sprites.
 
 <div align="left">
 <img src="./images/FAQ.png" width=35%/>
@@ -70,6 +70,14 @@ Current priority:
 *  [Official SoR Discord](https://discord.gg/AMww6nP2Af)
 *  [Official RU SoR Discord](https://discord.gg/neDvsmk)
 *  [Me in Discord](https://discord.com/users/580833779371868161)
+
+<div align="left">
+<img src="./images/Cont.png" width=35%/>
+</div>
+
+**Abbysssal#2020** - help with RogueLibs and BepInEx, shared website and help with him.
+
+**Sidi#9761** - made Bag`s sprites.
 
 <div align="left">
 <img src="./images/Installation.png" width=35%/>

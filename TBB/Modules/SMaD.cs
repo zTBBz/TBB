@@ -208,7 +208,7 @@ namespace TBB
                .WithSprite(Properties.Resources.Heaven_Tears)
                .WithUnlock(new ItemUnlock { UnlockCost = 0, CharacterCreationCost = 10 });
             Items.Add(builder.Unlock);
-            builder = RogueLibs.CreateCustomItem<Tears_Heaven>()
+            builder = RogueLibs.CreateCustomItem<Fish_Oil>()
                .WithName(new CustomNameInfo
                {
                    English = "Fish Oil",
@@ -261,820 +261,6 @@ namespace TBB
             RogueLibs.CreateCustomAudio("Tears_Heaven_Use", Properties.Resources.Tears_Heaven_Use, AudioType.OGGVORBIS);
             RogueLibs.CreateCustomAudio("FishOfLuck_Use", Properties.Resources.FishOfLuck_Use, AudioType.OGGVORBIS);
         }
-        public class Blind_Mushroom : CustomItem, IItemUsable
-        {
-            public override void SetupDetails()
-            {
-                Item.itemType = ItemTypes.Food;
-                Item.itemValue = 35;
-                Item.initCount = 1;
-                Item.rewardCount = 1;
-                Item.healthChange = 15;
-                Item.stackable = true;
-                Item.hasCharges = true;
-                Item.goesInToolbar = true;
-                Item.cantBeCloned = false;
-            }
-            public bool UseItem()
-            {
-                int heal = new ItemFunctions().DetermineHealthChange(Item, Owner);
-                Owner.statusEffects.ChangeHealth(heal);
-                if (Owner.HasTrait("HealthItemsGiveFollowersExtraHealth") || Owner.HasTrait("HealthItemsGiveFollowersExtraHealth2"))
-                {
-                    new ItemFunctions().GiveFollowersHealth(Owner, heal);
-                }
-                Owner.statusEffects.AddStatusEffect("Invincible", 25);
-                Count--;
-                gc.audioHandler.Play(Owner, "Blind_Mushroom_Use");
-                return true;
-            }
-        }
-        public class Steal_Apple : CustomItem, IItemUsable
-        {
-            public override void SetupDetails()
-            {
-                Item.itemType = ItemTypes.Food;
-                Item.itemValue = 60;
-                Item.initCount = 1;
-                Item.rewardCount = 1;
-                Item.healthChange = -75;
-                Item.stackable = true;
-                Item.hasCharges = true;
-                Item.goesInToolbar = true;
-                Item.cantBeCloned = false;
-            }
-            public bool UseItem()
-            {
-                int heal = new ItemFunctions().DetermineHealthChange(Item, Owner);
-                Owner.statusEffects.ChangeHealth(heal);
-                if (Owner.HasTrait("HealthItemsGiveFollowersExtraHealth") || Owner.HasTrait("HealthItemsGiveFollowersExtraHealth2"))
-                {
-                    new ItemFunctions().GiveFollowersHealth(Owner, heal);
-                }
-                Owner.statusEffects.AddStatusEffect("Steal_Apple_Effect", 9999);
-                Count--;
-                gc.audioHandler.Play(Owner, "Steal_Apple_Use");
-                return true;
-            }
-        }
-        public class Tentacle_Kraken : CustomItem, IItemUsable
-        {
-            public override void SetupDetails()
-            {
-                Item.itemType = ItemTypes.Food;
-                Item.itemValue = 95;
-                Item.initCount = 1;
-                Item.rewardCount = 1;
-                Item.healthChange = 180;
-                Item.stackable = true;
-                Item.hasCharges = true;
-                Item.goesInToolbar = true;
-                Item.cantBeCloned = true;
-            }
-            public bool UseItem()
-            {
-                int heal = new ItemFunctions().DetermineHealthChange(Item, Owner);
-                Owner.statusEffects.ChangeHealth(heal);
-                if (Owner.HasTrait("HealthItemsGiveFollowersExtraHealth") || Owner.HasTrait("HealthItemsGiveFollowersExtraHealth2"))
-                {
-                    new ItemFunctions().GiveFollowersHealth(Owner, heal);
-                }
-                Owner.statusEffects.AddStatusEffect("Tentacle_Kraken_Effect", 25);
-                Count--;
-                gc.audioHandler.Play(Owner, "AgentAnnoyed");
-                return true;
-            }
-        }
-        public class BOOMCorn : CustomItem, IItemUsable
-        {
-            public override void SetupDetails()
-            {
-                Item.itemType = ItemTypes.Food;
-                Item.itemValue = 25;
-                Item.initCount = 1;
-                Item.rewardCount = 1;
-                Item.stackable = true;
-                Item.hasCharges = true;
-                Item.goesInToolbar = true;
-                Item.cantBeCloned = false;
-            }
-            public bool UseItem()
-            {
-                Count--;
-                gc.audioHandler.Play(Owner, "BOOMCorn_Use");
-                Owner.gc.spawnerMain.SpawnExplosion(Owner, Owner.tr.position, "Normal", false, -1, false, true).agent = Owner;
-                return true;
-            }
-        }
-        public class Vent_IceCream : CustomItem, IItemUsable
-        {
-            public override void SetupDetails()
-            {
-                Item.itemType = ItemTypes.Food;
-                Item.itemValue = 30;
-                Item.initCount = 1;
-                Item.rewardCount = 1;
-                Item.healthChange = 20;
-                Item.stackable = true;
-                Item.hasCharges = true;
-                Item.goesInToolbar = true;
-                Item.cantBeCloned = false;
-            }
-            public bool UseItem()
-            {
-                int heal = new ItemFunctions().DetermineHealthChange(Item, Owner);
-                Owner.statusEffects.ChangeHealth(heal);
-                if (Owner.HasTrait("HealthItemsGiveFollowersExtraHealth") || Owner.HasTrait("HealthItemsGiveFollowersExtraHealth2"))
-                {
-                    new ItemFunctions().GiveFollowersHealth(Owner, heal);
-                }
-                Owner.statusEffects.AddStatusEffect("Frozen" , 10);
-                Count--;
-                gc.audioHandler.Play(Owner, "Vent_IceCream_Use");
-                return true;
-            }
-        }
-        public class BloodDonut : CustomItem, IItemUsable
-        {
-            public override void SetupDetails()
-            {
-                Item.itemType = ItemTypes.Food;
-                Item.itemValue = 45;
-                Item.initCount = 1;
-                Item.rewardCount = 1;
-                Item.stackable = true;
-                Item.hasCharges = true;
-                Item.goesInToolbar = true;
-                Item.cantBeCloned = true;
-            }
-            public bool UseItem()
-            {
-                gc.audioHandler.Play(Owner, "BloodDonut_Use");
-                Owner.statusEffects.AddStatusEffect("BloodDonut_Effect");
-                Count--;
-                return true;
-            }
-        }
-        public class Brain_Jellyfish : CustomItem, IItemUsable
-        {
-            public override void SetupDetails()
-            {
-                Item.itemType = ItemTypes.Food;
-                Item.itemValue = 40;
-                Item.initCount = 1;
-                Item.rewardCount = 1;
-                Item.healthChange = -15;
-                Item.stackable = true;
-                Item.hasCharges = true;
-                Item.goesInToolbar = true;
-                Item.cantBeCloned = true;
-            }
-            public bool UseItem()
-            {
-                int heal = new ItemFunctions().DetermineHealthChange(Item, Owner);
-                Owner.statusEffects.ChangeHealth(heal);
-                Owner.statusEffects.AddStatusEffect("Brain_Jellyfish_Effect", 25);
-                Count--;
-                gc.audioHandler.Play(Owner, "Blind_Mushroom_Use");
-                return true;
-            }
-        }
-        public class BotexLeg : CustomItem, IItemUsable
-        {
-            public override void SetupDetails()
-            {
-                Item.itemType = ItemTypes.Food;
-                Item.itemValue = 60;
-                Item.initCount = 1;
-                Item.rewardCount = 1;
-                Item.healthChange = 35;
-                Item.stackable = true;
-                Item.hasCharges = true;
-                Item.goesInToolbar = true;
-                Item.cantBeCloned = true;
-            }
-            public bool UseItem()
-            {
-                int heal = new ItemFunctions().DetermineHealthChange(Item, Owner);
-                Owner.statusEffects.ChangeHealth(heal);
-                if (Owner.HasTrait("HealthItemsGiveFollowersExtraHealth") || Owner.HasTrait("HealthItemsGiveFollowersExtraHealth2"))
-                {
-                    new ItemFunctions().GiveFollowersHealth(Owner, heal);
-                }
-                Owner.statusEffects.AddStatusEffect("BotexLeg_Effect");
-                Count--;
-                gc.audioHandler.Play(Owner, "BotexLeg_Use");
-                return true;
-            }
-        }
-        public class Boompkin : CustomItem, IItemUsable
-        {
-            public override void SetupDetails()
-            {
-                Item.itemType = ItemTypes.Food;
-                Item.itemValue = 35;
-                Item.initCount = 1;
-                Item.rewardCount = 1;
-                Item.stackable = true;
-                Item.hasCharges = true;
-                Item.goesInToolbar = true;
-                Item.cantBeCloned = true;
-            }
-            public bool UseItem()
-            {
-                Count--;
-                Owner.gc.spawnerMain.SpawnExplosion(Owner, Owner.tr.position, "Normal", false, -1, false, true).agent = Owner;
-                Owner.gc.spawnerMain.SpawnExplosion(Owner, Owner.tr.position, "Normal", false, -1, false, true).agent = Owner;
-                Owner.gc.spawnerMain.SpawnExplosion(Owner, Owner.tr.position, "Normal", false, -1, false, true).agent = Owner;
-                Owner.gc.spawnerMain.SpawnExplosion(Owner, Owner.tr.position, "Normal", false, -1, false, true).agent = Owner;
-                return true;
-            }
-        }
-        public class KC_Drink : CustomItem, IItemUsable
-        {
-            public override void SetupDetails()
-            {
-                Item.itemType = ItemTypes.Food;
-                Item.itemValue = 30;
-                Item.initCount = 3;
-                Item.rewardCount = 3;
-                Item.healthChange = 5;
-                Item.stackable = true;
-                Item.hasCharges = true;
-                Item.goesInToolbar = true;
-                Item.cantBeCloned = true;
-            }
-            public bool UseItem()
-            {
-                int heal = new ItemFunctions().DetermineHealthChange(Item, Owner);
-                Owner.statusEffects.ChangeHealth(heal);
-                if (Owner.HasTrait("HealthItemsGiveFollowersExtraHealth") || Owner.HasTrait("HealthItemsGiveFollowersExtraHealth2"))
-                {
-                    new ItemFunctions().GiveFollowersHealth(Owner, heal);
-                }
-                Owner.statusEffects.AddStatusEffect("KC_Drink_Effect");
-                Count--;
-                gc.audioHandler.Play(Owner, "Drink");
-                return true;
-            }
-        }
-        public class Fire_Salamander_Heart : CustomItem, IItemUsable
-        {
-            public override void SetupDetails()
-            {
-                Item.itemType = ItemTypes.Food;
-                Item.itemValue = 60;
-                Item.initCount = 1;
-                Item.rewardCount = 1;
-                Item.healthChange = -80;
-                Item.stackable = true;
-                Item.hasCharges = true;
-                Item.goesInToolbar = true;
-                Item.cantBeCloned = true;
-            }
-            public bool UseItem()
-            {
-                int heal = new ItemFunctions().DetermineHealthChange(Item, Owner);
-                Owner.statusEffects.ChangeHealth(heal);
-                Owner.statusEffects.AddTrait("ResistFire");
-                Count--;
-                gc.audioHandler.Play(Owner, "Fire_Salamander_Heart_Use");
-                return true;
-            }
-        }
-        public class FishOfLuck : CustomItem, IItemUsable
-        {
-            public override void SetupDetails()
-            {
-                Item.itemType = ItemTypes.Food;
-                Item.itemValue = 60;
-                Item.initCount = 1;
-                Item.rewardCount = 1;
-                Item.stackable = true;
-                Item.hasCharges = true;
-                Item.goesInToolbar = true;
-                Item.cantBeCloned = true;
-            }
-            public bool UseItem()
-            {
-                int chance = new System.Random().Next(100);
-                if (chance > 55) // 45%
-                    Inventory.AddItem("Money", 20);
-                if (chance > 85) // 15%
-                    Inventory.AddItem("Money", 50);
-                if (chance < 1) // 1%
-                    Inventory.AddItem("Money", 1000);
-                Count--;
-                gc.audioHandler.Play(Owner, "FishOfLuck_Use");
-                return true;
-            }
-        }
-        public class Tears_Heaven : CustomItem, IItemUsable
-        {
-            public override void SetupDetails()
-            {
-                Item.itemType = ItemTypes.Food;
-                Item.itemValue = 45;
-                Item.initCount = 1;
-                Item.rewardCount = 1;
-                Item.healthChange = 99999;
-                Item.stackable = true;
-                Item.hasCharges = true;
-                Item.goesInToolbar = true;
-                Item.cantBeCloned = false;
-            }
-            public bool UseItem()
-            {
-                int heal = new ItemFunctions().DetermineHealthChange(Item, Owner);
-                Owner.statusEffects.ChangeHealth(heal);
-                if (Owner.HasTrait("HealthItemsGiveFollowersExtraHealth") || Owner.HasTrait("HealthItemsGiveFollowersExtraHealth2"))
-                {
-                    new ItemFunctions().GiveFollowersHealth(Owner, heal);
-                }
-                gc.audioHandler.Play(Owner, "Tears_Heaven_Use");
-                Owner.statusEffects.AddStatusEffect("Tears_Heaven_Effect");
-                Count--;
-                return true;
-            }
-        }
-        public class Fish_Oil : CustomItem, IItemUsable
-        {
-            public override void SetupDetails()
-            {
-                Item.itemType = ItemTypes.Food;
-                Item.itemValue = 35;
-                Item.initCount = 2;
-                Item.rewardCount = 2;
-                Item.healthChange = 10;
-                Item.stackable = true;
-                Item.hasCharges = true;
-                Item.goesInToolbar = true;
-                Item.cantBeCloned = true;
-            }
-            public bool UseItem()
-            {
-                int heal = new ItemFunctions().DetermineHealthChange(Item, Owner);
-                Owner.statusEffects.ChangeHealth(heal);
-                if (Owner.HasTrait("HealthItemsGiveFollowersExtraHealth") || Owner.HasTrait("HealthItemsGiveFollowersExtraHealth2"))
-                {
-                    new ItemFunctions().GiveFollowersHealth(Owner, heal);
-                }
-                Owner.statusEffects.AddStatusEffect("Fish_Oil_Effect");
-                Count--;
-                gc.audioHandler.Play(Owner, "UseFood");
-                return true;
-            }
-        }
-        public class Divine_Honey : CustomItem, IItemUsable
-        {
-            public override void SetupDetails()
-            {
-                Item.itemType = ItemTypes.Food;
-                Item.itemValue = 55;
-                Item.initCount = 1;
-                Item.rewardCount = 1;
-                Item.stackable = true;
-                Item.hasCharges = true;
-                Item.goesInToolbar = true;
-                Item.cantBeCloned = true;
-            }
-            public bool UseItem()
-            {
-                Owner.statusEffects.AddStatusEffect("Divine_Honey_Effect");
-                Count--;
-                gc.audioHandler.Play(Owner, "Divine_Honey_Use");
-                return true;
-            }
-        }
-        public class Juicy_Watermelon : CustomItem, IItemUsable
-        {
-            public override void SetupDetails()
-            {
-                Item.itemType = ItemTypes.Food;
-                Item.itemValue = 35;
-                Item.initCount = 1;
-                Item.rewardCount = 1;
-                Item.healthChange = 30;
-                Item.stackable = true;
-                Item.hasCharges = true;
-                Item.goesInToolbar = true;
-                Item.cantBeCloned = true;
-            }
-            public bool UseItem()
-            {
-                if (Owner.statusEffects.hasTrait("BloodRestoresHealth"))
-                    Item.healthChange = 80;
-                else
-                {
-                    Item.healthChange = 30;
-                    Owner.statusEffects.AddStatusEffect("Confused" , false , false , 25);
-                }
-                int heal = new ItemFunctions().DetermineHealthChange(Item, Owner);
-                Owner.statusEffects.ChangeHealth(heal);
-                if (Owner.HasTrait("HealthItemsGiveFollowersExtraHealth") || Owner.HasTrait("HealthItemsGiveFollowersExtraHealth2"))
-                {
-                    new ItemFunctions().GiveFollowersHealth(Owner, heal);
-                }
-                Count--;
-                gc.audioHandler.Play(Owner, "UseFood");
-                return true;
-            }
-        }
-        public class EvilCake : CustomItem, IItemUsable
-        {
-            public override void SetupDetails()
-            {
-                Item.itemType = ItemTypes.Food;
-                Item.itemValue = 25;
-                Item.initCount = 1;
-                Item.rewardCount = 1;
-                Item.stackable = true;
-                Item.hasCharges = true;
-                Item.goesInToolbar = true;
-                Item.cantBeCloned = false;
-            }
-            public bool UseItem()
-            {
-                Count--;
-                Owner.statusEffects.AddStatusEffect("Evil_Cake_Effect");
-                gc.audioHandler.Play(Owner, "Evil_Cake_Use");
-                return true;
-            }
-        }
-        [EffectParameters()]
-        public class Steal_Apple_Effect : CustomEffect
-        {
-            [RLSetup]
-            public static void Setup()
-            {
-                RogueLibs.CreateCustomEffect<Steal_Apple_Effect>()
-                            .WithName(new CustomNameInfo
-                            {
-                                English = "Steel Apple shell",
-                                Russian = "Оболочка Стального Яблока"
-                            })
-                            .WithDescription(new CustomNameInfo
-                            {
-                                English = "<color=#093794>Now you and your organs are protected from bullets, enjoy the weight of it!</color>",
-                                Russian = "<color=#093794>Теперь вы и ваши органы защищены от пуль и огня, наслаждайтесь это тяжестью!</color>"
-                            });
-            }
-            public override int GetEffectTime() => 9999;
-            public override int GetEffectHate() => 0;
-            public override void OnAdded()
-            {
-                Owner.AddTrait("ResistBullets");
-                Owner.AddTrait("ResistDamageLarge");
-                Owner.AddTrait("ResistFire");
-                Owner.SetSpeed(Owner.speedStatMod - 3);
-                Owner.SetStrength(Owner.strengthStatMod + 2);
-            }
-            public override void OnRemoved() 
-            {
-                Owner.statusEffects.RemoveTrait("ResistBullets");
-                Owner.statusEffects.RemoveTrait("ResistDamageLarge");
-                Owner.statusEffects.RemoveTrait("ResistFire");
-                Owner.SetSpeed(Owner.speedStatMod + 3);
-                Owner.SetStrength(Owner.strengthStatMod - 2);
-            }
-            public override void OnUpdated(EffectUpdatedArgs e)
-            {
-                    e.UpdateDelay = 4f;
-                    gc.audioHandler.Play(Owner, "Steel_Apple_Walk");
-                    Noise noise = gc.spawnerMain.SpawnNoise(Owner.tr.position, 1f, Owner, "Attract", Owner);
-                    noise.distraction = true;
-            }
-        }
-        [EffectParameters(EffectLimitations.RemoveOnDeath | EffectLimitations.RemoveOnKnockOut)]
-        public class Tentacle_Kraken_Effect : CustomEffect
-        {
-            [RLSetup]
-            public static void Setup()
-            {
-                RogueLibs.CreateCustomEffect<Tentacle_Kraken_Effect>()
-                            .WithName(new CustomNameInfo
-                            {
-                                English = "Seasickness",
-                                Russian = "Морская болезнь"
-                            })
-                            .WithDescription(new CustomNameInfo
-                            {
-                                English = "<color=#167d0f>*puking*</color> Don't eat this anymore!",
-                                Russian = "<color=#167d0f>*проблевавшись*</color> Больше не ешьте это!"
-                            });
-            }
-            public override int GetEffectTime() => 25;
-            public override int GetEffectHate() => 5;
-            public override void OnAdded()
-            {
-                Owner.SetSpeed(Owner.speedStatMod - 3);
-            }
-            public override void OnRemoved()
-            {
-                Owner.SetSpeed(Owner.speedStatMod + 3);
-            }
-            public override void OnUpdated(EffectUpdatedArgs e)
-            {
-                e.UpdateDelay = 0.5f;
-                Owner.hasSecretKiller = true;
-                Owner.lastHitByAgent = Effect.causingAgent;
-                Owner.justHitByAgent2 = Effect.causingAgent;
-                Owner.deathMethod = "Poison";
-                if (Effect.causingAgent != null)
-                    Owner.deathKiller = Effect.causingAgent.agentName;
-                if (Effect.curTime != Effect.startTime - 1)
-                    Owner.gc.audioHandler.Play(Owner, "WithdrawalDamage");
-                Owner.ChangeHealth(Owner.gc.challenges.Contains("LowHealth") ? -1f : -2f);
-                CurrentTime--;
-            }
-        }
-        [EffectParameters(EffectLimitations.RemoveOnDeath | EffectLimitations.RemoveOnKnockOut)]
-        public class BloodDonut_Effect : CustomEffect
-        {
-            [RLSetup]
-            public static void Setup()
-            {
-                RogueLibs.CreateCustomEffect<BloodDonut_Effect>()
-                            .WithName(new CustomNameInfo
-                            {
-                                English = "Erythrocyte replenishment",
-                                Russian = "Восполнение эритроцитов"
-                            })
-                            .WithDescription(new CustomNameInfo
-                            {
-                                English = "Yes, you will now have red blood cells that you can bathe a whole zoo in them!",
-                                Russian = "Да, у вас сейчас будет эритроцитов что вы сможете в них искупать целый зоопарк!"
-                            });
-            }
-            public override int GetEffectTime() => 60;
-            public override int GetEffectHate() => 0;
-            public override void OnAdded()
-            {
-                Owner.speedMax = 0;
-            }
-            public override void OnRemoved()
-            {
-                int a = Owner.FindSpeed();
-                Owner.speedMax = a;
-            }
-            public override void OnUpdated(EffectUpdatedArgs e)
-            {
-                Owner.ChangeHealth(Owner.gc.challenges.Contains("LowHealth") ? +1f : +1f);
-                CurrentTime--;
-            }
-        }
-        [EffectParameters(EffectLimitations.RemoveOnDeath | EffectLimitations.RemoveOnKnockOut)]
-        public class Tears_Heaven_Effect : CustomEffect
-        {
-            [RLSetup]
-            public static void Setup()
-            {
-                RogueLibs.CreateCustomEffect<Tears_Heaven_Effect>()
-                            .WithName(new CustomNameInfo
-                            {
-                                English = "Mercy of Gods",
-                                Russian = "Милость Богов"
-                            })
-                            .WithDescription(new CustomNameInfo
-                            {
-                                English = "Congratulations, the gods themselves favor you, live.",
-                                Russian = "Поздравляю сами боги вам благоволят, живите."
-                            });
-            }
-            public override int GetEffectTime() => 30;
-            public override int GetEffectHate() => 0;
-            public override void OnAdded()
-            {
-                Owner.speedMax = 0;
-                Owner.statusEffects.AddStatusEffect("Invincible", false , false, 30);
-            }
-            public override void OnRemoved()
-            {
-                int a = Owner.FindSpeed();
-                Owner.speedMax = a;
-            }
-            public override void OnUpdated(EffectUpdatedArgs e)
-            {
-                CurrentTime--;
-            }
-        }
-        [EffectParameters(EffectLimitations.RemoveOnDeath | EffectLimitations.RemoveOnKnockOut)]
-        public class Brain_Jellyfish_Effect : CustomEffect
-        {
-            [RLSetup]
-            public static void Setup()
-            {
-                RogueLibs.CreateCustomEffect<BloodDonut_Effect>()
-                            .WithName(new CustomNameInfo
-                            {
-                                English = "Controlled by Brain Jellyfish",
-                                Russian = "Контролируется Мозговой Медузой"
-                            })
-                            .WithDescription(new CustomNameInfo
-                            {
-                                English = "TO STING TO STING TO STING!",
-                                Russian = "УЖАЛИТЬ УЖАЛИТЬ УЖАЛИТЬ!"
-                            });
-            }
-            public override int GetEffectTime() => 20;
-            public override int GetEffectHate() => 5;
-            public override void OnAdded()
-            {
-                Owner.statusEffects.AddTrait("ElectroTouch");
-            }
-            public override void OnRemoved()
-            {
-                Owner.statusEffects.RemoveTrait("ElectroTouch");
-            }
-            public override void OnUpdated(EffectUpdatedArgs e)
-            {
-                Owner.AddEffect("Enraged", new CreateEffectInfo { SpecificTime = 25, DontShowText = true });
-                CurrentTime--;
-            }
-        }
-        [EffectParameters(EffectLimitations.RemoveOnDeath | EffectLimitations.RemoveOnKnockOut)]
-        public class BotexLeg_Effect : CustomEffect
-        {
-            [RLSetup]
-            public static void Setup()
-            {
-                RogueLibs.CreateCustomEffect<BloodDonut_Effect>()
-                            .WithName(new CustomNameInfo
-                            {
-                                English = "Oversaturated body",
-                                Russian = "Перенасыщенный организм"
-                            })
-                            .WithDescription(new CustomNameInfo
-                            {
-                                English = "How do you look.. very plump",
-                                Russian = "Как то вы выглядите.. очень пухло"
-                            });
-            }
-            public override int GetEffectTime() => 20;
-            public override int GetEffectHate() => 0;
-            public override void OnAdded()
-            {
-                Owner.statusEffects.AddTrait("Giant");
-                Owner.SetSpeed(Owner.speedStatMod - 3);
-            }
-            public override void OnRemoved()
-            {
-                Owner.statusEffects.RemoveTrait("Giant");
-                Owner.SetSpeed(Owner.speedStatMod + 3);
-            }
-            public override void OnUpdated(EffectUpdatedArgs e)
-            {
-                CurrentTime--;
-            }
-        }
-        [EffectParameters(EffectLimitations.RemoveOnDeath | EffectLimitations.RemoveOnKnockOut)]
-        public class KC_Drink_Effect : CustomEffect
-        {
-            [RLSetup]
-            public static void Setup()
-            {
-                RogueLibs.CreateCustomEffect<BloodDonut_Effect>()
-                            .WithName(new CustomNameInfo
-                            {
-                                English = "Under KC drink",
-                                Russian = "Под действием KC газировки"
-                            })
-                            .WithDescription(new CustomNameInfo
-                            {
-                                English = "You drank KC drink",
-                                Russian = "Вы выпили KC газировку, больше не пейте, а то жопа слипнется"
-                            });
-            }
-            public override int GetEffectTime() => 15;
-            public override int GetEffectHate() => 0;
-            public override void OnAdded()
-            {
-                Owner.SetSpeed(Owner.speedStatMod + 2);
-            }
-            public override void OnRemoved()
-            {
-                Owner.SetSpeed(Owner.speedStatMod - 2);
-            }
-            public override void OnUpdated(EffectUpdatedArgs e)
-            {
-                CurrentTime--;
-            }
-        }
-        [EffectParameters(EffectLimitations.RemoveOnDeath | EffectLimitations.RemoveOnKnockOut)]
-        public class Fish_Oil_Effect : CustomEffect
-        {
-            [RLSetup]
-            public static void Setup()
-            {
-                RogueLibs.CreateCustomEffect<Fish_Oil_Effect>()
-                            .WithName(new CustomNameInfo
-                            {
-                                English = "Power of Fish Oil",
-                                Russian = "Сила рыбьего жира"
-                            })
-                            .WithDescription(new CustomNameInfo
-                            {
-                                English = "I hope you enjoyed the fish oil!",
-                                Russian = "Надеюсь вам понравился рыбий жир!"
-                            });
-            }
-            public override int GetEffectTime() => 15;
-            public override int GetEffectHate() => 0;
-            public override void OnAdded()
-            {
-                Owner.SetSpeed(Owner.speedStatMod - 2);
-                Owner.SetStrength(Owner.strengthStatMod + 2);
-            }
-            public override void OnRemoved()
-            {
-                Owner.SetSpeed(Owner.speedStatMod + 2);
-                Owner.SetStrength(Owner.strengthStatMod - 2);
-            }
-            public override void OnUpdated(EffectUpdatedArgs e)
-            {
-                CurrentTime--;
-            }
-        }
-        [EffectParameters(EffectLimitations.RemoveOnDeath | EffectLimitations.RemoveOnKnockOut)]
-        public class Divine_Honey_Effect : CustomEffect
-        {
-            [RLSetup]
-            public static void Setup()
-            {
-                RogueLibs.CreateCustomEffect<Divine_Honey_Effect>()
-                            .WithName(new CustomNameInfo
-                            {
-                                English = "Cell regeneration",
-                                Russian = "Регенерация клеток"
-                            })
-                            .WithDescription(new CustomNameInfo
-                            {
-                                English = "Your cells are regenerating.. wait..",
-                                Russian = "Ваши клетки регенерируются.. подождите.."
-                            });
-            }
-            public override int GetEffectTime() => 60;
-            public override int GetEffectHate() => 0;
-            public override void OnAdded()
-            {
-                Owner.speedMax = 0;
-                Owner.statusEffects.AddStatusEffect("Poisoned", false, false, 30);
-            }
-            public override void OnRemoved()
-            {
-                int a = Owner.FindSpeed();
-                Owner.speedMax = a;
-            }
-            public override void OnUpdated(EffectUpdatedArgs e)
-            {
-                Owner.ChangeHealth(Owner.gc.challenges.Contains("LowHealth") ? +1f : +1f);
-                CurrentTime--;
-            }
-        }
-        [EffectParameters(EffectLimitations.RemoveOnDeath)]
-        public class Evil_Cake_Effect : CustomEffect
-        {
-            [RLSetup]
-            public static void Setup()
-            {
-                RogueLibs.CreateCustomEffect<Evil_Cake_Effect>()
-                            .WithName(new CustomNameInfo
-                            {
-                                English = "<color=#000000>Container for soul</color>",
-                                Russian = "<color=#000000>Сосуд для души</color>"
-                            })
-                            .WithDescription(new CustomNameInfo
-                            {
-                                English = "<color=#000000>It soon be reborn...</color>",
-                                Russian = "<color=#000000>Оно скоро переродится...</color>"
-                            });
-            }
-            public override int GetEffectTime() => 9999;
-            public override int GetEffectHate() => 5;
-            public override void OnAdded()
-            {
-                Owner.resurrect = true;
-            }
-            public override void OnRemoved()
-            {
-                Owner.statusEffects.RemoveAllStatusEffects();
-                Owner.statusEffects.RemoveAllTraits();
-                Owner.statusEffects.AddTrait("Evil_Cake_Trait");
-            }
-            public override void OnUpdated(EffectUpdatedArgs e)
-            {
-                e.UpdateDelay = 0.5f;
-                Owner.hasSecretKiller = true;
-                Owner.lastHitByAgent = Effect.causingAgent;
-                Owner.justHitByAgent2 = Effect.causingAgent;
-                Owner.deathMethod = "Poison";
-                if (Effect.causingAgent != null)
-                    Owner.deathKiller = Effect.causingAgent.agentName;
-                if (Effect.curTime != Effect.startTime - 1)
-                    Owner.gc.audioHandler.Play(Owner, "WithdrawalDamage");
-                Owner.ChangeHealth(Owner.gc.challenges.Contains("LowHealth") ? -1f : -2f);
-            }
-        }
         public static void RandomItems_fillItems(RandomItems __instance)
         {
             RandomSelection sel = GameObject.Find("ScriptObject").GetComponent<RandomSelection>();
@@ -1095,6 +281,820 @@ namespace TBB
             sel.CreateRandomElement(rList, "Brain_Jellyfish", 3);
             sel.CreateRandomElement(rList, "Fire_Salamander_Heart", 2);
             //sel.CreateRandomElement(rList, "EvilCake", 3);
+        }
+    }
+    public class Blind_Mushroom : CustomItem, IItemUsable
+    {
+        public override void SetupDetails()
+        {
+            Item.itemType = ItemTypes.Food;
+            Item.itemValue = 35;
+            Item.initCount = 1;
+            Item.rewardCount = 1;
+            Item.healthChange = 15;
+            Item.stackable = true;
+            Item.hasCharges = true;
+            Item.goesInToolbar = true;
+            Item.cantBeCloned = false;
+        }
+        public bool UseItem()
+        {
+            int heal = new ItemFunctions().DetermineHealthChange(Item, Owner);
+            Owner.statusEffects.ChangeHealth(heal);
+            if (Owner.HasTrait("HealthItemsGiveFollowersExtraHealth") || Owner.HasTrait("HealthItemsGiveFollowersExtraHealth2"))
+            {
+                new ItemFunctions().GiveFollowersHealth(Owner, heal);
+            }
+            Owner.statusEffects.AddStatusEffect("Invincible", 25);
+            Count--;
+            gc.audioHandler.Play(Owner, "Blind_Mushroom_Use");
+            return true;
+        }
+    }
+    public class Steal_Apple : CustomItem, IItemUsable
+    {
+        public override void SetupDetails()
+        {
+            Item.itemType = ItemTypes.Food;
+            Item.itemValue = 60;
+            Item.initCount = 1;
+            Item.rewardCount = 1;
+            Item.healthChange = -75;
+            Item.stackable = true;
+            Item.hasCharges = true;
+            Item.goesInToolbar = true;
+            Item.cantBeCloned = false;
+        }
+        public bool UseItem()
+        {
+            int heal = new ItemFunctions().DetermineHealthChange(Item, Owner);
+            Owner.statusEffects.ChangeHealth(heal);
+            if (Owner.HasTrait("HealthItemsGiveFollowersExtraHealth") || Owner.HasTrait("HealthItemsGiveFollowersExtraHealth2"))
+            {
+                new ItemFunctions().GiveFollowersHealth(Owner, heal);
+            }
+            Owner.statusEffects.AddStatusEffect("Steal_Apple_Effect", 9999);
+            Count--;
+            gc.audioHandler.Play(Owner, "Steal_Apple_Use");
+            return true;
+        }
+    }
+    public class Tentacle_Kraken : CustomItem, IItemUsable
+    {
+        public override void SetupDetails()
+        {
+            Item.itemType = ItemTypes.Food;
+            Item.itemValue = 95;
+            Item.initCount = 1;
+            Item.rewardCount = 1;
+            Item.healthChange = 180;
+            Item.stackable = true;
+            Item.hasCharges = true;
+            Item.goesInToolbar = true;
+            Item.cantBeCloned = true;
+        }
+        public bool UseItem()
+        {
+            int heal = new ItemFunctions().DetermineHealthChange(Item, Owner);
+            Owner.statusEffects.ChangeHealth(heal);
+            if (Owner.HasTrait("HealthItemsGiveFollowersExtraHealth") || Owner.HasTrait("HealthItemsGiveFollowersExtraHealth2"))
+            {
+                new ItemFunctions().GiveFollowersHealth(Owner, heal);
+            }
+            Owner.statusEffects.AddStatusEffect("Tentacle_Kraken_Effect", 25);
+            Count--;
+            gc.audioHandler.Play(Owner, "AgentAnnoyed");
+            return true;
+        }
+    }
+    public class BOOMCorn : CustomItem, IItemUsable
+    {
+        public override void SetupDetails()
+        {
+            Item.itemType = ItemTypes.Food;
+            Item.itemValue = 25;
+            Item.initCount = 1;
+            Item.rewardCount = 1;
+            Item.stackable = true;
+            Item.hasCharges = true;
+            Item.goesInToolbar = true;
+            Item.cantBeCloned = false;
+        }
+        public bool UseItem()
+        {
+            Count--;
+            gc.audioHandler.Play(Owner, "BOOMCorn_Use");
+            Owner.gc.spawnerMain.SpawnExplosion(Owner, Owner.tr.position, "Normal", false, -1, false, true).agent = Owner;
+            return true;
+        }
+    }
+    public class Vent_IceCream : CustomItem, IItemUsable
+    {
+        public override void SetupDetails()
+        {
+            Item.itemType = ItemTypes.Food;
+            Item.itemValue = 30;
+            Item.initCount = 1;
+            Item.rewardCount = 1;
+            Item.healthChange = 20;
+            Item.stackable = true;
+            Item.hasCharges = true;
+            Item.goesInToolbar = true;
+            Item.cantBeCloned = false;
+        }
+        public bool UseItem()
+        {
+            int heal = new ItemFunctions().DetermineHealthChange(Item, Owner);
+            Owner.statusEffects.ChangeHealth(heal);
+            if (Owner.HasTrait("HealthItemsGiveFollowersExtraHealth") || Owner.HasTrait("HealthItemsGiveFollowersExtraHealth2"))
+            {
+                new ItemFunctions().GiveFollowersHealth(Owner, heal);
+            }
+            Owner.statusEffects.AddStatusEffect("Frozen", 10);
+            Count--;
+            gc.audioHandler.Play(Owner, "Vent_IceCream_Use");
+            return true;
+        }
+    }
+    public class BloodDonut : CustomItem, IItemUsable
+    {
+        public override void SetupDetails()
+        {
+            Item.itemType = ItemTypes.Food;
+            Item.itemValue = 45;
+            Item.initCount = 1;
+            Item.rewardCount = 1;
+            Item.stackable = true;
+            Item.hasCharges = true;
+            Item.goesInToolbar = true;
+            Item.cantBeCloned = true;
+        }
+        public bool UseItem()
+        {
+            gc.audioHandler.Play(Owner, "BloodDonut_Use");
+            Owner.statusEffects.AddStatusEffect("BloodDonut_Effect");
+            Count--;
+            return true;
+        }
+    }
+    public class Brain_Jellyfish : CustomItem, IItemUsable
+    {
+        public override void SetupDetails()
+        {
+            Item.itemType = ItemTypes.Food;
+            Item.itemValue = 40;
+            Item.initCount = 1;
+            Item.rewardCount = 1;
+            Item.healthChange = -15;
+            Item.stackable = true;
+            Item.hasCharges = true;
+            Item.goesInToolbar = true;
+            Item.cantBeCloned = true;
+        }
+        public bool UseItem()
+        {
+            int heal = new ItemFunctions().DetermineHealthChange(Item, Owner);
+            Owner.statusEffects.ChangeHealth(heal);
+            Owner.statusEffects.AddStatusEffect("Brain_Jellyfish_Effect", 25);
+            Count--;
+            gc.audioHandler.Play(Owner, "Blind_Mushroom_Use");
+            return true;
+        }
+    }
+    public class BotexLeg : CustomItem, IItemUsable
+    {
+        public override void SetupDetails()
+        {
+            Item.itemType = ItemTypes.Food;
+            Item.itemValue = 60;
+            Item.initCount = 1;
+            Item.rewardCount = 1;
+            Item.healthChange = 35;
+            Item.stackable = true;
+            Item.hasCharges = true;
+            Item.goesInToolbar = true;
+            Item.cantBeCloned = true;
+        }
+        public bool UseItem()
+        {
+            int heal = new ItemFunctions().DetermineHealthChange(Item, Owner);
+            Owner.statusEffects.ChangeHealth(heal);
+            if (Owner.HasTrait("HealthItemsGiveFollowersExtraHealth") || Owner.HasTrait("HealthItemsGiveFollowersExtraHealth2"))
+            {
+                new ItemFunctions().GiveFollowersHealth(Owner, heal);
+            }
+            Owner.statusEffects.AddStatusEffect("BotexLeg_Effect");
+            Count--;
+            gc.audioHandler.Play(Owner, "BotexLeg_Use");
+            return true;
+        }
+    }
+    public class Boompkin : CustomItem, IItemUsable
+    {
+        public override void SetupDetails()
+        {
+            Item.itemType = ItemTypes.Food;
+            Item.itemValue = 35;
+            Item.initCount = 1;
+            Item.rewardCount = 1;
+            Item.stackable = true;
+            Item.hasCharges = true;
+            Item.goesInToolbar = true;
+            Item.cantBeCloned = true;
+        }
+        public bool UseItem()
+        {
+            Count--;
+            Owner.gc.spawnerMain.SpawnExplosion(Owner, Owner.tr.position, "Normal", false, -1, false, true).agent = Owner;
+            Owner.gc.spawnerMain.SpawnExplosion(Owner, Owner.tr.position, "Normal", false, -1, false, true).agent = Owner;
+            Owner.gc.spawnerMain.SpawnExplosion(Owner, Owner.tr.position, "Normal", false, -1, false, true).agent = Owner;
+            Owner.gc.spawnerMain.SpawnExplosion(Owner, Owner.tr.position, "Normal", false, -1, false, true).agent = Owner;
+            return true;
+        }
+    }
+    public class KC_Drink : CustomItem, IItemUsable
+    {
+        public override void SetupDetails()
+        {
+            Item.itemType = ItemTypes.Food;
+            Item.itemValue = 30;
+            Item.initCount = 3;
+            Item.rewardCount = 3;
+            Item.healthChange = 5;
+            Item.stackable = true;
+            Item.hasCharges = true;
+            Item.goesInToolbar = true;
+            Item.cantBeCloned = true;
+        }
+        public bool UseItem()
+        {
+            int heal = new ItemFunctions().DetermineHealthChange(Item, Owner);
+            Owner.statusEffects.ChangeHealth(heal);
+            if (Owner.HasTrait("HealthItemsGiveFollowersExtraHealth") || Owner.HasTrait("HealthItemsGiveFollowersExtraHealth2"))
+            {
+                new ItemFunctions().GiveFollowersHealth(Owner, heal);
+            }
+            Owner.statusEffects.AddStatusEffect("KC_Drink_Effect");
+            Count--;
+            gc.audioHandler.Play(Owner, "Drink");
+            return true;
+        }
+    }
+    public class Fire_Salamander_Heart : CustomItem, IItemUsable
+    {
+        public override void SetupDetails()
+        {
+            Item.itemType = ItemTypes.Food;
+            Item.itemValue = 60;
+            Item.initCount = 1;
+            Item.rewardCount = 1;
+            Item.healthChange = -80;
+            Item.stackable = true;
+            Item.hasCharges = true;
+            Item.goesInToolbar = true;
+            Item.cantBeCloned = true;
+        }
+        public bool UseItem()
+        {
+            int heal = new ItemFunctions().DetermineHealthChange(Item, Owner);
+            Owner.statusEffects.ChangeHealth(heal);
+            Owner.statusEffects.AddTrait("ResistFire");
+            Count--;
+            gc.audioHandler.Play(Owner, "Fire_Salamander_Heart_Use");
+            return true;
+        }
+    }
+    public class FishOfLuck : CustomItem, IItemUsable
+    {
+        public override void SetupDetails()
+        {
+            Item.itemType = ItemTypes.Food;
+            Item.itemValue = 60;
+            Item.initCount = 1;
+            Item.rewardCount = 1;
+            Item.stackable = true;
+            Item.hasCharges = true;
+            Item.goesInToolbar = true;
+            Item.cantBeCloned = true;
+        }
+        public bool UseItem()
+        {
+            int chance = new System.Random().Next(100);
+            if (chance > 55) // 45%
+                Inventory.AddItem("Money", 20);
+            if (chance > 85) // 15%
+                Inventory.AddItem("Money", 50);
+            if (chance < 1) // 1%
+                Inventory.AddItem("Money", 1000);
+            Count--;
+            gc.audioHandler.Play(Owner, "FishOfLuck_Use");
+            return true;
+        }
+    }
+    public class Tears_Heaven : CustomItem, IItemUsable
+    {
+        public override void SetupDetails()
+        {
+            Item.itemType = ItemTypes.Food;
+            Item.itemValue = 45;
+            Item.initCount = 1;
+            Item.rewardCount = 1;
+            Item.healthChange = 99999;
+            Item.stackable = true;
+            Item.hasCharges = true;
+            Item.goesInToolbar = true;
+            Item.cantBeCloned = false;
+        }
+        public bool UseItem()
+        {
+            int heal = new ItemFunctions().DetermineHealthChange(Item, Owner);
+            Owner.statusEffects.ChangeHealth(heal);
+            if (Owner.HasTrait("HealthItemsGiveFollowersExtraHealth") || Owner.HasTrait("HealthItemsGiveFollowersExtraHealth2"))
+            {
+                new ItemFunctions().GiveFollowersHealth(Owner, heal);
+            }
+            gc.audioHandler.Play(Owner, "Tears_Heaven_Use");
+            Owner.statusEffects.AddStatusEffect("Tears_Heaven_Effect");
+            Count--;
+            return true;
+        }
+    }
+    public class Fish_Oil : CustomItem, IItemUsable
+    {
+        public override void SetupDetails()
+        {
+            Item.itemType = ItemTypes.Food;
+            Item.itemValue = 35;
+            Item.initCount = 2;
+            Item.rewardCount = 2;
+            Item.healthChange = 10;
+            Item.stackable = true;
+            Item.hasCharges = true;
+            Item.goesInToolbar = true;
+            Item.cantBeCloned = true;
+        }
+        public bool UseItem()
+        {
+            int heal = new ItemFunctions().DetermineHealthChange(Item, Owner);
+            Owner.statusEffects.ChangeHealth(heal);
+            if (Owner.HasTrait("HealthItemsGiveFollowersExtraHealth") || Owner.HasTrait("HealthItemsGiveFollowersExtraHealth2"))
+            {
+                new ItemFunctions().GiveFollowersHealth(Owner, heal);
+            }
+            Owner.statusEffects.AddStatusEffect("Fish_Oil_Effect");
+            Count--;
+            gc.audioHandler.Play(Owner, "UseFood");
+            return true;
+        }
+    }
+    public class Divine_Honey : CustomItem, IItemUsable
+    {
+        public override void SetupDetails()
+        {
+            Item.itemType = ItemTypes.Food;
+            Item.itemValue = 55;
+            Item.initCount = 1;
+            Item.rewardCount = 1;
+            Item.stackable = true;
+            Item.hasCharges = true;
+            Item.goesInToolbar = true;
+            Item.cantBeCloned = true;
+        }
+        public bool UseItem()
+        {
+            Owner.statusEffects.AddStatusEffect("Divine_Honey_Effect");
+            Count--;
+            gc.audioHandler.Play(Owner, "Divine_Honey_Use");
+            return true;
+        }
+    }
+    public class Juicy_Watermelon : CustomItem, IItemUsable
+    {
+        public override void SetupDetails()
+        {
+            Item.itemType = ItemTypes.Food;
+            Item.itemValue = 35;
+            Item.initCount = 1;
+            Item.rewardCount = 1;
+            Item.healthChange = 30;
+            Item.stackable = true;
+            Item.hasCharges = true;
+            Item.goesInToolbar = true;
+            Item.cantBeCloned = true;
+        }
+        public bool UseItem()
+        {
+            if (Owner.statusEffects.hasTrait("BloodRestoresHealth"))
+                Item.healthChange = 80;
+            else
+            {
+                Item.healthChange = 30;
+                Owner.statusEffects.AddStatusEffect("Confused", false, false, 25);
+            }
+            int heal = new ItemFunctions().DetermineHealthChange(Item, Owner);
+            Owner.statusEffects.ChangeHealth(heal);
+            if (Owner.HasTrait("HealthItemsGiveFollowersExtraHealth") || Owner.HasTrait("HealthItemsGiveFollowersExtraHealth2"))
+            {
+                new ItemFunctions().GiveFollowersHealth(Owner, heal);
+            }
+            Count--;
+            gc.audioHandler.Play(Owner, "UseFood");
+            return true;
+        }
+    }
+    public class EvilCake : CustomItem, IItemUsable
+    {
+        public override void SetupDetails()
+        {
+            Item.itemType = ItemTypes.Food;
+            Item.itemValue = 25;
+            Item.initCount = 1;
+            Item.rewardCount = 1;
+            Item.stackable = true;
+            Item.hasCharges = true;
+            Item.goesInToolbar = true;
+            Item.cantBeCloned = false;
+        }
+        public bool UseItem()
+        {
+            Count--;
+            Owner.statusEffects.AddStatusEffect("Evil_Cake_Effect");
+            gc.audioHandler.Play(Owner, "Evil_Cake_Use");
+            return true;
+        }
+    }
+    [EffectParameters()]
+    public class Steal_Apple_Effect : CustomEffect
+    {
+        [RLSetup]
+        public static void Setup()
+        {
+            RogueLibs.CreateCustomEffect<Steal_Apple_Effect>()
+                        .WithName(new CustomNameInfo
+                        {
+                            English = "Steel Apple shell",
+                            Russian = "Оболочка Стального Яблока"
+                        })
+                        .WithDescription(new CustomNameInfo
+                        {
+                            English = "<color=#093794>Now you and your organs are protected from bullets, enjoy the weight of it!</color>",
+                            Russian = "<color=#093794>Теперь вы и ваши органы защищены от пуль и огня, наслаждайтесь это тяжестью!</color>"
+                        });
+        }
+        public override int GetEffectTime() => 9999;
+        public override int GetEffectHate() => 0;
+        public override void OnAdded()
+        {
+            Owner.AddTrait("ResistBullets");
+            Owner.AddTrait("ResistDamageLarge");
+            Owner.AddTrait("ResistFire");
+            Owner.SetSpeed(Owner.speedStatMod - 3);
+            Owner.SetStrength(Owner.strengthStatMod + 2);
+        }
+        public override void OnRemoved()
+        {
+            Owner.statusEffects.RemoveTrait("ResistBullets");
+            Owner.statusEffects.RemoveTrait("ResistDamageLarge");
+            Owner.statusEffects.RemoveTrait("ResistFire");
+            Owner.SetSpeed(Owner.speedStatMod + 3);
+            Owner.SetStrength(Owner.strengthStatMod - 2);
+        }
+        public override void OnUpdated(EffectUpdatedArgs e)
+        {
+            e.UpdateDelay = 4f;
+            gc.audioHandler.Play(Owner, "Steel_Apple_Walk");
+            Noise noise = gc.spawnerMain.SpawnNoise(Owner.tr.position, 1f, Owner, "Attract", Owner);
+            noise.distraction = true;
+        }
+    }
+    [EffectParameters(EffectLimitations.RemoveOnDeath | EffectLimitations.RemoveOnKnockOut)]
+    public class Tentacle_Kraken_Effect : CustomEffect
+    {
+        [RLSetup]
+        public static void Setup()
+        {
+            RogueLibs.CreateCustomEffect<Tentacle_Kraken_Effect>()
+                        .WithName(new CustomNameInfo
+                        {
+                            English = "Seasickness",
+                            Russian = "Морская болезнь"
+                        })
+                        .WithDescription(new CustomNameInfo
+                        {
+                            English = "<color=#167d0f>*puking*</color> Don't eat this anymore!",
+                            Russian = "<color=#167d0f>*проблевавшись*</color> Больше не ешьте это!"
+                        });
+        }
+        public override int GetEffectTime() => 25;
+        public override int GetEffectHate() => 5;
+        public override void OnAdded()
+        {
+            Owner.SetSpeed(Owner.speedStatMod - 3);
+        }
+        public override void OnRemoved()
+        {
+            Owner.SetSpeed(Owner.speedStatMod + 3);
+        }
+        public override void OnUpdated(EffectUpdatedArgs e)
+        {
+            e.UpdateDelay = 0.5f;
+            Owner.hasSecretKiller = true;
+            Owner.lastHitByAgent = Effect.causingAgent;
+            Owner.justHitByAgent2 = Effect.causingAgent;
+            Owner.deathMethod = "Poison";
+            if (Effect.causingAgent != null)
+                Owner.deathKiller = Effect.causingAgent.agentName;
+            if (Effect.curTime != Effect.startTime - 1)
+                Owner.gc.audioHandler.Play(Owner, "WithdrawalDamage");
+            Owner.ChangeHealth(Owner.gc.challenges.Contains("LowHealth") ? -1f : -2f);
+            CurrentTime--;
+        }
+    }
+    [EffectParameters(EffectLimitations.RemoveOnDeath | EffectLimitations.RemoveOnKnockOut)]
+    public class BloodDonut_Effect : CustomEffect
+    {
+        [RLSetup]
+        public static void Setup()
+        {
+            RogueLibs.CreateCustomEffect<BloodDonut_Effect>()
+                        .WithName(new CustomNameInfo
+                        {
+                            English = "Erythrocyte replenishment",
+                            Russian = "Восполнение эритроцитов"
+                        })
+                        .WithDescription(new CustomNameInfo
+                        {
+                            English = "Yes, you will now have red blood cells that you can bathe a whole zoo in them!",
+                            Russian = "Да, у вас сейчас будет эритроцитов что вы сможете в них искупать целый зоопарк!"
+                        });
+        }
+        public override int GetEffectTime() => 60;
+        public override int GetEffectHate() => 0;
+        public override void OnAdded()
+        {
+            Owner.speedMax = 0;
+        }
+        public override void OnRemoved()
+        {
+            int a = Owner.FindSpeed();
+            Owner.speedMax = a;
+        }
+        public override void OnUpdated(EffectUpdatedArgs e)
+        {
+            Owner.ChangeHealth(Owner.gc.challenges.Contains("LowHealth") ? +1f : +1f);
+            CurrentTime--;
+        }
+    }
+    [EffectParameters(EffectLimitations.RemoveOnDeath | EffectLimitations.RemoveOnKnockOut)]
+    public class Tears_Heaven_Effect : CustomEffect
+    {
+        [RLSetup]
+        public static void Setup()
+        {
+            RogueLibs.CreateCustomEffect<Tears_Heaven_Effect>()
+                        .WithName(new CustomNameInfo
+                        {
+                            English = "Mercy of Gods",
+                            Russian = "Милость Богов"
+                        })
+                        .WithDescription(new CustomNameInfo
+                        {
+                            English = "Congratulations, the gods themselves favor you, live.",
+                            Russian = "Поздравляю сами боги вам благоволят, живите."
+                        });
+        }
+        public override int GetEffectTime() => 30;
+        public override int GetEffectHate() => 0;
+        public override void OnAdded()
+        {
+            Owner.speedMax = 0;
+            Owner.statusEffects.AddStatusEffect("Invincible", false, false, 30);
+        }
+        public override void OnRemoved()
+        {
+            int a = Owner.FindSpeed();
+            Owner.speedMax = a;
+        }
+        public override void OnUpdated(EffectUpdatedArgs e)
+        {
+            CurrentTime--;
+        }
+    }
+    [EffectParameters(EffectLimitations.RemoveOnDeath | EffectLimitations.RemoveOnKnockOut)]
+    public class Brain_Jellyfish_Effect : CustomEffect
+    {
+        [RLSetup]
+        public static void Setup()
+        {
+            RogueLibs.CreateCustomEffect<Brain_Jellyfish_Effect>()
+                        .WithName(new CustomNameInfo
+                        {
+                            English = "Controlled by Brain Jellyfish",
+                            Russian = "Контролируется Мозговой Медузой"
+                        })
+                        .WithDescription(new CustomNameInfo
+                        {
+                            English = "TO STING TO STING TO STING!",
+                            Russian = "УЖАЛИТЬ УЖАЛИТЬ УЖАЛИТЬ!"
+                        });
+        }
+        public override int GetEffectTime() => 20;
+        public override int GetEffectHate() => 5;
+        public override void OnAdded()
+        {
+            Owner.statusEffects.AddTrait("ElectroTouch");
+        }
+        public override void OnRemoved()
+        {
+            Owner.statusEffects.RemoveTrait("ElectroTouch");
+        }
+        public override void OnUpdated(EffectUpdatedArgs e)
+        {
+            Owner.AddEffect("Enraged", new CreateEffectInfo { SpecificTime = 25, DontShowText = true });
+            CurrentTime--;
+        }
+    }
+    [EffectParameters(EffectLimitations.RemoveOnDeath | EffectLimitations.RemoveOnKnockOut)]
+    public class BotexLeg_Effect : CustomEffect
+    {
+        [RLSetup]
+        public static void Setup()
+        {
+            RogueLibs.CreateCustomEffect<BotexLeg_Effect>()
+                        .WithName(new CustomNameInfo
+                        {
+                            English = "Oversaturated body",
+                            Russian = "Перенасыщенный организм"
+                        })
+                        .WithDescription(new CustomNameInfo
+                        {
+                            English = "How do you look.. very plump",
+                            Russian = "Как то вы выглядите.. очень пухло"
+                        });
+        }
+        public override int GetEffectTime() => 20;
+        public override int GetEffectHate() => 0;
+        public override void OnAdded()
+        {
+            Owner.statusEffects.AddTrait("Giant");
+            Owner.SetSpeed(Owner.speedStatMod - 3);
+        }
+        public override void OnRemoved()
+        {
+            Owner.statusEffects.RemoveTrait("Giant");
+            Owner.SetSpeed(Owner.speedStatMod + 3);
+        }
+        public override void OnUpdated(EffectUpdatedArgs e)
+        {
+            CurrentTime--;
+        }
+    }
+    [EffectParameters(EffectLimitations.RemoveOnDeath | EffectLimitations.RemoveOnKnockOut)]
+    public class KC_Drink_Effect : CustomEffect
+    {
+        [RLSetup]
+        public static void Setup()
+        {
+            RogueLibs.CreateCustomEffect<KC_Drink_Effect>()
+                        .WithName(new CustomNameInfo
+                        {
+                            English = "Under KC drink",
+                            Russian = "Под действием KC газировки"
+                        })
+                        .WithDescription(new CustomNameInfo
+                        {
+                            English = "You drank KC drink",
+                            Russian = "Вы выпили KC газировку, больше не пейте, а то жопа слипнется"
+                        });
+        }
+        public override int GetEffectTime() => 15;
+        public override int GetEffectHate() => 0;
+        public override void OnAdded()
+        {
+            Owner.SetSpeed(Owner.speedStatMod + 2);
+        }
+        public override void OnRemoved()
+        {
+            Owner.SetSpeed(Owner.speedStatMod - 2);
+        }
+        public override void OnUpdated(EffectUpdatedArgs e)
+        {
+            CurrentTime--;
+        }
+    }
+    [EffectParameters(EffectLimitations.RemoveOnDeath | EffectLimitations.RemoveOnKnockOut)]
+    public class Fish_Oil_Effect : CustomEffect
+    {
+        [RLSetup]
+        public static void Setup()
+        {
+            RogueLibs.CreateCustomEffect<Fish_Oil_Effect>()
+                        .WithName(new CustomNameInfo
+                        {
+                            English = "Power of Fish Oil",
+                            Russian = "Сила рыбьего жира"
+                        })
+                        .WithDescription(new CustomNameInfo
+                        {
+                            English = "I hope you enjoyed the fish oil!",
+                            Russian = "Надеюсь вам понравился рыбий жир!"
+                        });
+        }
+        public override int GetEffectTime() => 15;
+        public override int GetEffectHate() => 0;
+        public override void OnAdded()
+        {
+            Owner.SetSpeed(Owner.speedStatMod - 2);
+            Owner.SetStrength(Owner.strengthStatMod + 2);
+        }
+        public override void OnRemoved()
+        {
+            Owner.SetSpeed(Owner.speedStatMod + 2);
+            Owner.SetStrength(Owner.strengthStatMod - 2);
+        }
+        public override void OnUpdated(EffectUpdatedArgs e)
+        {
+            CurrentTime--;
+        }
+    }
+    [EffectParameters(EffectLimitations.RemoveOnDeath | EffectLimitations.RemoveOnKnockOut)]
+    public class Divine_Honey_Effect : CustomEffect
+    {
+        [RLSetup]
+        public static void Setup()
+        {
+            RogueLibs.CreateCustomEffect<Divine_Honey_Effect>()
+                        .WithName(new CustomNameInfo
+                        {
+                            English = "Cell regeneration",
+                            Russian = "Регенерация клеток"
+                        })
+                        .WithDescription(new CustomNameInfo
+                        {
+                            English = "Your cells are regenerating.. wait..",
+                            Russian = "Ваши клетки регенерируются.. подождите.."
+                        });
+        }
+        public override int GetEffectTime() => 60;
+        public override int GetEffectHate() => 0;
+        public override void OnAdded()
+        {
+            Owner.speedMax = 0;
+            Owner.statusEffects.AddStatusEffect("Poisoned", false, false, 30);
+        }
+        public override void OnRemoved()
+        {
+            int a = Owner.FindSpeed();
+            Owner.speedMax = a;
+        }
+        public override void OnUpdated(EffectUpdatedArgs e)
+        {
+            Owner.ChangeHealth(Owner.gc.challenges.Contains("LowHealth") ? +1f : +1f);
+            CurrentTime--;
+        }
+    }
+    [EffectParameters(EffectLimitations.RemoveOnDeath)]
+    public class Evil_Cake_Effect : CustomEffect
+    {
+        [RLSetup]
+        public static void Setup()
+        {
+            RogueLibs.CreateCustomEffect<Evil_Cake_Effect>()
+                        .WithName(new CustomNameInfo
+                        {
+                            English = "<color=#000000>Container for soul</color>",
+                            Russian = "<color=#000000>Сосуд для души</color>"
+                        })
+                        .WithDescription(new CustomNameInfo
+                        {
+                            English = "<color=#000000>It soon be reborn...</color>",
+                            Russian = "<color=#000000>Оно скоро переродится...</color>"
+                        });
+        }
+        public override int GetEffectTime() => 9999;
+        public override int GetEffectHate() => 5;
+        public override void OnAdded()
+        {
+            Owner.resurrect = true;
+        }
+        public override void OnRemoved()
+        {
+            Owner.statusEffects.RemoveAllStatusEffects();
+            Owner.statusEffects.RemoveAllTraits();
+            Owner.statusEffects.AddTrait("Evil_Cake_Trait");
+        }
+        public override void OnUpdated(EffectUpdatedArgs e)
+        {
+            e.UpdateDelay = 0.5f;
+            Owner.hasSecretKiller = true;
+            Owner.lastHitByAgent = Effect.causingAgent;
+            Owner.justHitByAgent2 = Effect.causingAgent;
+            Owner.deathMethod = "Poison";
+            if (Effect.causingAgent != null)
+                Owner.deathKiller = Effect.causingAgent.agentName;
+            if (Effect.curTime != Effect.startTime - 1)
+                Owner.gc.audioHandler.Play(Owner, "WithdrawalDamage");
+            Owner.ChangeHealth(Owner.gc.challenges.Contains("LowHealth") ? -1f : -2f);
         }
     }
 }

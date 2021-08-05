@@ -74,8 +74,12 @@
     <Reference Include="UnityEngine.Networking">
       <HintPath>..\..\Libs\UnityEngine.Networking.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.Physics2DModule">
+      <HintPath>..\..\Libs\UnityEngine.Physics2DModule.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Modules\aToI.cs" />
     <Compile Include="Modules\Main.cs" />
     <Compile Include="Modules\MTP.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -121,6 +125,8 @@
     <None Include="Resources\KC_Fuzzi.bin" />
     <None Include="Resources\Kraken_Tentacle.bin" />
     <None Include="Resources\Luck_Fish.bin" />
+    <None Include="Resources\NuclearBriefcase.bin" />
+    <None Include="Resources\OpenNuclearBriefcase.bin" />
     <None Include="Resources\Steal_Apple.bin" />
     <None Include="Resources\Steal_Apple_Use.bin" />
     <None Include="Resources\Steel_Apple_Walk.bin" />
@@ -129,6 +135,8 @@
     <None Include="Resources\Thief_Bag.bin" />
     <None Include="Resources\Valery_Sablin_Non_A.bin" />
     <None Include="Resources\Vent_Icecream.bin" />
+    <None Include="Resources\VoodooActive.bin" />
+    <None Include="Resources\VoodooBlank.bin" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

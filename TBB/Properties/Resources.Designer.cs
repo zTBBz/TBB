@@ -333,6 +333,26 @@ namespace TBB.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Byte[].
         /// </summary>
+        internal static byte[] NuclearBriefcase {
+            get {
+                object obj = ResourceManager.GetObject("NuclearBriefcase", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] OpenNuclearBriefcase {
+            get {
+                object obj = ResourceManager.GetObject("OpenNuclearBriefcase", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
         internal static byte[] Steal_Apple {
             get {
                 object obj = ResourceManager.GetObject("Steal_Apple", resourceCulture);
@@ -396,6 +416,26 @@ namespace TBB.Properties {
         internal static byte[] Vent_Icecream {
             get {
                 object obj = ResourceManager.GetObject("Vent_Icecream", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] VoodooActive {
+            get {
+                object obj = ResourceManager.GetObject("VoodooActive", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] VoodooBlank {
+            get {
+                object obj = ResourceManager.GetObject("VoodooBlank", resourceCulture);
                 return ((byte[])(obj));
             }
         }

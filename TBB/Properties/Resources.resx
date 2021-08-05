@@ -199,6 +199,12 @@
   <data name="Luck_Fish" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Luck_Fish.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="NuclearBriefcase" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NuclearBriefcase.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="OpenNuclearBriefcase" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\OpenNuclearBriefcase.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="Steal_Apple" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Steal_Apple.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -219,5 +225,11 @@
   </data>
   <data name="Vent_Icecream" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Vent_Icecream.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="VoodooActive" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\VoodooActive.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="VoodooBlank" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\VoodooBlank.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

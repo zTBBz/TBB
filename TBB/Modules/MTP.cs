@@ -191,79 +191,6 @@ namespace TBB
                 ___agent.relationships.SetRelInitial(otherAgent, "Loyal");
             }
         }
-        public class AlignedTraitFactory : HookFactoryBase<Trait>
-        {
-            public override bool TryCreate(Trait instance, out IHook<Trait> hook)
-            {
-                if (instance.traitName.StartsWith("AlignedTo_"))
-                {
-                    string agentName = instance.traitName.Substring("AlignedTo_".Length);
-                    AlignedTrait aligned = new AlignedTrait { AgentName = agentName };
-                    hook = aligned;
-                    hook.Instance = instance;
-                    return true;
-                }
-                hook = null;
-                return false;
-            }
-        }
-        public class LoyalTraitFactory : HookFactoryBase<Trait>
-        {
-            public override bool TryCreate(Trait instance, out IHook<Trait> hook)
-            {
-                if (instance.traitName.StartsWith("LoyalTo_"))
-                {
-                    string agentName = instance.traitName.Substring("LoyalTo_".Length);
-                    LoyalTrait loyal = new LoyalTrait { AgentName = agentName };
-                    hook = loyal;
-                    hook.Instance = instance;
-                    return true;
-                }
-                hook = null;
-                return false;
-            }
-        }
-        public class Evil_Cake_Trait : CustomTrait, ITraitUpdateable
-        {
-            [RLSetup]
-            public static void Setup()
-            {
-                RogueLibs.CreateCustomTrait<Evil_Cake_Trait>()
-                    .WithName(new CustomNameInfo
-                    {
-                        English = "<color=#000000>Unknown soul</color>",
-                        Russian = "<color=#000000>Неизвестная душа</color>"
-                    })
-                    .WithDescription(new CustomNameInfo
-                    {
-                        English = "<color=#000000>Inside you unknown soul..</color>",
-                        Russian = "<color=#000000>Внутри вас неизвестная душа..</color>"
-                    })
-                    .WithUnlock(new TraitUnlock { IsAvailableInCC = false });
-            }
-            public override void OnAdded() 
-            {
-                Owner.statusEffects.ChangeHealth(500, Owner);
-            }
-            public override void OnRemoved() { }
-            public void OnUpdated(TraitUpdatedArgs e)
-            {
-                e.UpdateDelay = 15;
-                StatusEffects.StartCoroutine(ParalyzedEnumerator());
-                Owner.ChangeHealth(Owner.gc.challenges.Contains("LowHealth") ? +10f : +10f);
-            }
-            public IEnumerator ParalyzedEnumerator()
-            {
-                Owner.AddEffect("Enraged", new CreateEffectInfo { SpecificTime = 10, DontShowText = true });
-                Owner.SetAccuracy(Owner.accuracyStatMod + 3);
-                Owner.SetStrength(Owner.strengthStatMod + 3);
-                Owner.SetSpeed(Owner.speedStatMod + 3);
-                yield return new WaitForSeconds(10f);
-                Owner.SetAccuracy(Owner.accuracyStatMod - 3);
-                Owner.SetStrength(Owner.strengthStatMod - 3);
-                Owner.SetSpeed(Owner.speedStatMod - 3);
-            }
-        }
     }
     public class AlignedTrait : CustomTrait, ITraitUpdateable
     {
@@ -329,6 +256,79 @@ namespace TBB
                 if (loyal != null && loyal.AgentName == agent.agentName)
                     return true;
             }
+            return false;
+        }
+    }
+    public class Evil_Cake_Trait : CustomTrait, ITraitUpdateable
+    {
+        [RLSetup]
+        public static void Setup()
+        {
+            RogueLibs.CreateCustomTrait<Evil_Cake_Trait>()
+                .WithName(new CustomNameInfo
+                {
+                    English = "<color=#000000>Unknown soul</color>",
+                    Russian = "<color=#000000>Неизвестная душа</color>"
+                })
+                .WithDescription(new CustomNameInfo
+                {
+                    English = "<color=#000000>Inside you unknown soul..</color>",
+                    Russian = "<color=#000000>Внутри вас неизвестная душа..</color>"
+                })
+                .WithUnlock(new TraitUnlock { IsAvailableInCC = false });
+        }
+        public override void OnAdded()
+        {
+            Owner.statusEffects.ChangeHealth(500, Owner);
+        }
+        public override void OnRemoved() { }
+        public void OnUpdated(TraitUpdatedArgs e)
+        {
+            e.UpdateDelay = 15;
+            StatusEffects.StartCoroutine(ParalyzedEnumerator());
+            Owner.ChangeHealth(Owner.gc.challenges.Contains("LowHealth") ? +10f : +10f);
+        }
+        public IEnumerator ParalyzedEnumerator()
+        {
+            Owner.AddEffect("Enraged", new CreateEffectInfo { SpecificTime = 10, DontShowText = true });
+            Owner.SetAccuracy(Owner.accuracyStatMod + 3);
+            Owner.SetStrength(Owner.strengthStatMod + 3);
+            Owner.SetSpeed(Owner.speedStatMod + 3);
+            yield return new WaitForSeconds(10f);
+            Owner.SetAccuracy(Owner.accuracyStatMod - 3);
+            Owner.SetStrength(Owner.strengthStatMod - 3);
+            Owner.SetSpeed(Owner.speedStatMod - 3);
+        }
+    }
+    public class AlignedTraitFactory : HookFactoryBase<Trait>
+    {
+        public override bool TryCreate(Trait instance, out IHook<Trait> hook)
+        {
+            if (instance.traitName.StartsWith("AlignedTo_"))
+            {
+                string agentName = instance.traitName.Substring("AlignedTo_".Length);
+                AlignedTrait aligned = new AlignedTrait { AgentName = agentName };
+                hook = aligned;
+                hook.Instance = instance;
+                return true;
+            }
+            hook = null;
+            return false;
+        }
+    }
+    public class LoyalTraitFactory : HookFactoryBase<Trait>
+    {
+        public override bool TryCreate(Trait instance, out IHook<Trait> hook)
+        {
+            if (instance.traitName.StartsWith("LoyalTo_"))
+            {
+                string agentName = instance.traitName.Substring("LoyalTo_".Length);
+                LoyalTrait loyal = new LoyalTrait { AgentName = agentName };
+                hook = loyal;
+                hook.Instance = instance;
+                return true;
+            }
+            hook = null;
             return false;
         }
     }
