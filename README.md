@@ -77,7 +77,7 @@ Current priority:
 
 **Abbysssal#2020** - help with RogueLibs and BepInEx, shared website and help with him.
 
-**Sidi#9761** - made Bag`s sprites.
+**Sidi#9761** - made a lot of sprites (NuclearBriefcase, OpenNuclearBriefcase, LootBox, Converter, Duplicator, many variations of Bags and other).
 
 <div align="left">
 <img src="./images/Installation.png" width=35%/>
