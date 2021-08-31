@@ -27,7 +27,7 @@ namespace TBB
         }*/
         public const string pluginGuid = "ztbbz.streetsofrogue.tbb";
         public const string pluginName = "TBB";
-        public const string pluginVersion = "0.0.1";
+        public const string pluginVersion = "0.0.2";
         public void Awake()
         {
             //RogueFramework.DebugFlags |= DebugFlags.Names;
