@@ -27,6 +27,8 @@
 
 Mod-Union is a big project, it will include MTP and SMaD, as well as all new mods under my authorship. All mods become Mod-Union modules with great relative autonomy. That is, Mod-Union can update only one module for each update and it will be indicated which module was updated and, of course, what exactly was updated. 
 
+At the moment, Mod-Union contains a lot of traits, items and custom sounds, that greatly complement Street of Rogue's sometimes annoying boring gameplay.
+
 <div align="left">
 <img src="./images/Progress.png" width=35%/>
 </div>
