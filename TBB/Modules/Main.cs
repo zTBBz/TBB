@@ -30,6 +30,8 @@ namespace TBB
         public const string pluginVersion = "0.0.1";
         public void Awake()
         {
+            //RogueFramework.DebugFlags |= DebugFlags.Names;
+            //RogueFramework.DebugFlags |= DebugFlags.Unlocks;
             RogueLibs.LoadFromAssembly();
             RoguePatcher Patcher = new RoguePatcher(this);
             MainInstance = this;
@@ -115,8 +117,8 @@ namespace TBB
             });
             RogueLibs.CreateCustomName("D_aToI_Off", "Unlock", new CustomNameInfo
             {
-                English = "Changes all the items, etc. of the SMaD module, depending on the name of the button",
-                Russian = "Изменяет все предметы и т.д SMaD модуля в зависимости от названия кнопки"
+                English = "Changes all the items, etc. of the aToI module, depending on the name of the button",
+                Russian = "Изменяет все предметы и т.д aToI модуля в зависимости от названия кнопки"
             });
             RogueLibs.CreateCustomName("aToI_On_colored", "Unlock", new CustomNameInfo
             {
@@ -130,8 +132,8 @@ namespace TBB
             });
             RogueLibs.CreateCustomName("D_aToI_On", "Unlock", new CustomNameInfo
             {
-                English = "Changes all the items, etc. of the SMaD module, depending on the name of the button",
-                Russian = "Изменяет все предметы и т.д SMaD модуля в зависимости от названия кнопки"
+                English = "Changes all the items, etc. of the aToI module, depending on the name of the button",
+                Russian = "Изменяет все предметы и т.д aToI модуля в зависимости от названия кнопки"
             });
             RogueLibs.CreateCustomUnlock(new SMaD_Switch());
             RogueLibs.CreateCustomUnlock(new MTP_Switch());
@@ -293,7 +295,7 @@ namespace TBB
             }
             else
             {
-                return gc.nameDB.GetName("aToI_Off_colored", "Unlock");
+                return gc.nameDB.GetName("aToI_On_colored", "Unlock");
             }
         }
         public override string GetName()
@@ -318,7 +320,6 @@ namespace TBB
                 return gc.nameDB.GetName("D_aToI_On", "Unlock");
             }
         }
-
     }
     public class Thief_Bag_Low : CustomItem, IItemUsable
     {

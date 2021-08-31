@@ -17,7 +17,7 @@ namespace TBB
 		public static List<ItemUnlock> Items = new List<ItemUnlock>();
 		public static void SetActive(bool isEnabled)
 		{
-			foreach (ItemUnlock unlock in Items)
+			foreach (ItemUnlock unlock in Items.Where(i => i != null))
 			{
 				unlock.IsAvailable = isEnabled;
 				unlock.IsAvailableInCC = isEnabled;
@@ -58,8 +58,16 @@ namespace TBB
 				.WithSprite(Properties.Resources.VoodooActive);
 			Items.Add(builder.Unlock);
 			builder = RogueLibs.CreateCustomItem<NuclearBriefcase>()
-			.WithName(new CustomNameInfo("Nuclear Briefcase"))
-			.WithDescription(new CustomNameInfo("Obliterates the entire level, leaving absolutely nothing behind."))
+			.WithName(new CustomNameInfo
+			{
+				English = "Nuclear Briefcase",
+				Russian = "Ядерный чемоданчик"
+			})
+			.WithDescription(new CustomNameInfo
+			{
+				English = "Obliterates the entire level, leaving absolutely nothing behind.",
+				Russian = "Уничтожает весь уровень, не оставляя после себя абсолютно ничего."
+			})
 			.WithSprite(Properties.Resources.NuclearBriefcase)
 			.WithUnlock(new ItemUnlock { UnlockCost = 0, CharacterCreationCost = 10, LoadoutCost = 10 });
 			Items.Add(builder.Unlock);
@@ -68,10 +76,86 @@ namespace TBB
 				.WithDescription(new CustomNameInfo("Oh no..."))
 				.WithSprite(Properties.Resources.OpenNuclearBriefcase);
 			Items.Add(builder.Unlock);
+			builder = RogueLibs.CreateCustomItem<LootBox>()
+			.WithName(new CustomNameInfo
+			{
+				English = "Loot Box",
+				Russian = "Подарок"
+			})
+			.WithDescription(new CustomNameInfo
+			{
+				English = "Gives you a random item.",
+				Russian = "Даёт вам рандомный предмет."
+			})
+			.WithSprite(Properties.Resources.LootBox1)
+			.WithUnlock(new ItemUnlock { UnlockCost = 0, CharacterCreationCost = 0, LoadoutCost = 3 });
+			Items.Add(builder.Unlock);
+			builder = RogueLibs.CreateCustomItem<PortableAmmoDispenser>()
+			.WithName(new CustomNameInfo
+			{
+				English = "Portable Ammo Dispenser",
+				Russian = "Портативный раздатчик боеприпасов"
+			})
+			.WithDescription(new CustomNameInfo
+			{
+				English = "Use it to refill your ranged weapons' ammo. For money, of course.",
+				Russian = "Используйте для пополнения запаса патронов у оружия дальнего боя. За деньги, конечно же."
+			})
+			.WithSprite(Properties.Resources.PortableAmmoDispenser)
+			.WithUnlock(new ItemUnlock { UnlockCost = 0, CharacterCreationCost = 0, LoadoutCost = 5 });
+			Items.Add(builder.Unlock);
+			builder = RogueLibs.CreateCustomItem<Portable_Barbecue_Inactive>()
+			.WithName(new CustomNameInfo
+			{
+				English = "Portable Barbecue",
+				Russian = "Портативное барбекю"
+			})
+			.WithDescription(new CustomNameInfo
+			{
+				English = "To use it, you need to light it, thanks to a special technology, the barbecue does not go out. It easily fries food despite its compactness.",
+				Russian = "Для использования требуется зажечь, благодаря особой технологии барбекю не потухает. С лёгкостью жарит еду несмотря на свою компактность."
+			})
+			.WithSprite(Properties.Resources.Portable_Barbecue_Inactive)
+			.WithUnlock(new ItemUnlock { UnlockCost = 0, CharacterCreationCost = 3, LoadoutCost = 3 });
+			Items.Add(builder.Unlock);
+			builder = RogueLibs.CreateCustomItem<Portable_Barbecue_Active>()
+			.WithName(new CustomNameInfo
+			{
+				English = "Portable Barbecue",
+				Russian = "Портативное барбекю"
+			})
+			.WithDescription(new CustomNameInfo
+			{
+				English = "The barbecue is ready to use! Don't overcook it!",
+				Russian = "Барбекю готово к использованию! Смотрите не пережарьте!"
+			})
+			.WithSprite(Properties.Resources.Portable_Barbecue_Active);
+			Items.Add(builder.Unlock);
+			builder = RogueLibs.CreateCustomItem<Air_Support_Phone>()
+			.WithName(new CustomNameInfo
+			{
+				English = "Air Support Phone",
+				Russian = "Телефон воздушной поддержки"
+			})
+			.WithDescription(new CustomNameInfo
+			{
+				English = "<color=#55e657>I'm waiting for the coordinates.</color>",
+				Russian = "<color=#55e657>Ожидаю координаты.</color>"
+			})
+			.WithUnlock(new ItemUnlock { UnlockCost = 0, CharacterCreationCost = 3, LoadoutCost = 5 })
+			.WithSprite(Properties.Resources.Air_Support_Phone);
+			Items.Add(builder.Unlock);
+			RogueLibs.CreateCustomSprite("LootBox2", SpriteScope.Items, Properties.Resources.LootBox2);
+			RogueLibs.CreateCustomSprite("LootBox3", SpriteScope.Items, Properties.Resources.LootBox3);
 			RogueLibs.CreateCustomName("UseNuclearBriefcase", "Interface", new CustomNameInfo
 			{
 				English = "Activate here",
 				Russian = "Активировать здесь"
+			});
+			RogueLibs.CreateCustomName("Use_Air_Support_Phone", "Interface", new CustomNameInfo
+			{
+				English = "Request air support",
+				Russian = "Запросить поддержку"
 			});
 			RogueLibs.CreateCustomName("VoodooBind", "Interface", new CustomNameInfo
 			{
@@ -323,7 +407,7 @@ namespace TBB
 			return true;
 		}
 		public CustomTooltip CombineTooltip(InvItem other) => "456";
-		public CustomTooltip CombineCursorText(InvItem other) => "";
+		public CustomTooltip CombineCursorText(InvItem other) => string.Empty;
 	}
 	public class NuclearBriefcase : CustomItem, IItemUsable
 	{
@@ -447,5 +531,227 @@ namespace TBB
 			aToI.suppress = false;
 		}
 		public CustomTooltip TargetCursorText(Vector2 pos) => gc.nameDB.GetName("UseNuclearBriefcase", "Interface");
+	}
+	[ItemCategories(RogueCategories.Supplies, RogueCategories.Technology, RogueCategories.Usable)]
+	public class LootBox : CustomItem, IItemUsable
+	{
+		public override void SetupDetails()
+		{
+			Item.itemType = ItemTypes.Tool;
+			Item.itemValue = 40;
+			Item.initCount = 2;
+			Item.rewardCount = 3;
+			Item.stackable = true;
+			Item.goesInToolbar = true;
+			Item.cantBeCloned = true;
+
+			int rnd = new System.Random().Next(3) + 1;
+			if (rnd != 1)
+				Item.LoadItemSprite($"LootBox{rnd}");
+		}
+		public bool UseItem()
+		{
+			List<Unlock> unlockPool = gc.sessionDataBig.unlocks.FindAll(u => u.unlockType == "Item");
+			List<InvItem> pool = new List<InvItem>();
+
+			System.Random rnd = new System.Random();
+			for (int i = 0; i < 3; i++)
+			{
+				Unlock u;
+				InvItem item;
+				do
+				{
+					u = unlockPool[rnd.Next(unlockPool.Count)];
+					item = new InvItem { invItemName = u.unlockName };
+					item.SetupDetails(false);
+				}
+				while (item.itemValue < 1 || item.initCount == 0);
+
+				item.invItemCount = item.initCount;
+				pool.Add(item);
+			}
+
+			InvItem selected = pool[0];
+			int selectedCost = Owner.determineMoneyCost(selected, selected.itemValue, "");
+			for (int i = 1; i < pool.Count; i++)
+			{
+				int cost = Owner.determineMoneyCost(pool[i], pool[i].itemValue, "");
+				if (cost < selectedCost)
+				{
+					selected = pool[i];
+					selectedCost = cost;
+				}
+			}
+
+			Count--;
+			Inventory.AddItem(selected);
+			gc.audioHandler.Play(Owner, "BeginCombine");
+
+			return true;
+		}
+	}
+	public class PortableAmmoDispenser : CustomItem, IItemCombinable
+	{
+		public override void SetupDetails()
+		{
+			Item.itemType = ItemTypes.Combine;
+			Item.itemValue = 80;
+			Item.initCount = 1;
+			Item.rewardCount = 1;
+			Item.stackable = true;
+			Item.hasCharges = true;
+		}
+
+		private int actualCount;
+		public float Cooldown;
+		public bool CombineFilter(InvItem other) => Item == other || other.itemType == ItemTypes.WeaponProjectile && !other.noRefills;
+		public bool CombineItems(InvItem other)
+		{
+			int amountToRefill = other.maxAmmo - other.invItemCount;
+			float singleCost = (float)other.itemValue / other.maxAmmo;
+			if (Owner.oma.superSpecialAbility && (Owner.agentName == "Soldier" || Owner.agentName == "Doctor"))
+				singleCost = 0f;
+			if (other.invItemCount >= other.maxAmmo)
+			{
+				Owner.SayDialogue("AmmoDispenserFull");
+				Owner.gc.audioHandler.Play(Owner, "CantDo");
+			}
+			else if (Owner.inventory.money.invItemCount < amountToRefill * singleCost)
+			{
+				int affordableAmount = (int)Mathf.Floor(Owner.inventory.money.invItemCount / singleCost);
+				if (affordableAmount == 0)
+				{
+					Owner.SayDialogue("NeedCash");
+					Owner.gc.audioHandler.Play(Owner, "CantDo");
+					return true;
+				}
+				Owner.inventory.SubtractFromItemCount(Owner.inventory.money, (int)Mathf.Ceil(affordableAmount * singleCost));
+				other.invItemCount += affordableAmount;
+				Owner.SayDialogue("AmmoDispenserFilled");
+				Owner.gc.audioHandler.Play(Owner, "BuyItem");
+				new ItemFunctions().UseItemAnim(Item, Owner);
+			}
+			else
+			{
+				Owner.inventory.money.invItemCount -= (int)Mathf.Ceil(amountToRefill * singleCost);
+				other.invItemCount = other.maxAmmo;
+				Owner.SayDialogue("AmmoDispenserFilled");
+				Owner.gc.audioHandler.Play(Owner, "BuyItem");
+				new ItemFunctions().UseItemAnim(Item, Owner);
+			}
+			return true;
+		}
+		public CustomTooltip CombineTooltip(InvItem other)
+        {
+			if (other.invItemName == "PortableAmmoDispenser") return default;
+			int amountToRefill = other.maxAmmo - other.invItemCount;
+			if (amountToRefill < 1) return default;
+			float singleCost = (float)other.itemValue / other.maxAmmo;
+			if (Owner.oma.superSpecialAbility && (Owner.agentName == "Soldier" || Owner.agentName == "Doctor"))
+				singleCost = 0f;
+			int amount = (int)Mathf.Ceil(amountToRefill * singleCost);
+			return "$" + amount;
+		}
+		public CustomTooltip CombineCursorText(InvItem other) => string.Empty;
+	}
+	[ItemCategories(RogueCategories.Supplies, RogueCategories.Usable)]
+	public class Portable_Barbecue_Inactive : CustomItem, IItemCombinable
+	{
+		public override void SetupDetails()
+		{
+			Item.itemType = ItemTypes.Combine;
+			Item.itemValue = 85;
+			Item.stackable = true;
+			Item.hasCharges = true;
+		}
+		public bool CombineFilter(InvItem other) => other.invItemName == "CigaretteLighter"
+			|| other.invItemName == "Flamethrower" && other.invItemCount > 0;
+		public bool CombineItems(InvItem other)
+		{
+			if (!CombineFilter(other)) return false;
+			if (other.invItemName == "Flamethrower")
+			{
+				Inventory.SubtractFromItemCount(other, 45);
+				Inventory.DestroyItem(Item);
+				Inventory.AddItem<Portable_Barbecue_Active>(Count);
+			}
+			else if (other.invItemName == "CigaretteLighter")
+			{
+				Inventory.DestroyItem(Item);
+				Inventory.AddItem<Portable_Barbecue_Active>(Count);
+			}
+			return true;
+		}
+		public CustomTooltip CombineTooltip(InvItem other) => default;
+		public CustomTooltip CombineCursorText(InvItem other) => default;
+	}
+	[ItemCategories(RogueCategories.Supplies, RogueCategories.Usable)]
+	public class Portable_Barbecue_Active : CustomItem, IItemCombinable
+	{
+		public override void SetupDetails()
+		{
+			Item.itemType = ItemTypes.Combine;
+			Item.itemValue = 85;
+			Item.stackable = true;
+			Item.hasCharges = true;
+		}
+		public bool CombineFilter(InvItem other) => other.invItemName == "Fud";
+		public bool CombineItems(InvItem other)
+		{
+			if (!CombineFilter(other)) return false;
+			if (other.invItemName == "Fud")
+            {
+				Inventory.SubtractFromItemCount(other, 1);
+				Inventory.AddItem("HotFud", 1);
+			}
+			return true;
+		}
+		public CustomTooltip CombineTooltip(InvItem other) => default;
+		public CustomTooltip CombineCursorText(InvItem other) => default;
+	}
+	[ItemCategories(RogueCategories.Supplies, RogueCategories.Technology, RogueCategories.Usable)]
+	public class Air_Support_Phone : CustomItem, IItemTargetableAnywhere
+	{
+		public override void SetupDetails()
+		{
+			Item.itemType = ItemTypes.Tool;
+			Item.initCount = 1;
+			Item.rewardCount = 1;
+			Item.itemValue = 75;
+			Item.cantBeCloned = true;
+			Item.goesInToolbar = true;
+		}
+		public bool TargetFilter(Vector2 pos) => true;
+		public bool TargetPosition(Vector2 pos)
+		{
+			Count--;
+			gc.StartCoroutine(Explode(pos));
+			return true;
+		}
+		private IEnumerator Explode(Vector2 pos)
+		{
+			BombFalling bomb = gc.spawnerMain.SpawnBombFalling(pos, string.Empty);
+			gc.StartCoroutine(bomb.DropBomb());
+			Danger danger = gc.spawnerMain.SpawnDanger(Owner, "Major", "Spooked");
+			danger.tr.position = bomb.tr.position;
+			danger.curPosition = danger.tr.position;
+			danger.tr.parent = gc.dangersNest.transform;
+			danger.timer = 5f;
+			gc.audioHandler.Play(Owner, "ArmedMine");
+			for (int i = 3; i >= 0; i--)
+			{
+				gc.spawnerMain.SpawnStatusText(Owner, "Countdown", i.ToString());
+				yield return new WaitForSeconds(0.375f);
+				gc.audioHandler.Stop(Owner, "ArmedMine");
+				gc.audioHandler.Play(Owner, "ArmedMine");
+				yield return new WaitForSeconds(0.375f);
+			}
+			yield return new WaitForSeconds(0.025f);
+			gc.audioHandler.Stop(Owner, "ArmedMine");
+			Explosion explosion = gc.spawnerMain.SpawnExplosion(Owner, pos, "Normal");
+			gc.spawnerMain.SpawnParticleEffect("Explosion", explosion.tr.position, 0).transform.localScale = new Vector3(1, 1, 1);
+			explosion.agent = Owner;
+		}
+		public CustomTooltip TargetCursorText(Vector2 pos) => gc.nameDB.GetName("Use_Air_Support_Phone", "Interface");
 	}
 }

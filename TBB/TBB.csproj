@@ -40,9 +40,6 @@
     <Reference Include="BepInEx">
       <HintPath>..\..\Libs\BepInEx.dll</HintPath>
     </Reference>
-    <Reference Include="com.unity.multiplayer-hlapi.Runtime">
-      <HintPath>..\..\Libs\com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
-    </Reference>
     <Reference Include="netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Libs\netstandard.dll</HintPath>
@@ -97,6 +94,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Air_Support_Phone.bin" />
     <None Include="Resources\Bag.bin" />
     <None Include="Resources\Bag_Use.bin" />
     <None Include="Resources\Black_Question.bin" />
@@ -119,20 +117,29 @@
     <None Include="Resources\Fire_Salamander_Heart_Use.bin" />
     <None Include="Resources\FishOfLuck_Use.bin" />
     <None Include="Resources\Fish_Fat.bin" />
+    <None Include="Resources\Grindstone.bin" />
     <None Include="Resources\Heaven_Tears.bin" />
     <None Include="Resources\Honey.bin" />
     <None Include="Resources\JoCake.bin" />
     <None Include="Resources\KC_Fuzzi.bin" />
     <None Include="Resources\Kraken_Tentacle.bin" />
+    <None Include="Resources\LootBox1.bin" />
+    <None Include="Resources\LootBox2.bin" />
+    <None Include="Resources\LootBox3.bin" />
     <None Include="Resources\Luck_Fish.bin" />
     <None Include="Resources\NuclearBriefcase.bin" />
     <None Include="Resources\OpenNuclearBriefcase.bin" />
+    <None Include="Resources\PortableAmmoDispenser.bin" />
+    <None Include="Resources\Portable_Barbecue_Active.bin" />
+    <None Include="Resources\Portable_Barbecue_Inactive.bin" />
+    <None Include="Resources\Salamandr_Heart.bin" />
     <None Include="Resources\Steal_Apple.bin" />
     <None Include="Resources\Steal_Apple_Use.bin" />
     <None Include="Resources\Steel_Apple_Walk.bin" />
     <None Include="Resources\Tears_Heaven_Use.bin" />
     <None Include="Resources\tentacle_kraken.bin" />
     <None Include="Resources\Thief_Bag.bin" />
+    <None Include="Resources\Toolkit.bin" />
     <None Include="Resources\Valery_Sablin_Non_A.bin" />
     <None Include="Resources\Vent_Icecream.bin" />
     <None Include="Resources\VoodooActive.bin" />

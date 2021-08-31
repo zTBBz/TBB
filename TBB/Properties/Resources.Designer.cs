@@ -63,6 +63,16 @@ namespace TBB.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Byte[].
         /// </summary>
+        internal static byte[] Air_Support_Phone {
+            get {
+                object obj = ResourceManager.GetObject("Air_Support_Phone", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
         internal static byte[] Bag {
             get {
                 object obj = ResourceManager.GetObject("Bag", resourceCulture);
@@ -283,6 +293,16 @@ namespace TBB.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Byte[].
         /// </summary>
+        internal static byte[] Grindstone {
+            get {
+                object obj = ResourceManager.GetObject("Grindstone", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
         internal static byte[] Heaven_Tears {
             get {
                 object obj = ResourceManager.GetObject("Heaven_Tears", resourceCulture);
@@ -323,6 +343,36 @@ namespace TBB.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Byte[].
         /// </summary>
+        internal static byte[] LootBox1 {
+            get {
+                object obj = ResourceManager.GetObject("LootBox1", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] LootBox2 {
+            get {
+                object obj = ResourceManager.GetObject("LootBox2", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] LootBox3 {
+            get {
+                object obj = ResourceManager.GetObject("LootBox3", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
         internal static byte[] Luck_Fish {
             get {
                 object obj = ResourceManager.GetObject("Luck_Fish", resourceCulture);
@@ -346,6 +396,46 @@ namespace TBB.Properties {
         internal static byte[] OpenNuclearBriefcase {
             get {
                 object obj = ResourceManager.GetObject("OpenNuclearBriefcase", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] Portable_Barbecue_Active {
+            get {
+                object obj = ResourceManager.GetObject("Portable_Barbecue_Active", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] Portable_Barbecue_Inactive {
+            get {
+                object obj = ResourceManager.GetObject("Portable_Barbecue_Inactive", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] PortableAmmoDispenser {
+            get {
+                object obj = ResourceManager.GetObject("PortableAmmoDispenser", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] Salamandr_Heart {
+            get {
+                object obj = ResourceManager.GetObject("Salamandr_Heart", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -396,6 +486,16 @@ namespace TBB.Properties {
         internal static byte[] Thief_Bag {
             get {
                 object obj = ResourceManager.GetObject("Thief_Bag", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] Toolkit {
+            get {
+                object obj = ResourceManager.GetObject("Toolkit", resourceCulture);
                 return ((byte[])(obj));
             }
         }

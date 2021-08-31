@@ -179,7 +179,7 @@ namespace TBB
                    English = "The Salamander heart is an incredibly nasty-tasting organ that pumps blood. I do not think that you need to eat it, although if you are a Pyromancer, it is your best friend, because your blood is saturated with special cells and will spread them throughout the body and you will become less vulnerable to fire. These cells are able to adapt quickly, it is a pity that your body will not accept them immediately.. so that.. Good luck surviving the War inside your body!",
                    Russian = "Саламандровское сердце - невероятно противный на вкус орган качающий кровь. Не думаю что нужно его есть, хотя если вы пиромант то это ваш лучший друг, ведь ваша кровь насытиться особыми клетками и разнесёт их по всему организму и вы станете менее уязвима к огню. Эти клетки умеют быстро адаптироваться, жаль что ваш организм не примет их сразу.. так что.. Удачи вам пережить Войну внутри вашего организма!"
                })
-               .WithSprite(Properties.Resources.KC_Fuzzi)
+               .WithSprite(Properties.Resources.Salamandr_Heart)
                .WithUnlock(new ItemUnlock { UnlockCost = 0, CharacterCreationCost = 6 });
             Items.Add(builder.Unlock);
             builder = RogueLibs.CreateCustomItem<FishOfLuck>()
