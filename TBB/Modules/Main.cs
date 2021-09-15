@@ -16,15 +16,6 @@ namespace TBB
     {
         public static BaseUnityPlugin MainInstance;
         public static BepInEx.Logging.ManualLogSource logger;
-        /*public static ModFlags enabled;
-        public static bool IsEnabled(ModFlags flags) => (enabled & flags) != 0;
-        [Flags]
-        public enum ModFlags
-        {
-            ModuleA = 1 << 0,
-            ModuleB = 1 << 1,
-            ModuleC = 1 << 2,
-        }*/
         public const string pluginGuid = "ztbbz.streetsofrogue.tbb";
         public const string pluginName = "TBB";
         public const string pluginVersion = "0.0.2";
@@ -34,6 +25,7 @@ namespace TBB
             //RogueFramework.DebugFlags |= DebugFlags.Unlocks;
             RogueLibs.LoadFromAssembly();
             RoguePatcher Patcher = new RoguePatcher(this);
+            //Patcher.Postfix(typeof(LogoMenu), "LogoAnimation");
             MainInstance = this;
             logger = Logger;
             new MTP().Awake();

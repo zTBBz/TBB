@@ -70,7 +70,7 @@ const FeatureList = [
     svg: svg5,
     description: (
         <Translate id="features.5.description">
-        Mod-Union includes a lot of old content on the type: SMaD, MTP, aToI, but changed for the better.
+        Mod-Union includes a lot of old content on the type: SMaD, MTP, aToI, but changed for the better
         </Translate>
     ),
   },

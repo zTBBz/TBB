@@ -247,13 +247,16 @@
   <data name="Thief_Bag" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Thief_Bag.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="TitleScreenLogoM" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TitleScreenLogoM.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="Toolkit" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Toolkit.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Valery_Sablin_Non_A" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Valery_Sablin_Non_A.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="Vent_Icecream" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="Vent_IceCream" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Vent_Icecream.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="VoodooActive" type="System.Resources.ResXFileRef, System.Windows.Forms">

@@ -139,9 +139,10 @@
     <None Include="Resources\Tears_Heaven_Use.bin" />
     <None Include="Resources\tentacle_kraken.bin" />
     <None Include="Resources\Thief_Bag.bin" />
+    <None Include="Resources\TitleScreenLogoM.bin" />
     <None Include="Resources\Toolkit.bin" />
     <None Include="Resources\Valery_Sablin_Non_A.bin" />
-    <None Include="Resources\Vent_Icecream.bin" />
+    <None Include="Resources\Vent_IceCream.bin" />
     <None Include="Resources\VoodooActive.bin" />
     <None Include="Resources\VoodooBlank.bin" />
   </ItemGroup>

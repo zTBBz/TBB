@@ -493,6 +493,16 @@ namespace TBB.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Byte[].
         /// </summary>
+        internal static byte[] TitleScreenLogoM {
+            get {
+                object obj = ResourceManager.GetObject("TitleScreenLogoM", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
         internal static byte[] Toolkit {
             get {
                 object obj = ResourceManager.GetObject("Toolkit", resourceCulture);
@@ -513,9 +523,9 @@ namespace TBB.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Byte[].
         /// </summary>
-        internal static byte[] Vent_Icecream {
+        internal static byte[] Vent_IceCream {
             get {
-                object obj = ResourceManager.GetObject("Vent_Icecream", resourceCulture);
+                object obj = ResourceManager.GetObject("Vent_IceCream", resourceCulture);
                 return ((byte[])(obj));
             }
         }

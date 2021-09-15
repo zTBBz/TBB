@@ -55,7 +55,7 @@ namespace TBB
             builder = RogueLibs.CreateCustomItem<Steal_Apple>()
                .WithName(new CustomNameInfo
                {
-                   English = "Steal Apple",
+                   English = "Steel Apple",
                    Russian = "Стальное яблоко"
                }).WithDescription(new CustomNameInfo
                {
@@ -72,7 +72,7 @@ namespace TBB
                    Russian = "Щупальце Кракена"
                }).WithDescription(new CustomNameInfo
                {
-                   English = "Any Chinese would give a fortune for such a tentacle! What is unique about it? It has strong healing properties,heals all wounds, but gives you a taste of seasickness. Bon Appetit!",
+                   English = "Any Chinese would give a fortune for such a tentacle! What is unique about it? It has strong healing properties, heals all wounds, but gives you a taste of seasickness. Bon Appetit!",
                    Russian = "За такое щупальце любой китаец отдал бы состояние! Что в нём уникального? Оно обладая сильными целительными свойствами,залечивает все раны, но даёт вам попробовать на вкус морскую болезнь. Приятного аппетита!"
                })
                .WithSprite(Properties.Resources.Kraken_Tentacle)
@@ -101,7 +101,7 @@ namespace TBB
                    English = "Is someone tired of their ice cream constantly melting? Well, now it will freeze together with the ice cream, because the ice cream has a built-in air conditioner! Yes, you heard right!",
                    Russian = "Кому-то надоело что его мороженное постоянно тает? Ну, теперь он замёрзнет вместе с мороженным, ведь в мороженное встроен кондиционер! Да-да вы не ослышались!"
                })
-               .WithSprite(Properties.Resources.Vent_Icecream)
+               .WithSprite(Properties.Resources.Vent_IceCream)
                .WithUnlock(new ItemUnlock { UnlockCost = 0, CharacterCreationCost = 5 });
             Items.Add(builder.Unlock);
             builder = RogueLibs.CreateCustomItem<BloodDonut>()
@@ -253,7 +253,7 @@ namespace TBB
             RogueLibs.CreateCustomAudio("Evil_Cake_Use", Properties.Resources.Evil_Cake_Use, AudioType.OGGVORBIS);
             RogueLibs.CreateCustomAudio("BOOMCorn_Use", Properties.Resources.BOOMCorn_Use, AudioType.OGGVORBIS);
             RogueLibs.CreateCustomAudio("Vent_IceCream_Use", Properties.Resources.CIceCream_Use, AudioType.OGGVORBIS);
-            RogueLibs.CreateCustomAudio("BloodDonut_Use", Properties.Resources.BloodDonut_Use, AudioType.OGGVORBIS);
+            RogueLibs.CreateCustomAudio("Blood_Donut_Use", Properties.Resources.BloodDonut_Use, AudioType.OGGVORBIS);
             RogueLibs.CreateCustomAudio("Brain_Jellyfish_Use", Properties.Resources.Brain_Jellyfish_Use, AudioType.OGGVORBIS);
             RogueLibs.CreateCustomAudio("BotexLeg_Use", Properties.Resources.BotexLeg_Use, AudioType.OGGVORBIS);
             RogueLibs.CreateCustomAudio("Fire_Salamander_Heart_Use", Properties.Resources.Fire_Salamander_Heart_Use, AudioType.OGGVORBIS);
@@ -431,8 +431,8 @@ namespace TBB
         }
         public bool UseItem()
         {
-            gc.audioHandler.Play(Owner, "BloodDonut_Use");
-            Owner.statusEffects.AddStatusEffect("BloodDonut_Effect");
+            gc.audioHandler.Play(Owner, "Blood_Donut_Use");
+            Owner.statusEffects.AddStatusEffect("Blood_Donut_Effect");
             Count--;
             return true;
         }
@@ -811,12 +811,12 @@ namespace TBB
         }
     }
     [EffectParameters(EffectLimitations.RemoveOnDeath | EffectLimitations.RemoveOnKnockOut)]
-    public class BloodDonut_Effect : CustomEffect
+    public class Blood_Donut_Effect : CustomEffect
     {
         [RLSetup]
         public static void Setup()
         {
-            RogueLibs.CreateCustomEffect<BloodDonut_Effect>()
+            RogueLibs.CreateCustomEffect<Blood_Donut_Effect>()
                         .WithName(new CustomNameInfo
                         {
                             English = "Erythrocyte replenishment",
@@ -825,7 +825,7 @@ namespace TBB
                         .WithDescription(new CustomNameInfo
                         {
                             English = "Yes, you will now have red blood cells that you can bathe a whole zoo in them!",
-                            Russian = "Да, у вас сейчас будет эритроцитов что вы сможете в них искупать целый зоопарк!"
+                            Russian = "Да, у вас сейчас будет эритроцитов, что вы сможете в них искупать целый зоопарк!"
                         });
         }
         public override int GetEffectTime() => 60;

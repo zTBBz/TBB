@@ -1,0 +1,66 @@
+# Items
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+import InventorySlot from '@site/src/components/InventorySlot';
+
+import ItemFrame from '@site/src/components/ItemFrame';
+
+<ItemFrame title="Blood Donut"
+  description="Doughnuts themselves are very nutritious, but only energetically, now imagine that there is a doughnut that will be nutritious for your blood, replenishing the number of red blood cells in it, but this all takes time and it is better not to move during the replenishment of red blood cells."
+  slot={<InventorySlot sprite={useBaseUrl("/img/mod/Blood_Donut.png")} hoverable={true} count={1} tooltip="$45"/>}
+  unlockCost={0}
+  CCPV={5}
+  extra={<i>Paralize you and heal hp +1 in second (Erythrocyte replenishment effect) for 60 seconds.</i>}
+  audio={<audio controls src={useBaseUrl("/media/Blood_Donut_Use.ogg")}/>}
+  />
+
+<ItemFrame title="Blind Mushroom"
+  description="Everyone's favorite mushroom from the game SUPER-CREPE. Feel yourself Super-Crepe!"
+  slot={<InventorySlot sprite={useBaseUrl("/img/mod/Blind_Mushroom.png")} hoverable={true} count={1} tooltip="$35"/>}
+  unlockCost={0}
+  CCPV={5}
+  extra={<i>Heal 15 hp and give Invincible effect for 25 seconds.</i>}
+  audio={<audio controls src={useBaseUrl("/media/Blind_Mushroom_Use.ogg")}/>}
+  />
+
+<ItemFrame title="BOOMcorn"
+  description="This item was still in the Hitman beta, but for their game it is too refined a way to kill. If you wanted to become a kamikaze, here's your chance.  As you can understand, this is not popcorn, but just a bomb in a XXL popcorn bag."
+  slot={<InventorySlot sprite={useBaseUrl("/img/mod/Boomkorn.png")} hoverable={true} count={1} tooltip="$35"/>}
+  unlockCost={0}
+  CCPV={3}
+  extra={<i>Spawn Normal explosion.</i>}
+  audio="No custom audio"
+  />
+
+<ItemFrame title="Conditioner Icecream"
+  description="Is someone tired of their ice cream constantly melting? Well, now it will freeze together with the ice cream, because the ice cream has a built-in air conditioner! Yes, you heard right!"
+  slot={<InventorySlot sprite={useBaseUrl("/img/mod/Vent_IceCream.png")} hoverable={true} count={1} tooltip="$30"/>}
+  unlockCost={0}
+  CCPV={5}
+  extra={<i>Heal 20 hp and frozen you (Frozen) for 10 seconds.</i>}
+  audio={<audio controls src={useBaseUrl("/media/Vent_IceCream_Use.ogg")}/>}
+  />
+
+<ItemFrame title="Steel Apple"
+  description="The latest development of Mech.Food.Industrial and yes.. this apple... steel apple.. The essence is simple when eaten, it envelops the organs and skin with a special alloy that can delay bullets and reduce damage from them. However, it big damages the body from the inside..It is usefull, isn't it?"
+  slot={<InventorySlot sprite={useBaseUrl("/img/mod/Steel_Apple.png")} hoverable={true} count={1} tooltip="$60"/>}
+  unlockCost={0}
+  CCPV={8}
+  extra={<i>Damage you for 75 hp and give infinity Steel Apple shell effect, infinity playing Steel_Apple_Walk.ogg.</i>}
+    audio={(
+    <div>
+      <audio controls src={useBaseUrl("/media/Steel_Apple_Use.ogg")}/>
+      <audio controls src={useBaseUrl("/media/Steel_Apple_Walk.ogg")}/>
+    </div>
+  )}
+  />
+
+<ItemFrame title="Tentacle of the Kraken"
+  description="Any Chinese would give a fortune for such a tentacle! What is unique about it? It has strong healing properties, heals all wounds, but gives you a taste of seasickness. Bon Appetit!"
+  slot={<InventorySlot sprite={useBaseUrl("/img/mod/Tentacle_Kraken.png")} hoverable={true} count={1} tooltip="$95"/>}
+  unlockCost={0}
+  CCPV={5}
+  extra={<i>Heal 180 HP and give Seasickness effect for 25 seconds, that effect eat some HP and debuff speed stat -3.</i>}
+  audio="No custom audio"
+  />

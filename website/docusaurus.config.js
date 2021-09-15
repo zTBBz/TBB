@@ -8,6 +8,7 @@ module.exports = {
   favicon: 'img/favicon.ico',
   organizationName: 'zTBBz',
   projectName: 'TBB',
+  plugins: ['docusaurus-plugin-sass'],
   themeConfig: {
     hideableSidebar: true,
     prism: {
