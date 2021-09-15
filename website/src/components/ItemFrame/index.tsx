@@ -1,5 +1,4 @@
 import React from 'react';
-import InventorySlot, { Props as InventorySlotProps } from '../InventorySlot';
 import styles from './index.module.css';
 
 export type Props = {
@@ -10,10 +9,9 @@ export type Props = {
   CCPV?: React.ReactNode,
   extra?: React.ReactNode,
   audio?: React.ReactNode,
-  audio2?: React.ReactNode,
 }
 
-export default function ({title, description, slot, unlockCost, CCPV, extra, audio, audio2}: Props) : JSX.Element {
+export default function ({title, description, slot, unlockCost, CCPV, extra, audio}: Props) : JSX.Element {
 
   return (
     <div className={styles.container}>
@@ -24,9 +22,8 @@ export default function ({title, description, slot, unlockCost, CCPV, extra, aud
         {<b>Unlock Cost: </b>}{unlockCost}<br/>
         {<b>CCPV: </b>}{CCPV}
       </div>
-      <div className={styles.extra}>{extra}</div>
-      <div className={styles.audio}>{audio}</div>
-      <div className={styles.audio2}>{audio2}</div>
+      {extra && <div className={styles.extra}>{extra}</div>}
+      {audio && <div className={styles.audio}>{audio}</div>}
     </div>
   );
 }
