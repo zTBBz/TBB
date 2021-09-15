@@ -34,7 +34,7 @@ At the moment, Mod-Union contains a lot of traits, items and custom sounds, that
 </div>
 
 Current priority:
-1.  Moving main content of MTP and aToI to new version of RogueLibs. MTP - 23,91% aToI - 0%. (SMaD already finish)
+1.  Moving content of MTP and aToI to new version of RogueLibs.
 2.  Search pixel-artist for items sprites.
 3.  Refactoring RU desc. traits for MTP. Search pixel-artist for traits sprites.
 
