@@ -293,7 +293,6 @@ namespace TBB
             Item.rewardCount = 1;
             Item.healthChange = 15;
             Item.stackable = true;
-            Item.hasCharges = true;
             Item.goesInToolbar = true;
             Item.cantBeCloned = false;
         }
@@ -321,7 +320,6 @@ namespace TBB
             Item.rewardCount = 1;
             Item.healthChange = -75;
             Item.stackable = true;
-            Item.hasCharges = true;
             Item.goesInToolbar = true;
             Item.cantBeCloned = false;
         }
@@ -349,7 +347,6 @@ namespace TBB
             Item.rewardCount = 1;
             Item.healthChange = 180;
             Item.stackable = true;
-            Item.hasCharges = true;
             Item.goesInToolbar = true;
             Item.cantBeCloned = true;
         }
@@ -376,7 +373,6 @@ namespace TBB
             Item.initCount = 1;
             Item.rewardCount = 1;
             Item.stackable = true;
-            Item.hasCharges = true;
             Item.goesInToolbar = true;
             Item.cantBeCloned = false;
         }
@@ -398,7 +394,6 @@ namespace TBB
             Item.rewardCount = 1;
             Item.healthChange = 20;
             Item.stackable = true;
-            Item.hasCharges = true;
             Item.goesInToolbar = true;
             Item.cantBeCloned = false;
         }
@@ -425,7 +420,6 @@ namespace TBB
             Item.initCount = 1;
             Item.rewardCount = 1;
             Item.stackable = true;
-            Item.hasCharges = true;
             Item.goesInToolbar = true;
             Item.cantBeCloned = true;
         }
@@ -447,7 +441,6 @@ namespace TBB
             Item.rewardCount = 1;
             Item.healthChange = -15;
             Item.stackable = true;
-            Item.hasCharges = true;
             Item.goesInToolbar = true;
             Item.cantBeCloned = true;
         }
@@ -471,7 +464,6 @@ namespace TBB
             Item.rewardCount = 1;
             Item.healthChange = 35;
             Item.stackable = true;
-            Item.hasCharges = true;
             Item.goesInToolbar = true;
             Item.cantBeCloned = true;
         }
@@ -498,7 +490,6 @@ namespace TBB
             Item.initCount = 1;
             Item.rewardCount = 1;
             Item.stackable = true;
-            Item.hasCharges = true;
             Item.goesInToolbar = true;
             Item.cantBeCloned = true;
         }
@@ -522,7 +513,6 @@ namespace TBB
             Item.rewardCount = 3;
             Item.healthChange = 5;
             Item.stackable = true;
-            Item.hasCharges = true;
             Item.goesInToolbar = true;
             Item.cantBeCloned = true;
         }
@@ -550,7 +540,6 @@ namespace TBB
             Item.rewardCount = 1;
             Item.healthChange = -80;
             Item.stackable = true;
-            Item.hasCharges = true;
             Item.goesInToolbar = true;
             Item.cantBeCloned = true;
         }
@@ -573,7 +562,6 @@ namespace TBB
             Item.initCount = 1;
             Item.rewardCount = 1;
             Item.stackable = true;
-            Item.hasCharges = true;
             Item.goesInToolbar = true;
             Item.cantBeCloned = true;
         }
@@ -601,7 +589,6 @@ namespace TBB
             Item.rewardCount = 1;
             Item.healthChange = 99999;
             Item.stackable = true;
-            Item.hasCharges = true;
             Item.goesInToolbar = true;
             Item.cantBeCloned = false;
         }
@@ -629,7 +616,6 @@ namespace TBB
             Item.rewardCount = 2;
             Item.healthChange = 10;
             Item.stackable = true;
-            Item.hasCharges = true;
             Item.goesInToolbar = true;
             Item.cantBeCloned = true;
         }
@@ -656,7 +642,6 @@ namespace TBB
             Item.initCount = 1;
             Item.rewardCount = 1;
             Item.stackable = true;
-            Item.hasCharges = true;
             Item.goesInToolbar = true;
             Item.cantBeCloned = true;
         }
@@ -678,7 +663,6 @@ namespace TBB
             Item.rewardCount = 1;
             Item.healthChange = 30;
             Item.stackable = true;
-            Item.hasCharges = true;
             Item.goesInToolbar = true;
             Item.cantBeCloned = true;
         }
@@ -711,7 +695,6 @@ namespace TBB
             Item.initCount = 1;
             Item.rewardCount = 1;
             Item.stackable = true;
-            Item.hasCharges = true;
             Item.goesInToolbar = true;
             Item.cantBeCloned = false;
         }
