@@ -1,153 +1,88 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D9092510-FF9C-4FC3-AB8A-0D48FB312D39}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TBB</RootNamespace>
+
+    <!-- Project Properties -->
+
+    <!-- Header -->
     <AssemblyName>TBB</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <Deterministic>true</Deterministic>
+    <PackageId>$(AssemblyName)</PackageId>
+    <Version>0.1.0</Version>
+    <Authors>zTBBz</Authors>
+    <Company>$(Authors)</Company>
+    <Copyright></Copyright>
+
+    <!-- Title, Description, Tags -->
+    <Title>$(AssemblyName)</Title>
+    <Description>
+
+    </Description>
+    <PackageTags></PackageTags>
+
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="&quot;$(SolutionDir)\..\.events\PluginBuildEvents.exe&quot; &quot;$(TargetPath)&quot; &quot;Streets of Rogue&quot;" />
+  </Target>
+
   <ItemGroup>
     <Reference Include="0Harmony">
-      <HintPath>..\..\Libs\0Harmony.dll</HintPath>
+      <HintPath>..\..\.ref\static\0Harmony.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\Libs\Assembly-CSharp.dll</HintPath>
+      <HintPath>..\..\.ref\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="BepInEx">
-      <HintPath>..\..\Libs\BepInEx.dll</HintPath>
+      <HintPath>..\..\.ref\static\BepInEx.dll</HintPath>
     </Reference>
-    <Reference Include="netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Libs\netstandard.dll</HintPath>
+    <Reference Include="com.unity.multiplayer-hlapi.Runtime">
+      <HintPath>..\..\.ref\static\com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="netstandard">
+      <HintPath>..\..\.ref\static\netstandard.dll</HintPath>
     </Reference>
     <Reference Include="RogueLibsCore">
-      <HintPath>..\..\Libs\RogueLibsCore.dll</HintPath>
+      <HintPath>..\..\.ref\RogueLibsCore.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
     <Reference Include="UnityEngine">
-      <HintPath>..\..\Libs\UnityEngine.dll</HintPath>
+      <HintPath>..\..\.ref\static\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AnimationModule">
-      <HintPath>..\..\Libs\UnityEngine.AnimationModule.dll</HintPath>
+      <HintPath>..\..\.ref\static\UnityEngine.AnimationModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AudioModule">
-      <HintPath>..\..\Libs\UnityEngine.AudioModule.dll</HintPath>
+      <HintPath>..\..\.ref\static\UnityEngine.AudioModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>..\..\Libs\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>..\..\.ref\static\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Networking">
-      <HintPath>..\..\Libs\UnityEngine.Networking.dll</HintPath>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>..\..\.ref\static\UnityEngine.InputLegacyModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Physics2DModule">
-      <HintPath>..\..\Libs\UnityEngine.Physics2DModule.dll</HintPath>
+      <HintPath>..\..\.ref\static\UnityEngine.Physics2DModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>..\..\.ref\static\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIModule">
+      <HintPath>..\..\.ref\static\UnityEngine.UIModule.dll</HintPath>
     </Reference>
   </ItemGroup>
+
   <ItemGroup>
-    <Compile Include="Modules\aToI.cs" />
-    <Compile Include="Modules\Main.cs" />
-    <Compile Include="Modules\MTP.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
+    <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Modules\SMaD.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+
   <ItemGroup>
-    <EmbeddedResource Include="Properties\Resources.resx">
+    <EmbeddedResource Update="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Air_Support_Phone.bin" />
-    <None Include="Resources\Bag.bin" />
-    <None Include="Resources\Bag_Use.bin" />
-    <None Include="Resources\Black_Question.bin" />
-    <None Include="Resources\Blind_Mushroom.bin" />
-    <None Include="Resources\Blind_Mushroom_Use.bin" />
-    <None Include="Resources\BloodDonut_Use.bin" />
-    <None Include="Resources\Blood_Donut.bin" />
-    <None Include="Resources\Blood_Watermelon.bin" />
-    <None Include="Resources\BOOMCorn_Use.bin" />
-    <None Include="Resources\Boomkorn.bin" />
-    <None Include="Resources\Boom_Pumpkin.bin" />
-    <None Include="Resources\BotexLeg_Use.bin" />
-    <None Include="Resources\Botex_Chicken.bin" />
-    <None Include="Resources\Brain_Jellyfish.bin" />
-    <None Include="Resources\Brain_Jellyfish_Use.bin" />
-    <None Include="Resources\CIceCream_Use.bin" />
-    <None Include="Resources\Divine_Honey_Use.bin" />
-    <None Include="Resources\Evil_Cake.bin" />
-    <None Include="Resources\Evil_Cake_Use.bin" />
-    <None Include="Resources\Fire_Salamander_Heart_Use.bin" />
-    <None Include="Resources\FishOfLuck_Use.bin" />
-    <None Include="Resources\Fish_Fat.bin" />
-    <None Include="Resources\Grindstone.bin" />
-    <None Include="Resources\Heaven_Tears.bin" />
-    <None Include="Resources\Honey.bin" />
-    <None Include="Resources\JoCake.bin" />
-    <None Include="Resources\KC_Fuzzi.bin" />
-    <None Include="Resources\Kraken_Tentacle.bin" />
-    <None Include="Resources\LootBox1.bin" />
-    <None Include="Resources\LootBox2.bin" />
-    <None Include="Resources\LootBox3.bin" />
-    <None Include="Resources\Luck_Fish.bin" />
-    <None Include="Resources\NuclearBriefcase.bin" />
-    <None Include="Resources\OpenNuclearBriefcase.bin" />
-    <None Include="Resources\PortableAmmoDispenser.bin" />
-    <None Include="Resources\Portable_Barbecue_Active.bin" />
-    <None Include="Resources\Portable_Barbecue_Inactive.bin" />
-    <None Include="Resources\Salamandr_Heart.bin" />
-    <None Include="Resources\Steal_Apple.bin" />
-    <None Include="Resources\Steal_Apple_Use.bin" />
-    <None Include="Resources\Steel_Apple_Walk.bin" />
-    <None Include="Resources\Tears_Heaven_Use.bin" />
-    <None Include="Resources\tentacle_kraken.bin" />
-    <None Include="Resources\Thief_Bag.bin" />
-    <None Include="Resources\TitleScreenLogoM.bin" />
-    <None Include="Resources\Toolkit.bin" />
-    <None Include="Resources\Valery_Sablin_Non_A.bin" />
-    <None Include="Resources\Vent_IceCream.bin" />
-    <None Include="Resources\VoodooActive.bin" />
-    <None Include="Resources\VoodooBlank.bin" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
 </Project>
