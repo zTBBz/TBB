@@ -5,7 +5,9 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import InventorySlot from '@site/src/components/InventorySlot';
 
 import ItemFrame from '@site/src/components/ItemFrame';
+import ItemFrames from '@site/src/components/ItemFrames';
 
+<ItemFrames columns={2}>
 <ItemFrame title="Blood Donut"
   description="Doughnuts themselves are very nutritious, but only energetically, now imagine that there is a doughnut that will be nutritious for your blood, replenishing the number of red blood cells in it, but this all takes time and it is better not to move during the replenishment of red blood cells."
   slot={<InventorySlot sprite={useBaseUrl("/img/mod/Blood_Donut.png")} hoverable={true} count={1} tooltip="$45"/>}
@@ -64,3 +66,4 @@ import ItemFrame from '@site/src/components/ItemFrame';
   extra={<i>Heal 180 HP and give Seasickness effect for 25 seconds, that effect eat some HP and debuff speed stat -3.</i>}
   audio="No custom audio"
   />
+</ItemFrames>
