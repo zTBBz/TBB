@@ -46,7 +46,7 @@ namespace TBB
                                Russian = "Подозрительный торт"
                            }).WithDescription(new CustomNameInfo
                            {
-                               English = "Is it just me, or does this cake look a little suspicious? In any case, you have it.",
+                               English = "Is it just me, or does this cake look a little suspicious? In any case, you eat it.",
                                Russian = "Мне кажется или, этот торт выглядит немного подозрительно? В любом случае вам его есть."
                            })
                            .WithSprite(Properties.Resources.Evil_Cake)
@@ -120,7 +120,7 @@ namespace TBB
             builder = RogueLibs.CreateCustomItem<Brain_Jellyfish>()
                .WithName(new CustomNameInfo
                {
-                   English = "Brain jellyfish",
+                   English = "Brain Jellyfish",
                    Russian = "Мозговая медуза"
                }).WithDescription(new CustomNameInfo
                {
@@ -133,7 +133,7 @@ namespace TBB
             builder = RogueLibs.CreateCustomItem<BotexLeg>()
                .WithName(new CustomNameInfo
                {
-                   English = "Botex leg",
+                   English = "Botex Leg",
                    Russian = "Ботексная ножка"
                }).WithDescription(new CustomNameInfo
                {
@@ -947,7 +947,7 @@ namespace TBB
                         .WithDescription(new CustomNameInfo
                         {
                             English = "You drank KC drink",
-                            Russian = "Вы выпили KC газировку, больше не пейте, а то жопа слипнется"
+                            Russian = "Вы выпили KC газировку, больше не пейте, а то одно место слипнется"
                         });
         }
         public override int GetEffectTime() => 15;

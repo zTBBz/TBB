@@ -1,5 +1,17 @@
 # Introduction
 
-The entire structure of the Mod-Union is based on the average autonomy of the "republics" (aka. modules). Each republic can be updated either separately or together with all other republics. Each republic can be turned off in the mutator menu and turned back on there.
+Hi!
+That short introduction to mod
 
-Mod-Union will be actively developed, the development is carried out by one person, which is why the update frequency is not the highest, unfortunately. Also, the mod lacks sprite artists, or rather their presence would speed up updates, because the author has to draw sprites himself and also write code, and the number of required sprites grows exponentially from the code.
+
+**TBB** or **Traveler's Bag Build**, or **Union-mod** consist of modules or republics, i call republics.
+
+ All modules can disable/activated in mutator menu, they are highlighted color, so you won't get lost.
+
+**By now TBB has following modules:**
+
+1. **SMaD** - First my mod, old veteran, consist of food and drink items, all items very strange, mod sets a goal wean players use food by hotkey.  
+
+2. **MTP** - 
+
+3. **aToI** - Firstly, that mod-module was made by **Abbysssal**, but now that the most young module in **TBB**. Consist of items low strange.
