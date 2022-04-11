@@ -18,7 +18,7 @@ namespace TBB
         public static BepInEx.Logging.ManualLogSource logger;
         public const string pluginGuid = "ztbbz.streetsofrogue.tbb";
         public const string pluginName = "TBB";
-        public const string pluginVersion = "0.0.2";
+        public const string pluginVersion = "1.0.0";
         public void Awake()
         {
             //RogueFramework.DebugFlags |= DebugFlags.Names;
