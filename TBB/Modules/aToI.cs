@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Collections;
 using System.Reflection;
+using Object = UnityEngine.Object;
 
 namespace TBB
 {
@@ -184,35 +185,55 @@ namespace TBB
 			patcher.Prefix(typeof(SpawnerMain), nameof(SpawnerMain.SpawnParticleEffect),
 				new Type[4] { typeof(string), typeof(Vector3), typeof(float), typeof(Transform) });
 			patcher.Prefix(typeof(Explosion), nameof(Explosion.ExplosionHit));
+            patcher.Prefix(typeof(BrainUpdate), nameof(BrainUpdate.ContainsNearbyChunksObjects));
+            patcher.Prefix(typeof(BrainUpdate), nameof(BrainUpdate.TurnOffCollision));
 			patcher.Prefix(typeof(AudioHandler), nameof(AudioHandler.PlayClipAt));
-		}
+        }
 		public static void Gun_spawnBullet(InvItem myWeapon, Bullet __result)
 		{
 			VoodooActive voodoo = myWeapon.database.GetItem<VoodooActive>();
 			if (voodoo != null) voodoo.LastFiredBullet = __result;
 		}
-		public static bool suppress;
+		public static int nukesHappening;
 		public static bool SpawnerMain_SpawnWreckage(ref Item __result)
 		{
-			__result = new Item();
-			return !suppress;
+			if (nukesHappening > 0) __result = new Item();
+			return nukesHappening is 0;
 		}
-		public static bool SpawnerMain_SpawnWreckage2() => !suppress;
+		public static bool SpawnerMain_SpawnWreckage2() => nukesHappening is 0;
 		public static bool SpawnerMain_SpawnParticleEffect(ref GameObject __result)
 		{
-			__result = new GameObject();
-			return !suppress;
+            if (nukesHappening > 0) __result = new GameObject();
+			return nukesHappening is 0;
 		}
 		public static void AudioHandler_PlayClipAt(string clipName, ref float vol)
 		{
 			if (clipName == "ExplodeRidiculous") vol *= 5f;
 		}
 		internal static readonly FieldInfo canHit = typeof(Explosion).GetField("canHit", BindingFlags.Instance | BindingFlags.NonPublic);
+        public static bool BrainUpdate_ContainsNearbyChunksObjects(ref bool __result)
+        {
+            if (nukesHappening > 0)
+            {
+                __result = true;
+                return false;
+            }
+            return true;
+        }
+        public static bool BrainUpdate_TurnOffCollision(BrainUpdate __instance)
+        {
+            if (nukesHappening > 0)
+            {
+                __instance.TurnOnCollision();
+                return false;
+            }
+            return true;
+        }
 		public static bool Explosion_ExplosionHit(Explosion __instance, GameObject hitObject)
 		{
-			if (__instance.damage != 488755541) return true;
+			if (__instance.GetHook<NuclearBriefcaseExplosionHook>() is null) return true;
 			if ((float)canHit.GetValue(__instance) <= 0f) return false;
-			if (__instance.objectList.Contains(hitObject)) return false;
+            if (__instance.objectList.Contains(hitObject)) return false;
 			__instance.objectList.Add(hitObject);
 			if (hitObject.CompareTag("AgentSprite"))
 			{
@@ -225,13 +246,15 @@ namespace TBB
 					hitObject = hitObject.transform.Find("AgentHitboxColliders").transform.GetChild(0).GetComponent<AgentColliderBox>().objectSprite.go;
 				}
 			}
+            Agent Owner = __instance.agent;
 			ObjectSprite spr = hitObject.GetComponent<ObjectSprite>();
 			if (spr?.agent != null)
 			{
-				Agent Owner = __instance.agent;
 				Agent agent = spr.agent;
+                if (agent.ghost || agent.disappeared || agent.categories.Contains("Indestructible")) return true;
 				try
-				{
+                {
+                    agent.onCamera = true;
 					if (agent.isPlayer == 0)
 					{
 						GameController.gameController.stats.AddToStat(Owner, "Killed", 1);
@@ -255,28 +278,35 @@ namespace TBB
 					agent.resurrect = false;
 					agent.statusEffects.SetupDeath(__instance, false, true);
 					agent.statusEffects.Disappear();
-				}
+                    agent.DestroyMe();
+                    agent.DestroyMe(Owner);
+                }
 				catch { }
 			}
 			if (spr?.objectReal != null)
 			{
 				ObjectReal obj = spr?.objectReal;
-				try
-				{
-					obj.objectInvDatabase?.ClearInventory(false);
-					obj.specialInvDatabase?.ClearInventory(false);
-					obj.DestroyMe();
-				}
-				catch { }
-			}
+                // TODO: check for "Indestructible" (named hooks - soon in RL v3.5.0)
+                obj.onCamera = true;
+                obj.activeObject = true;
+                obj.DestroyMe();
+                obj.DestroyMe(Owner);
+            }
 			if (spr?.item != null)
-			{
+            {
+                if (spr.item.invItem.Categories.Contains("Indestructible")) return true;
+                spr.item.onCamera = true;
 				spr.item.DestroyMeFromClient();
-			}
+                spr.item.DestroyMe();
+                spr.item.DestroyMe(Owner);
+            }
 			if (hitObject.CompareTag("Fire"))
 			{
 				Fire fire = hitObject.GetComponent<Fire>();
-				fire.DestroyMe();
+				// TODO: check for "Indestructible" (named hooks - soon in RL v3.5.0)
+                fire.onCamera = true;
+                fire.DestroyMe();
+                fire.DestroyMe(Owner);
 			}
 			if (hitObject.CompareTag("Wall"))
 			{
@@ -503,11 +533,11 @@ namespace TBB
 			for (int i = 0; i < 10; i++)
 				explosion.gc.audioHandler.Play(explosion, "ExplodeRidiculous");
 
-			aToI.suppress = true;
+			aToI.nukesHappening++;
 			gc.tileInfo.clearingDoorWindowWalls = true;
 			explosion.agent = Owner;
 			explosion.destroySteel = true;
-			explosion.damage = 488755541;
+            explosion.AddHook<NuclearBriefcaseExplosionHook>();
 			explosion.circleCollider2D.enabled = true;
 			aToI.canHit.SetValue(explosion, 1.1f);
 
@@ -517,10 +547,10 @@ namespace TBB
 			yield return null;
 
 			const float time = 1f;
-			for (int i = 0; i < 240; i++)
+			for (int i = 0; i < 180; i++)
 			{
-				explosion.circleCollider2D.radius += 0.25f;
-				yield return new WaitForSeconds(time / 240f);
+				explosion.circleCollider2D.radius += 0.25f * 4f / 3f;
+				yield return new WaitForSeconds(time / 180f);
 			}
 
 			yield return new WaitForSeconds(0.5f);
@@ -528,10 +558,15 @@ namespace TBB
 			gc.audioHandler.MusicStop();
 
 			gc.tileInfo.clearingDoorWindowWalls = false;
-			aToI.suppress = false;
+			aToI.nukesHappening--;
 		}
-		public CustomTooltip TargetCursorText(Vector2 pos) => gc.nameDB.GetName("UseNuclearBriefcase", "Interface");
+
+        public CustomTooltip TargetCursorText(Vector2 pos) => gc.nameDB.GetName("UseNuclearBriefcase", "Interface");
 	}
+    public class NuclearBriefcaseExplosionHook : HookBase<PlayfieldObject>
+    {
+        protected override void Initialize() { }
+    }
 	[ItemCategories(RogueCategories.Supplies, RogueCategories.Technology, RogueCategories.Usable)]
 	public class LootBox : CustomItem, IItemUsable
 	{
