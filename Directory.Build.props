@@ -2,8 +2,8 @@
 
   <PropertyGroup>
 
-    <!-- Target .NET Framework 4.5.2 - latest suitable version -->
-    <TargetFramework>net452</TargetFramework>
+    <!-- Target .NET Framework 4.7.1 - latest suitable version -->
+    <TargetFramework>net471</TargetFramework>
 
     <!-- Enable latest C# features -->
     <Nullable>enable</Nullable>
