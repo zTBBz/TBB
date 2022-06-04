@@ -283,6 +283,7 @@ namespace TBB
             //sel.CreateRandomElement(rList, "EvilCake", 3);
         }
     }
+    [ItemCategories(RogueCategories.Food, RogueCategories.Defense)]
     public class Blind_Mushroom : CustomItem, IItemUsable
     {
         public override void SetupDetails()
@@ -310,6 +311,7 @@ namespace TBB
             return true;
         }
     }
+    [ItemCategories(RogueCategories.Food, RogueCategories.Defense)]
     public class Steal_Apple : CustomItem, IItemUsable
     {
         public override void SetupDetails()
@@ -337,6 +339,7 @@ namespace TBB
             return true;
         }
     }
+    [ItemCategories(RogueCategories.Food)]
     public class Tentacle_Kraken : CustomItem, IItemUsable
     {
         public override void SetupDetails()
@@ -364,6 +367,7 @@ namespace TBB
             return true;
         }
     }
+    [ItemCategories(RogueCategories.Food)]
     public class BOOMCorn : CustomItem, IItemUsable
     {
         public override void SetupDetails()
@@ -384,6 +388,7 @@ namespace TBB
             return true;
         }
     }
+    [ItemCategories(RogueCategories.Food)]
     public class Vent_IceCream : CustomItem, IItemUsable
     {
         public override void SetupDetails()
@@ -411,6 +416,7 @@ namespace TBB
             return true;
         }
     }
+    [ItemCategories(RogueCategories.Food)]
     public class BloodDonut : CustomItem, IItemUsable
     {
         public override void SetupDetails()
@@ -431,6 +437,7 @@ namespace TBB
             return true;
         }
     }
+    [ItemCategories(RogueCategories.Food)]
     public class Brain_Jellyfish : CustomItem, IItemUsable
     {
         public override void SetupDetails()
@@ -454,6 +461,7 @@ namespace TBB
             return true;
         }
     }
+    [ItemCategories(RogueCategories.Food, RogueCategories.Defense)]
     public class BotexLeg : CustomItem, IItemUsable
     {
         public override void SetupDetails()
@@ -481,6 +489,7 @@ namespace TBB
             return true;
         }
     }
+    [ItemCategories(RogueCategories.Food)]
     public class Boompkin : CustomItem, IItemUsable
     {
         public override void SetupDetails()
@@ -503,6 +512,7 @@ namespace TBB
             return true;
         }
     }
+    [ItemCategories(RogueCategories.Food, RogueCategories.Movement)]
     public class KC_Drink : CustomItem, IItemUsable
     {
         public override void SetupDetails()
@@ -530,6 +540,7 @@ namespace TBB
             return true;
         }
     }
+    [ItemCategories(RogueCategories.Food, RogueCategories.Defense)]
     public class Fire_Salamander_Heart : CustomItem, IItemUsable
     {
         public override void SetupDetails()
@@ -553,6 +564,7 @@ namespace TBB
             return true;
         }
     }
+    [ItemCategories(RogueCategories.Usable)]
     public class FishOfLuck : CustomItem, IItemUsable
     {
         public override void SetupDetails()
@@ -579,6 +591,7 @@ namespace TBB
             return true;
         }
     }
+    [ItemCategories(RogueCategories.Food, RogueCategories.Defense)]
     public class Tears_Heaven : CustomItem, IItemUsable
     {
         public override void SetupDetails()
@@ -606,6 +619,7 @@ namespace TBB
             return true;
         }
     }
+    [ItemCategories(RogueCategories.Food)]
     public class Fish_Oil : CustomItem, IItemUsable
     {
         public override void SetupDetails()
@@ -633,6 +647,7 @@ namespace TBB
             return true;
         }
     }
+    [ItemCategories(RogueCategories.Food)]
     public class Divine_Honey : CustomItem, IItemUsable
     {
         public override void SetupDetails()
@@ -653,6 +668,7 @@ namespace TBB
             return true;
         }
     }
+    [ItemCategories(RogueCategories.Food)]
     public class Juicy_Watermelon : CustomItem, IItemUsable
     {
         public override void SetupDetails()
@@ -686,6 +702,7 @@ namespace TBB
             return true;
         }
     }
+    [ItemCategories(RogueCategories.Food)]
     public class EvilCake : CustomItem, IItemUsable
     {
         public override void SetupDetails()
