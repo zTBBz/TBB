@@ -31,12 +31,13 @@ namespace TBB
             new MTP().Awake();
             new SMaD().Awake();
             new aToI().Awake();
-            int score_traits = MTP.Traits.Count;
+            new UBC().Awake();
+            /*int score_traits = MTP.Traits.Count;
             logger.LogWarning("[MTP]: Traits count: " + score_traits);
             int score_items = SMaD.Items.Count;
             logger.LogWarning("[SMaD]: Items count: " + score_items);
             int score_items2 = aToI.Items.Count;
-            logger.LogWarning("[aToI]: Items count: " + score_items2);
+            logger.LogWarning("[aToI]: Items count: " + score_items2);*/
             RogueLibs.CreateCustomName("SMaD_Off_colored", "Unlock", new CustomNameInfo
             {
                 English = "<color=#ff0000ff>Swith off [SMaD]</color>",
@@ -127,9 +128,40 @@ namespace TBB
                 English = "Changes all the items, etc. of the aToI module, depending on the name of the button",
                 Russian = "Изменяет все предметы и т.д aToI модуля в зависимости от названия кнопки"
             });
+            /*RogueLibs.CreateCustomName("UBC_Off_colored", "Unlock", new CustomNameInfo
+            {
+                English = "<color=#ff0000ff>Swith off [UBC]</color>",
+                Russian = "<color=#ff0000ff>Выключить [UBC]</color>"
+            });
+            RogueLibs.CreateCustomName("UBC_Off", "Unlock", new CustomNameInfo
+            {
+                English = "Swith off [UBC]",
+                Russian = "Выключить [UBC]"
+            });
+            RogueLibs.CreateCustomName("D_UBC_Off", "Unlock", new CustomNameInfo
+            {
+                English = "Changes all the items, etc. of the UBC module, depending on the name of the button",
+                Russian = "Изменяет все предметы и т.д UBC модуля в зависимости от названия кнопки"
+            });
+            RogueLibs.CreateCustomName("UBC_On_colored", "Unlock", new CustomNameInfo
+            {
+                English = "<color=#008000ff>Swith on [UBC]</color>",
+                Russian = "<color=#008000ff>Включить [UBC]</color>"
+            });
+            RogueLibs.CreateCustomName("UBC_On", "Unlock", new CustomNameInfo
+            {
+                English = "Swith on [UBC]",
+                Russian = "Включить [UBC]"
+            });
+            RogueLibs.CreateCustomName("D_UBC_On", "Unlock", new CustomNameInfo
+            {
+                English = "Changes all the items, etc. of the UBC module, depending on the name of the button",
+                Russian = "Изменяет все предметы и т.д UBC модуля в зависимости от названия кнопки"
+            });*/
             RogueLibs.CreateCustomUnlock(new SMaD_Switch());
             RogueLibs.CreateCustomUnlock(new MTP_Switch());
             RogueLibs.CreateCustomUnlock(new aToI_Switch());
+            //RogueLibs.CreateCustomUnlock(new UBC_Switch());
             RogueLibs.CreateCustomAudio("Bag_Use", Properties.Resources.Bag_Use, AudioType.OGGVORBIS);
             RogueLibs.CreateCustomAudio("Valery_Sablin_Non_A", Properties.Resources.Valery_Sablin_Non_A, AudioType.OGGVORBIS);
         }
@@ -313,6 +345,65 @@ namespace TBB
             }
         }
     }
+    /*public class UBC_Switch : MutatorUnlock
+    {
+        public UBC_Switch() : base("UBC_Switch", true)
+        {
+            SortingOrder = -50;
+            IgnoreStateSorting = true;
+        }
+        public override void OnPushedButton()
+        {
+            if (UBC.Items[0].IsAvailable)
+            {
+                UBC.SetActive(false);
+            }
+            else
+                UBC.SetActive(true);
+            UpdateButton();
+            UpdateMenu();
+        }
+        public override void UpdateButton()
+        {
+            base.UpdateButton();
+            if (aToI.Items[0].IsAvailable)
+                Text = gc.nameDB.GetName("UBC_Off_colored", "Unlock");
+            else Text = gc.nameDB.GetName("UBC_On_colored", "Unlock");
+        }
+        public override string GetFancyName()
+        {
+            if (UBC.Items[0].IsAvailable)
+            {
+                return gc.nameDB.GetName("UBC_Off_colored", "Unlock");
+            }
+            else
+            {
+                return gc.nameDB.GetName("UBC_On_colored", "Unlock");
+            }
+        }
+        public override string GetName()
+        {
+            if (UBC.Items[0].IsAvailable)
+            {
+                return gc.nameDB.GetName("UBC_Off", "Unlock");
+            }
+            else
+            {
+                return gc.nameDB.GetName("UBC_On", "Unlock");
+            }
+        }
+        public override string GetDescription()
+        {
+            if (UBC.Items[0].IsAvailable)
+            {
+                return gc.nameDB.GetName("D_UBC_Off", "Unlock");
+            }
+            else
+            {
+                return gc.nameDB.GetName("D_UBC_On", "Unlock");
+            }
+        }
+    }*/
     public class Thief_Bag_Low : CustomItem, IItemUsable
     {
         [RLSetup]
