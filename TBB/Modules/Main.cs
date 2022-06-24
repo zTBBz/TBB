@@ -18,7 +18,7 @@ namespace TBB
         public static BaseUnityPlugin MainInstance = null!;
         public const string pluginGuid = "ztbbz.streetsofrogue.tbb";
         public const string pluginName = "TBB";
-        public const string pluginVersion = "1.0.0";
+        public const string pluginVersion = "1.1.0";
         public static new ManualLogSource Logger = null!;
         public void Awake()
         {
