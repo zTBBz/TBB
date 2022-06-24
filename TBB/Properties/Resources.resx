@@ -160,6 +160,15 @@
   <data name="Botex_Chicken" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Botex_Chicken.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="BotsFirstNames" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BotsFirstNames.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="BotsRareNames" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BotsRareNames.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="BotsTwoNames" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BotsTwoNames.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
   <data name="Brain_Jellyfish" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Brain_Jellyfish.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -252,9 +261,6 @@
   </data>
   <data name="Toolkit" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Toolkit.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="Valery_Sablin_Non_A" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Valery_Sablin_Non_A.ogg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Vent_IceCream" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Vent_Icecream.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

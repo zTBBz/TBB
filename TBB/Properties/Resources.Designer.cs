@@ -19,7 +19,7 @@ namespace TBB.Properties {
     // с помощью такого средства, как ResGen или Visual Studio.
     // Чтобы добавить или удалить член, измените файл .ResX и снова запустите ResGen
     // с параметром /str или перестройте свой проект VS.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -197,6 +197,160 @@ namespace TBB.Properties {
             get {
                 object obj = ResourceManager.GetObject("BotexLeg_Use", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Abbysssal
+        ///Abbott
+        ///Abe
+        ///Addison
+        ///Adrian
+        ///Aiken
+        ///Ainsley
+        ///Al
+        ///Alan
+        ///Alaric
+        ///Alban
+        ///Albert
+        ///Albion
+        ///Aldrich
+        ///Alec
+        ///Alex
+        ///Alexander
+        ///Alexis
+        ///Alf
+        ///Alfie
+        ///Alfred
+        ///Alger
+        ///Algernon
+        ///Alick
+        ///Allan
+        ///Allen
+        ///Alton
+        ///Alvin
+        ///Ambrose
+        ///Andrew
+        ///Andy
+        ///Anthony
+        ///Archer
+        ///Armstrong
+        ///Arnold
+        ///Ashley
+        ///Aston
+        ///Atwater
+        ///Aubrey
+        ///Austin
+        ///Avery
+        ///Bailey
+        ///Baldwin
+        ///Barclay
+        ///Barrett
+        ///Barnaby
+        ///Bartholomew
+        ///Barton
+        ///Basil
+        ///Baxter
+        ///Baz
+        ///Benedict
+        ///Benjamin
+        ///Bennett
+        ///Benson
+        ///Bentley
+        ///Berkley
+        ///Bernard
+        ///Bert
+        ///Bill
+        ///Blake
+        ///Bob
+        ///Bobby
+        ///Bond
+        ///Brad
+        ///Brad [остаток строки не уместился]&quot;;.
+        /// </summary>
+        internal static string BotsFirstNames {
+            get {
+                return ResourceManager.GetString("BotsFirstNames", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Todd Howard
+        ///Matt Dabrowski
+        ///Abbysssal ?
+        ///T.B.B
+        ///Exhaustoff
+        ///Kevin Systrom
+        ///Floppa Katze
+        ///Ted Bunny.
+        /// </summary>
+        internal static string BotsRareNames {
+            get {
+                return ResourceManager.GetString("BotsRareNames", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Abramson
+        ///Adamson
+        ///Adderiy
+        ///Addington
+        ///Adrian
+        ///Albertson
+        ///Aldridge
+        ///Allford
+        ///Alsopp
+        ///Anderson
+        ///Andrews
+        ///Archibald
+        ///Arnold
+        ///Arthurs
+        ///Atcheson
+        ///Attwood
+        ///Audley
+        ///Austin
+        ///Ayrton
+        ///Babcock
+        ///Backer
+        ///Baldwin
+        ///Bargeman
+        ///Barnes
+        ///Barrington
+        ///Bawerman
+        ///Becker
+        ///Benson
+        ///Berrington
+        ///Birch
+        ///Bishop
+        ///Black
+        ///Blare
+        ///Blomfield
+        ///Boolman
+        ///Bootman
+        ///Bosworth
+        ///Bradberry
+        ///Bradshaw
+        ///Brickman
+        ///Brooks
+        ///Brown
+        ///Bush
+        ///Calhoun
+        ///Campbell
+        ///Carey
+        ///Carrington
+        ///Carroll
+        ///Carter
+        ///Chandter
+        ///Chapman
+        ///Charlson
+        ///Chesterton
+        ///Clapton
+        ///Clifford
+        ///Coleman        /// [остаток строки не уместился]&quot;;.
+        /// </summary>
+        internal static string BotsTwoNames {
+            get {
+                return ResourceManager.GetString("BotsTwoNames", resourceCulture);
             }
         }
         
@@ -506,16 +660,6 @@ namespace TBB.Properties {
         internal static byte[] Toolkit {
             get {
                 object obj = ResourceManager.GetObject("Toolkit", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Byte[].
-        /// </summary>
-        internal static byte[] Valery_Sablin_Non_A {
-            get {
-                object obj = ResourceManager.GetObject("Valery_Sablin_Non_A", resourceCulture);
                 return ((byte[])(obj));
             }
         }
