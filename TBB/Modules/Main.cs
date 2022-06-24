@@ -7,6 +7,7 @@ using HarmonyLib;
 using System.Reflection.Emit;
 using System.Collections.Generic;
 using System.IO;
+using BepInEx.Logging;
 
 namespace TBB
 {
@@ -14,24 +15,27 @@ namespace TBB
     [BepInDependency(RogueLibs.GUID, "3.0")]
     public class Main : BaseUnityPlugin
     {
-        public static BaseUnityPlugin MainInstance;
-        public static BepInEx.Logging.ManualLogSource logger;
+        public static BaseUnityPlugin MainInstance = null!;
         public const string pluginGuid = "ztbbz.streetsofrogue.tbb";
         public const string pluginName = "TBB";
         public const string pluginVersion = "1.0.0";
+        public static new ManualLogSource Logger = null!;
         public void Awake()
         {
+            Logger = base.Logger;
+            //Main.Logger.LogWarning("123");
+
             //RogueFramework.DebugFlags |= DebugFlags.Names;
             //RogueFramework.DebugFlags |= DebugFlags.Unlocks;
             RogueLibs.LoadFromAssembly();
             RoguePatcher Patcher = new RoguePatcher(this);
             //Patcher.Postfix(typeof(LogoMenu), "LogoAnimation");
             MainInstance = this;
-            logger = Logger;
+            //logger = Logger;
             new MTP().Awake();
             new SMaD().Awake();
             new aToI().Awake();
-            new UBC().Awake();
+            new UBS().Awake();
             /*int score_traits = MTP.Traits.Count;
             logger.LogWarning("[MTP]: Traits count: " + score_traits);
             int score_items = SMaD.Items.Count;
@@ -128,42 +132,41 @@ namespace TBB
                 English = "Changes all the items, etc. of the aToI module, depending on the name of the button",
                 Russian = "Изменяет все предметы и т.д aToI модуля в зависимости от названия кнопки"
             });
-            /*RogueLibs.CreateCustomName("UBC_Off_colored", "Unlock", new CustomNameInfo
+            /*RogueLibs.CreateCustomName("UBS_Off_colored", "Unlock", new CustomNameInfo
             {
-                English = "<color=#ff0000ff>Swith off [UBC]</color>",
-                Russian = "<color=#ff0000ff>Выключить [UBC]</color>"
+                English = "<color=#ff0000ff>Swith off [UBS]</color>",
+                Russian = "<color=#ff0000ff>Выключить [UBS]</color>"
             });
-            RogueLibs.CreateCustomName("UBC_Off", "Unlock", new CustomNameInfo
+            RogueLibs.CreateCustomName("UBS_Off", "Unlock", new CustomNameInfo
             {
-                English = "Swith off [UBC]",
-                Russian = "Выключить [UBC]"
+                English = "Swith off [UBS]",
+                Russian = "Выключить [UBS]"
             });
-            RogueLibs.CreateCustomName("D_UBC_Off", "Unlock", new CustomNameInfo
+            RogueLibs.CreateCustomName("D_UBS_Off", "Unlock", new CustomNameInfo
             {
-                English = "Changes all the items, etc. of the UBC module, depending on the name of the button",
-                Russian = "Изменяет все предметы и т.д UBC модуля в зависимости от названия кнопки"
+                English = "Changes all the items, etc. of the UBS module, depending on the name of the button",
+                Russian = "Изменяет все предметы и т.д UBS модуля в зависимости от названия кнопки"
             });
-            RogueLibs.CreateCustomName("UBC_On_colored", "Unlock", new CustomNameInfo
+            RogueLibs.CreateCustomName("UBS_On_colored", "Unlock", new CustomNameInfo
             {
-                English = "<color=#008000ff>Swith on [UBC]</color>",
-                Russian = "<color=#008000ff>Включить [UBC]</color>"
+                English = "<color=#008000ff>Swith on [UBS]</color>",
+                Russian = "<color=#008000ff>Включить [UBS]</color>"
             });
-            RogueLibs.CreateCustomName("UBC_On", "Unlock", new CustomNameInfo
+            RogueLibs.CreateCustomName("UBS_On", "Unlock", new CustomNameInfo
             {
-                English = "Swith on [UBC]",
-                Russian = "Включить [UBC]"
+                English = "Swith on [UBS]",
+                Russian = "Включить [UBS]"
             });
-            RogueLibs.CreateCustomName("D_UBC_On", "Unlock", new CustomNameInfo
+            RogueLibs.CreateCustomName("D_UBS_On", "Unlock", new CustomNameInfo
             {
-                English = "Changes all the items, etc. of the UBC module, depending on the name of the button",
-                Russian = "Изменяет все предметы и т.д UBC модуля в зависимости от названия кнопки"
+                English = "Changes all the items, etc. of the UBS module, depending on the name of the button",
+                Russian = "Изменяет все предметы и т.д UBS модуля в зависимости от названия кнопки"
             });*/
             RogueLibs.CreateCustomUnlock(new SMaD_Switch());
             RogueLibs.CreateCustomUnlock(new MTP_Switch());
             RogueLibs.CreateCustomUnlock(new aToI_Switch());
-            //RogueLibs.CreateCustomUnlock(new UBC_Switch());
+            //RogueLibs.CreateCustomUnlock(new UBS_Switch());
             RogueLibs.CreateCustomAudio("Bag_Use", Properties.Resources.Bag_Use, AudioType.OGGVORBIS);
-            RogueLibs.CreateCustomAudio("Valery_Sablin_Non_A", Properties.Resources.Valery_Sablin_Non_A, AudioType.OGGVORBIS);
         }
     }
     public class SMaD_Switch : MutatorUnlock
@@ -345,21 +348,21 @@ namespace TBB
             }
         }
     }
-    /*public class UBC_Switch : MutatorUnlock
+    /*public class UBS_Switch : MutatorUnlock
     {
-        public UBC_Switch() : base("UBC_Switch", true)
+        public UBS_Switch() : base("UBS_Switch", true)
         {
             SortingOrder = -50;
             IgnoreStateSorting = true;
         }
         public override void OnPushedButton()
         {
-            if (UBC.Items[0].IsAvailable)
+            if (UBS.Items[0].IsAvailable)
             {
-                UBC.SetActive(false);
+                UBS.SetActive(false);
             }
             else
-                UBC.SetActive(true);
+                UBS.SetActive(true);
             UpdateButton();
             UpdateMenu();
         }
@@ -367,40 +370,40 @@ namespace TBB
         {
             base.UpdateButton();
             if (aToI.Items[0].IsAvailable)
-                Text = gc.nameDB.GetName("UBC_Off_colored", "Unlock");
-            else Text = gc.nameDB.GetName("UBC_On_colored", "Unlock");
+                Text = gc.nameDB.GetName("UBS_Off_colored", "Unlock");
+            else Text = gc.nameDB.GetName("UBS_On_colored", "Unlock");
         }
         public override string GetFancyName()
         {
-            if (UBC.Items[0].IsAvailable)
+            if (UBS.Items[0].IsAvailable)
             {
-                return gc.nameDB.GetName("UBC_Off_colored", "Unlock");
+                return gc.nameDB.GetName("UBS_Off_colored", "Unlock");
             }
             else
             {
-                return gc.nameDB.GetName("UBC_On_colored", "Unlock");
+                return gc.nameDB.GetName("UBS_On_colored", "Unlock");
             }
         }
         public override string GetName()
         {
-            if (UBC.Items[0].IsAvailable)
+            if (UBS.Items[0].IsAvailable)
             {
-                return gc.nameDB.GetName("UBC_Off", "Unlock");
+                return gc.nameDB.GetName("UBS_Off", "Unlock");
             }
             else
             {
-                return gc.nameDB.GetName("UBC_On", "Unlock");
+                return gc.nameDB.GetName("UBS_On", "Unlock");
             }
         }
         public override string GetDescription()
         {
-            if (UBC.Items[0].IsAvailable)
+            if (UBS.Items[0].IsAvailable)
             {
-                return gc.nameDB.GetName("D_UBC_Off", "Unlock");
+                return gc.nameDB.GetName("D_UBS_Off", "Unlock");
             }
             else
             {
-                return gc.nameDB.GetName("D_UBC_On", "Unlock");
+                return gc.nameDB.GetName("D_UBS_On", "Unlock");
             }
         }
     }*/
@@ -585,47 +588,6 @@ namespace TBB
             }
             Inventory.AddItem(pool[0]);
             Inventory.AddItem(selected);
-            int chance = new System.Random().Next(100);
-            if (chance < 1) // 1%
-                Inventory.AddItem("Sablin_Item", 1);
-            Count--;
-            gc.audioHandler.Play(Owner, "Bag_Use");
-            return true;
-        }
-    }
-    public class Sablin_Item : CustomItem, IItemUsable
-    {
-        [RLSetup]
-        public static void Setup()
-        {
-            RogueLibs.CreateCustomItem<Sablin_Item>()
-           .WithName(new CustomNameInfo
-           {
-               English = "<color=#ff0000>Click</color>",
-               Russian = "<color=#ff0000>Кликни</color>"
-           })
-           .WithDescription(new CustomNameInfo
-           {
-               English = "CLICK CLICK CLICK CLICK",
-               Russian = "КЛИКНИ КЛИКНИ КЛИКНИ КЛИКНИ"
-           })
-           .WithSprite(Properties.Resources.Black_Question);
-        }
-        public override void SetupDetails()
-        {
-            Item.itemType = ItemTypes.Tool;
-            Item.itemValue = 0;
-            Item.initCount = 1;
-            Item.rewardCount = 1;
-            Item.stackable = true;
-            Item.hasCharges = true;
-            Item.goesInToolbar = true;
-            Item.cantBeCloned = false;
-        }
-        public bool UseItem()
-        {
-            Count--;
-            gc.audioHandler.Play(Owner, "Valery_Sablin_Non_A");
             return true;
         }
     }
