@@ -4,8 +4,6 @@
 # **Introduction**
 
 Hi!
-That short introduction to mod
-
 
 **TBB** or **Traveler's Bag Build**, or **Union-mod** consist of modules or republics, i call republics.
 
