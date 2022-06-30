@@ -35,7 +35,7 @@ module.exports = {
         },
         {
           type: 'doc',
-          docId: '1.1.0 - 1.1.1',
+          docId: 'Updates/1.1.0 - 1.1.1',
           position: 'left',
           label: 'Last update',
         },
