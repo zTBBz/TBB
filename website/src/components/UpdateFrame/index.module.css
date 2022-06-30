@@ -1,0 +1,28 @@
+.container {
+  display: grid;
+  font-family: "Munro";
+  border: solid 8px;
+  border-image: url("./assets/border-light.png") 24 / 12px round;
+}
+[data-theme="dark"] .container {
+  border-image: url("./assets/border.png") 24 / 12px round;
+}
+.title {
+  grid-row: 1;
+  grid-column: 1;
+  font-size: 1.75em;
+  font-weight: 800;
+  padding: 1rem;
+  border-bottom: solid 4px var(--ifm-font-color-base);
+}
+.description {
+  grid-row: 2 / 3;
+  grid-column: 1;
+  padding: 1rem;
+}
+.extra {
+  grid-row: 4;
+  grid-column: 1;
+  padding: 1rem;
+  border-top: solid 4px var(--ifm-font-color-base);
+}

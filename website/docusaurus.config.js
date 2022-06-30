@@ -10,7 +10,11 @@ module.exports = {
   projectName: 'TBB',
   plugins: ['docusaurus-plugin-sass'],
   themeConfig: {
-    hideableSidebar: true,
+    docs: {
+      sidebar: {
+        hideable: true,
+      },
+    },
     prism: {
       theme: require('prism-react-renderer/themes/dracula'),
       additionalLanguages: ['clike', 'csharp', 'bash'],
@@ -30,6 +34,12 @@ module.exports = {
           label: 'Introduction',
         },
         {
+          type: 'doc',
+          docId: '1.1.0 - 1.1.1',
+          position: 'left',
+          label: 'Last update',
+        },
+        {
           href: 'https://github.com/zTBBz/TBB',
           position: 'right',
           className: 'header-github-link',
@@ -46,6 +56,10 @@ module.exports = {
             {
               label: 'Introduction',
               to: '/docs/intro',
+            },
+            {
+              label: 'Last update',
+              to: '/docs/Updates/1.1.0 - 1.1.1',
             },
           ],
         },
@@ -68,6 +82,10 @@ module.exports = {
             {
               label: 'GitHub',
               href: 'https://github.com/zTBBz/TBB',
+            },
+            {
+              label: 'Me in Discord',
+              href: 'https://discordapp.com/users/580833779371868161/',
             },
           ],
         },

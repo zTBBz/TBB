@@ -1,18 +1,21 @@
-# **WARNING!** 
-### TBB (Mod-union) - unpredictable, very strange and problematic mod, which is made by a person with low programming and english knowledge with crooked hands!  
+# Introduction
 
-# **Introduction**
+:::danger WARNING!
+TBB (Mod-union) - unpredictable, very strange and problematic mod, which is made by a person with low programming and english knowledge and with crooked hands!
+:::
 
-Hi!
-
-**TBB** or **Traveler's Bag Build**, or **Union-mod** consist of modules or republics, i call republics.
+:::info Module system
+**TBB** or **Traveler's Bag Build**, or **Union-mod** consist of modules.
 
  All modules can disable/activated in mutator menu, they are highlighted color, so you won't get lost.
+:::
 
-**By now TBB has following modules:**
+**TBB modules:**
 
-1. **SMaD** - First my mod, old veteran, consist of food and drink items, all items very strange, mod sets a goal wean players use food by hotkey.  
+1. **SMaD** - Module by **zTBBz**. Module for food and etc items. Module sets a goal wean players use food by hotkey.  
 
-2. **MTP** - second my mod, consist of traits for more convenient creation of custom characters and variation of gameplay.
+2. **MTP** - Module by **zTBBz**. Module for traits, for more convenient creation of custom characters and etc.
 
-3. **aToI** - Firstly, that mod-module was made by **Abbysssal**, but now that the most young module in **TBB**. Consist of items low strange.
+3. **aToI** - Mod by **Abbysssal** and transmitted how module in **TBB**. Module for other items.
+
+4. **UBS** - Module by **zTBBz**. Added 24.06.2022 with 1.0.0 update. Module for manipulation with NPC.
