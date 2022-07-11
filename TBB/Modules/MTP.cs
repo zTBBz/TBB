@@ -65,8 +65,8 @@ namespace TBB
             })
             .WithDescription(new CustomNameInfo
             {
-                    English = "Your father is a former military man, it's no secret that for all soldiers you are a native rookie",
-                    Russian = "Ваш отец бывший военный, никому уже не секрет что для всех солдат вы родной салага."
+                    English = "Your father is a former military man, it's no secret that for all soldiers you are a native rookie. <color=#ff0000ff>[Every new floor +30 Ammo Box]</color>",
+                    Russian = "Ваш отец бывший военный, никому уже не секрет что для всех солдат вы родной салага. <color=#ff0000ff>[Каждый этаж +30 Ящик с боеприпасами]</color>."
             });
             unlock = new TraitUnlock("LoyalTo_Mafia") { UnlockCost = 0, CharacterCreationCost = 4 };
             Traits.Add(unlock);
@@ -78,8 +78,8 @@ namespace TBB
             })
             .WithDescription(new CustomNameInfo
             {
-                English = "The mafia saw you eating spaghetti downtown one time. Ever since, you have carried their undying respect and loyalty.<color=#ff0000ff>[Every new floor +30 Ammo Box]</color>",
-                Russian = "Будучи в деловом центре вы попробовали спагетти, с тех пор когда вас видят мафиози они признают вас истинным ценителем спаггети.<color=#ff0000ff>[Каждый этаж +30 Ящик с боеприпасами]</color>."
+                English = "The mafia saw you eating spaghetti downtown one time. Ever since, you have carried their undying respect and loyalty.",
+                Russian = "Будучи в деловом центре вы попробовали спагетти, с тех пор когда вас видят мафиози они признают вас истинным ценителем спаггети."
             });
             unlock = new TraitUnlock("AlignedTo_Thief") { UnlockCost = 0, CharacterCreationCost = 5 };
             Traits.Add(unlock);

@@ -1071,7 +1071,7 @@ namespace TBB
                             Russian = "<color=#000000>Оно скоро переродится...</color>"
                         });
         }
-        public override int GetEffectTime() => 9999;
+        public override int GetEffectTime() => 999;
         public override int GetEffectHate() => 5;
         public override void OnAdded()
         {

@@ -188,7 +188,7 @@ namespace TBB
 		}
 		public static void Gun_spawnBullet(InvItem myWeapon, Bullet __result)
 		{
-			VoodooActive voodoo = myWeapon.database.GetItem<VoodooActive>();
+			VoodooActive voodoo = myWeapon?.database?.GetItem<VoodooActive>();
 			if (voodoo != null) voodoo.LastFiredBullet = __result;
 		}
 		public static bool suppress;
