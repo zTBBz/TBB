@@ -346,7 +346,8 @@ namespace TBB.Properties {
         ///Chesterton
         ///Clapton
         ///Clifford
-        ///Coleman        /// [остаток строки не уместился]&quot;;.
+        ///Coleman
+        /// [остаток строки не уместился]&quot;;.
         /// </summary>
         internal static string BotsTwoNames {
             get {
@@ -594,6 +595,65 @@ namespace TBB.Properties {
             }
         }
         
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] Stalker_Bot {
+            get {
+                object obj = ResourceManager.GetObject("Stalker_Bot", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        internal static byte[] Cutter_Bot1
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("Cutter_Bot1", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        internal static byte[] Spidgren_Bot1
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("Spidgren_Bot1", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        internal static byte[] Spidgren_Bot2
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("Spidgren_Bot2", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        internal static byte[] Kamikaze_Bot
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("Kamikaze_Bot", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        internal static byte[] Cutter_Bot2
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("Cutter_Bot2", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+
+        internal static byte[] Border_Bot_Rusty
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("Border_Bot_Rusty", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Byte[].
         /// </summary>

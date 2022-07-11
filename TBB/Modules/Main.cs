@@ -18,30 +18,62 @@ namespace TBB
         public static BaseUnityPlugin MainInstance = null!;
         public const string pluginGuid = "ztbbz.streetsofrogue.tbb";
         public const string pluginName = "TBB";
-        public const string pluginVersion = "1.1.1";
+        public const string pluginVersion = "1.2.0";
         public static new ManualLogSource Logger = null!;
+        //private VersionText modulesDisplay;
         public void Awake()
         {
+            RogueLibs.CreateVersionText("TBB_id", "TBB v" + pluginVersion);
+            //modulesDisplay = RogueLibs.CreateVersionText("Modules_id", null);
+            RogueLibs.CreateCustomName("UBS_Names_Display_Off", "Interface", new CustomNameInfo
+            {
+                English = "<color=#ff0000ff>UBS Names</color>",
+                Russian = "<color=#ff0000ff>Имена UBS</color>"
+            });
+            RogueLibs.CreateCustomName("UBS_Names_Display_On", "Interface", new CustomNameInfo
+            {
+                English = "<color=#008000ff>UBS Names</color>",
+                Russian = "<color=#008000ff>Имена UBS</color>"
+            });
+            RogueLibs.CreateCustomName("SMaD_Display_Off", "Interface", new CustomNameInfo
+            {
+                English = "<color=#ff0000ff>SMaD</color>",
+                Russian = "<color=#ff0000ff>SMaD</color>"
+            });
+            RogueLibs.CreateCustomName("SMaD_Display_On", "Interface", new CustomNameInfo
+            {
+                English = "<color=#008000ff>SMaD</color>",
+                Russian = "<color=#008000ff>SMaD</color>"
+            });
+            RogueLibs.CreateCustomName("MTP_Display_Off", "Interface", new CustomNameInfo
+            {
+                English = "<color=#ff0000ff>MTP</color>",
+                Russian = "<color=#ff0000ff>MTP</color>"
+            });
+            RogueLibs.CreateCustomName("MTP_Display_On", "Interface", new CustomNameInfo
+            {
+                English = "<color=#008000ff>MTP</color>",
+                Russian = "<color=#008000ff>MTP</color>"
+            });
+            RogueLibs.CreateCustomName("aToI_Display_Off", "Interface", new CustomNameInfo
+            {
+                English = "<color=#ff0000ff>aToI</color>",
+                Russian = "<color=#ff0000ff>aToI</color>"
+            });
+            RogueLibs.CreateCustomName("aToI_Display_On", "Interface", new CustomNameInfo
+            {
+                English = "<color=#008000ff>aToI</color>",
+                Russian = "<color=#008000ff>aToI</color>"
+            });
             Logger = base.Logger;
-            //Main.Logger.LogWarning("123");
-
-            //RogueFramework.DebugFlags |= DebugFlags.Names;
-            //RogueFramework.DebugFlags |= DebugFlags.Unlocks;
             RogueLibs.LoadFromAssembly();
             RoguePatcher Patcher = new RoguePatcher(this);
             //Patcher.Postfix(typeof(LogoMenu), "LogoAnimation");
             MainInstance = this;
-            //logger = Logger;
             new MTP().Awake();
             new SMaD().Awake();
             new aToI().Awake();
             new UBS().Awake();
-            /*int score_traits = MTP.Traits.Count;
-            logger.LogWarning("[MTP]: Traits count: " + score_traits);
-            int score_items = SMaD.Items.Count;
-            logger.LogWarning("[SMaD]: Items count: " + score_items);
-            int score_items2 = aToI.Items.Count;
-            logger.LogWarning("[aToI]: Items count: " + score_items2);*/
             RogueLibs.CreateCustomName("SMaD_Off_colored", "Unlock", new CustomNameInfo
             {
                 English = "<color=#ff0000ff>Swith off [SMaD]</color>",
@@ -132,42 +164,46 @@ namespace TBB
                 English = "Changes all the items, etc. of the aToI module, depending on the name of the button",
                 Russian = "Изменяет все предметы и т.д aToI модуля в зависимости от названия кнопки"
             });
-            /*RogueLibs.CreateCustomName("UBS_Off_colored", "Unlock", new CustomNameInfo
+            RogueLibs.CreateCustomName("UBS_Off_colored", "Unlock", new CustomNameInfo
             {
-                English = "<color=#ff0000ff>Swith off [UBS]</color>",
-                Russian = "<color=#ff0000ff>Выключить [UBS]</color>"
+                English = "<color=#ff0000ff>Swith off NPC renaming [UBS]</color>",
+                Russian = "<color=#ff0000ff>Выключить переименование НПС [UBS]</color>"
             });
             RogueLibs.CreateCustomName("UBS_Off", "Unlock", new CustomNameInfo
             {
-                English = "Swith off [UBS]",
-                Russian = "Выключить [UBS]"
+                English = "Swith off NPC renaming [UBS]",
+                Russian = "Выключить переименование НПС [UBS]"
             });
             RogueLibs.CreateCustomName("D_UBS_Off", "Unlock", new CustomNameInfo
             {
-                English = "Changes all the items, etc. of the UBS module, depending on the name of the button",
-                Russian = "Изменяет все предметы и т.д UBS модуля в зависимости от названия кнопки"
+                English = "Changes parameter renaming NPC in UBS module, depending on the name of the button",
+                Russian = "Изменяет параметр переименования НПС в UBS модуле в зависимости от названия кнопки"
             });
             RogueLibs.CreateCustomName("UBS_On_colored", "Unlock", new CustomNameInfo
             {
-                English = "<color=#008000ff>Swith on [UBS]</color>",
-                Russian = "<color=#008000ff>Включить [UBS]</color>"
+                English = "<color=#008000ff>Swith on NPC renaming [UBS]</color>",
+                Russian = "<color=#008000ff>Включить переименование НПС [UBS]</color>"
             });
             RogueLibs.CreateCustomName("UBS_On", "Unlock", new CustomNameInfo
             {
-                English = "Swith on [UBS]",
-                Russian = "Включить [UBS]"
+                English = "Swith on NPC renaming [UBS]",
+                Russian = "Включить переименование НПС [UBS]"
             });
             RogueLibs.CreateCustomName("D_UBS_On", "Unlock", new CustomNameInfo
             {
-                English = "Changes all the items, etc. of the UBS module, depending on the name of the button",
-                Russian = "Изменяет все предметы и т.д UBS модуля в зависимости от названия кнопки"
-            });*/
+                English = "Changes parameter renaming NPC in UBS module, depending on the name of the button",
+                Russian = "Изменяет параметр переименования НПС в UBS модуле в зависимости от названия кнопки"
+            });
             RogueLibs.CreateCustomUnlock(new SMaD_Switch());
             RogueLibs.CreateCustomUnlock(new MTP_Switch());
             RogueLibs.CreateCustomUnlock(new aToI_Switch());
-            //RogueLibs.CreateCustomUnlock(new UBS_Switch());
+            RogueLibs.CreateCustomUnlock(new UBS_Switch());
             RogueLibs.CreateCustomAudio("Bag_Use", Properties.Resources.Bag_Use, AudioType.OGGVORBIS);
         }
+        /*public void LogoMenu_LogoAnimation(ref GameController ___gc)
+        {
+            ___gc.audioHandler.PlayMust(this.gc.playerAgent, "TitleScreenLogo");
+        }*/
     }
     public class SMaD_Switch : MutatorUnlock
     {
@@ -348,7 +384,7 @@ namespace TBB
             }
         }
     }
-    /*public class UBS_Switch : MutatorUnlock
+    public class UBS_Switch : MutatorUnlock
     {
         public UBS_Switch() : base("UBS_Switch", true)
         {
@@ -357,25 +393,25 @@ namespace TBB
         }
         public override void OnPushedButton()
         {
-            if (UBS.Items[0].IsAvailable)
+            if (UBS.UBSSSwitch == 1)
             {
-                UBS.SetActive(false);
+                UBS.UBSSSwitch = 0;
             }
             else
-                UBS.SetActive(true);
+                UBS.UBSSSwitch = 1;
             UpdateButton();
             UpdateMenu();
         }
         public override void UpdateButton()
         {
             base.UpdateButton();
-            if (aToI.Items[0].IsAvailable)
+            if (UBS.UBSSSwitch == 1)
                 Text = gc.nameDB.GetName("UBS_Off_colored", "Unlock");
             else Text = gc.nameDB.GetName("UBS_On_colored", "Unlock");
         }
         public override string GetFancyName()
         {
-            if (UBS.Items[0].IsAvailable)
+            if (UBS.UBSSSwitch == 1)
             {
                 return gc.nameDB.GetName("UBS_Off_colored", "Unlock");
             }
@@ -386,7 +422,7 @@ namespace TBB
         }
         public override string GetName()
         {
-            if (UBS.Items[0].IsAvailable)
+            if (UBS.UBSSSwitch == 1)
             {
                 return gc.nameDB.GetName("UBS_Off", "Unlock");
             }
@@ -397,7 +433,7 @@ namespace TBB
         }
         public override string GetDescription()
         {
-            if (UBS.Items[0].IsAvailable)
+            if (UBS.UBSSSwitch == 1)
             {
                 return gc.nameDB.GetName("D_UBS_Off", "Unlock");
             }
@@ -406,7 +442,7 @@ namespace TBB
                 return gc.nameDB.GetName("D_UBS_On", "Unlock");
             }
         }
-    }*/
+    }
     public class Thief_Bag_Low : CustomItem, IItemUsable
     {
         [RLSetup]
@@ -588,6 +624,7 @@ namespace TBB
             }
             Inventory.AddItem(pool[0]);
             Inventory.AddItem(selected);
+            Count--;
             return true;
         }
     }

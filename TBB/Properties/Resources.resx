@@ -241,6 +241,9 @@
   <data name="Salamandr_Heart" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Salamandr_Heart.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="Stalker_Bot" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Stalker_Bot.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="Steal_Apple" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Steal_Apple.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -270,5 +273,23 @@
   </data>
   <data name="VoodooBlank" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\VoodooBlank.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Border_Bot_Rusty" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Border_Bot_Rusty.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Cutter_Bot1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cutter_Bot1.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Cutter_Bot2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cutter_Bot2.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Spidgren_Bot1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Spidgren_Bot1.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Spidgren_Bot2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Spidgren_Bot2.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Kamikaze_Bot" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Kamikaze_Bot.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>
