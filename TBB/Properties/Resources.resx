@@ -292,4 +292,25 @@
   <data name="Kamikaze_Bot" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Kamikaze_Bot.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="Flame_Bot" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Flame_Bot.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="BeelzeBot" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BeelzeBot.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="BeelzeBotDrone" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BeelzeBotDrone.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="BullBot_Body" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BullBot_Body.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="BullBot_Head" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BullBot_Head.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MinotaurBot_Body" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MinotaurBot_Body.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MinotaurBot_Head" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MinotaurBot_Head.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

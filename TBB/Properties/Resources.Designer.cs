@@ -91,6 +91,26 @@ namespace TBB.Properties {
         }
         
         /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static byte[] BeelzeBot {
+            get {
+                object obj = ResourceManager.GetObject("BeelzeBot", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static byte[] BeelzeBotDrone {
+            get {
+                object obj = ResourceManager.GetObject("BeelzeBotDrone", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Поиск локализованного ресурса типа System.Byte[].
         /// </summary>
         internal static byte[] Black_Question {
@@ -176,6 +196,16 @@ namespace TBB.Properties {
         internal static byte[] Boomkorn {
             get {
                 object obj = ResourceManager.GetObject("Boomkorn", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] Border_Bot_Rusty {
+            get {
+                object obj = ResourceManager.GetObject("Border_Bot_Rusty", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -376,11 +406,51 @@ namespace TBB.Properties {
         }
         
         /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static byte[] BullBot_Body {
+            get {
+                object obj = ResourceManager.GetObject("BullBot_Body", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static byte[] BullBot_Head {
+            get {
+                object obj = ResourceManager.GetObject("BullBot_Head", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Поиск локализованного ресурса типа System.Byte[].
         /// </summary>
         internal static byte[] CIceCream_Use {
             get {
                 object obj = ResourceManager.GetObject("CIceCream_Use", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] Cutter_Bot1 {
+            get {
+                object obj = ResourceManager.GetObject("Cutter_Bot1", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] Cutter_Bot2 {
+            get {
+                object obj = ResourceManager.GetObject("Cutter_Bot2", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -448,6 +518,16 @@ namespace TBB.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Byte[].
         /// </summary>
+        internal static byte[] Flame_Bot {
+            get {
+                object obj = ResourceManager.GetObject("Flame_Bot", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
         internal static byte[] Grindstone {
             get {
                 object obj = ResourceManager.GetObject("Grindstone", resourceCulture);
@@ -471,6 +551,16 @@ namespace TBB.Properties {
         internal static byte[] Honey {
             get {
                 object obj = ResourceManager.GetObject("Honey", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] Kamikaze_Bot {
+            get {
+                object obj = ResourceManager.GetObject("Kamikaze_Bot", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -531,6 +621,26 @@ namespace TBB.Properties {
         internal static byte[] Luck_Fish {
             get {
                 object obj = ResourceManager.GetObject("Luck_Fish", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static byte[] MinotaurBot_Body {
+            get {
+                object obj = ResourceManager.GetObject("MinotaurBot_Body", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static byte[] MinotaurBot_Head {
+            get {
+                object obj = ResourceManager.GetObject("MinotaurBot_Head", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -598,62 +708,33 @@ namespace TBB.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Byte[].
         /// </summary>
+        internal static byte[] Spidgren_Bot1 {
+            get {
+                object obj = ResourceManager.GetObject("Spidgren_Bot1", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] Spidgren_Bot2 {
+            get {
+                object obj = ResourceManager.GetObject("Spidgren_Bot2", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
         internal static byte[] Stalker_Bot {
             get {
                 object obj = ResourceManager.GetObject("Stalker_Bot", resourceCulture);
                 return ((byte[])(obj));
             }
         }
-        internal static byte[] Cutter_Bot1
-        {
-            get
-            {
-                object obj = ResourceManager.GetObject("Cutter_Bot1", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        internal static byte[] Spidgren_Bot1
-        {
-            get
-            {
-                object obj = ResourceManager.GetObject("Spidgren_Bot1", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        internal static byte[] Spidgren_Bot2
-        {
-            get
-            {
-                object obj = ResourceManager.GetObject("Spidgren_Bot2", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        internal static byte[] Kamikaze_Bot
-        {
-            get
-            {
-                object obj = ResourceManager.GetObject("Kamikaze_Bot", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        internal static byte[] Cutter_Bot2
-        {
-            get
-            {
-                object obj = ResourceManager.GetObject("Cutter_Bot2", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-
-        internal static byte[] Border_Bot_Rusty
-        {
-            get
-            {
-                object obj = ResourceManager.GetObject("Border_Bot_Rusty", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-
+        
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Byte[].
         /// </summary>
