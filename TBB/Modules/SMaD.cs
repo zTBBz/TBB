@@ -1,16 +1,10 @@
-﻿using System;
-using System.Linq;
-using BepInEx;
-using RogueLibsCore;
+﻿using RogueLibsCore;
 using UnityEngine;
-using HarmonyLib;
-using System.Reflection.Emit;
 using System.Collections.Generic;
-using System.IO;
 
 namespace TBB
 {
-    class SMaD
+    public class SMaD
     {
         public static List<ItemUnlock> Items = new List<ItemUnlock>();
         public static void SetActive(bool isEnabled)

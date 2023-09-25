@@ -1,18 +1,15 @@
 ﻿using System;
 using System.Linq;
-using BepInEx;
 using RogueLibsCore;
 using UnityEngine;
 using HarmonyLib;
-using System.Reflection.Emit;
 using System.Collections.Generic;
-using System.IO;
 using System.Collections;
 using System.Reflection;
 
 namespace TBB
 {
-	class aToI
+	public class aToI
 	{
 		public static List<ItemUnlock> Items = new List<ItemUnlock>();
 		public static void SetActive(bool isEnabled)
@@ -177,7 +174,9 @@ namespace TBB
 				English = "This thing doesn't have a soul",
 				Russian = "У этой штуки нет души"
 			});
+
 			RoguePatcher patcher = new RoguePatcher(Main.MainInstance, typeof(aToI));
+
 			patcher.Postfix(typeof(Gun), nameof(Gun.spawnBullet), new Type[] { typeof(bulletStatus), typeof(InvItem), typeof(int), typeof(bool), typeof(string) });
 			patcher.Prefix(typeof(SpawnerMain), nameof(SpawnerMain.SpawnWreckage));
 			patcher.Prefix(typeof(SpawnerMain), nameof(SpawnerMain.SpawnWreckage2));
