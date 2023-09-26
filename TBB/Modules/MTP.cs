@@ -305,7 +305,6 @@ namespace TBB
                 string agentName = instance.traitName.Substring("AlignedTo_".Length);
                 AlignedTrait aligned = new AlignedTrait { AgentName = agentName };
                 hook = aligned;
-                hook.Instance = instance;
                 return true;
             }
             hook = null;
@@ -321,7 +320,6 @@ namespace TBB
                 string agentName = instance.traitName.Substring("LoyalTo_".Length);
                 LoyalTrait loyal = new LoyalTrait { AgentName = agentName };
                 hook = loyal;
-                hook.Instance = instance;
                 return true;
             }
             hook = null;
