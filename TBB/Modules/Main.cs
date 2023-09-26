@@ -35,6 +35,7 @@ namespace TBB
             RogueLibs.CreateCustomAudio("Bag_Use", Properties.Resources.Bag_Use, AudioType.OGGVORBIS);
         }
     }
+    [ItemCategories(RogueCategories.Usable)]
     public class Thief_Bag_Low : CustomItem, IItemUsable
     {
         [RLSetup]
@@ -93,6 +94,7 @@ namespace TBB
             return true;
         }
     }
+    [ItemCategories(RogueCategories.Usable)]
     public class Thief_Bag_Avarage : CustomItem, IItemUsable
     {
         [RLSetup]
@@ -154,6 +156,7 @@ namespace TBB
             return true;
         }
     }
+    [ItemCategories(RogueCategories.Usable)]
     public class Thief_Bag_Lega : CustomItem, IItemUsable
     {
         [RLSetup]
