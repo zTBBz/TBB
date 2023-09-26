@@ -1,18 +1,15 @@
 ﻿using System;
 using System.Linq;
-using BepInEx;
 using RogueLibsCore;
 using UnityEngine;
 using HarmonyLib;
-using System.Reflection.Emit;
 using System.Collections.Generic;
-using System.IO;
 using System.Collections;
 using System.Reflection;
 
 namespace TBB
 {
-	class aToI
+	public class aToI
 	{
 		public static List<ItemUnlock> Items = new List<ItemUnlock>();
 		public static void SetActive(bool isEnabled)
@@ -177,7 +174,9 @@ namespace TBB
 				English = "This thing doesn't have a soul",
 				Russian = "У этой штуки нет души"
 			});
+
 			RoguePatcher patcher = new RoguePatcher(Main.MainInstance, typeof(aToI));
+
 			patcher.Postfix(typeof(Gun), nameof(Gun.spawnBullet), new Type[] { typeof(bulletStatus), typeof(InvItem), typeof(int), typeof(bool), typeof(string) });
 			patcher.Prefix(typeof(SpawnerMain), nameof(SpawnerMain.SpawnWreckage));
 			patcher.Prefix(typeof(SpawnerMain), nameof(SpawnerMain.SpawnWreckage2));
@@ -409,6 +408,7 @@ namespace TBB
 		public CustomTooltip CombineTooltip(InvItem other) => "456";
 		public CustomTooltip CombineCursorText(InvItem other) => string.Empty;
 	}
+    [ItemCategories(RogueCategories.Usable, RogueCategories.Technology, RogueCategories.Weapons, RogueCategories.NonStandardWeapons)]
 	public class NuclearBriefcase : CustomItem, IItemUsable
 	{
 		public override void SetupDetails()
@@ -429,6 +429,7 @@ namespace TBB
 			return true;
 		}
 	}
+    [ItemCategories(RogueCategories.Usable, RogueCategories.Technology, RogueCategories.Weapons, RogueCategories.NonStandardWeapons)]
 	public class OpenNuclearBriefcase : CustomItem, IItemTargetableAnywhere
 	{
 		public override void SetupDetails()
@@ -590,6 +591,7 @@ namespace TBB
 			return true;
 		}
 	}
+    [ItemCategories(RogueCategories.Technology, RogueCategories.Guns, RogueCategories.GunAccessory)]
 	public class PortableAmmoDispenser : CustomItem, IItemCombinable
 	{
 		public override void SetupDetails()
@@ -654,7 +656,7 @@ namespace TBB
 		}
 		public CustomTooltip CombineCursorText(InvItem other) => string.Empty;
 	}
-	[ItemCategories(RogueCategories.Supplies, RogueCategories.Usable)]
+	[ItemCategories(RogueCategories.Supplies, RogueCategories.Usable, RogueCategories.Food)]
 	public class Portable_Barbecue_Inactive : CustomItem, IItemCombinable
 	{
 		public override void SetupDetails()
@@ -685,7 +687,7 @@ namespace TBB
 		public CustomTooltip CombineTooltip(InvItem other) => default;
 		public CustomTooltip CombineCursorText(InvItem other) => default;
 	}
-	[ItemCategories(RogueCategories.Supplies, RogueCategories.Usable)]
+	[ItemCategories(RogueCategories.Supplies, RogueCategories.Usable, RogueCategories.Food)]
 	public class Portable_Barbecue_Active : CustomItem, IItemCombinable
 	{
 		public override void SetupDetails()

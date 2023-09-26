@@ -1,19 +1,11 @@
 using System;
-using System.Linq;
-using BepInEx;
 using RogueLibsCore;
 using UnityEngine;
-using HarmonyLib;
-using System.Reflection.Emit;
-using System.Collections.Generic;
-using System.IO;
-using System.Collections;
-using System.Reflection;
 using BepInEx.Logging;
 
 namespace TBB
 {
-    class UBS
+    public class UBS
     {
 		public static new ManualLogSource Logger = null!;
 		public void Awake()
@@ -34,36 +26,44 @@ namespace TBB
 			CreateOctoSprite("Spidgren_Bot1", SpriteScope.Hair, Properties.Resources.Spidgren_Bot1, 64f, 64f);
 			CreateOctoSprite("Spidgren_Bot2", SpriteScope.Hair, Properties.Resources.Spidgren_Bot2, 64f, 64f);
 			CreateOctoSprite("Kamikaze_Bot", SpriteScope.Hair, Properties.Resources.Kamikaze_Bot, 64f, 64f);
+			CreateOctoSprite("Flame_Bot", SpriteScope.Hair, Properties.Resources.Flame_Bot, 64f, 64f);
+			CreateOctoSprite("MinotaurBot_Body", SpriteScope.Bodies, Properties.Resources.MinotaurBot_Body, 64f, 64f);
+			CreateOctoSprite("MinotaurBot_Head", SpriteScope.Agents, Properties.Resources.MinotaurBot_Head, 64f, 64f);
+			CreateOctoSprite("BullBot_Head", SpriteScope.Agents, Properties.Resources.BullBot_Head, 64f, 64f);
+			CreateOctoSprite("BullBot_Body", SpriteScope.Bodies, Properties.Resources.BullBot_Body, 64f, 64f);
+			CreateOctoSprite("Beelze_Bot", SpriteScope.Hair, Properties.Resources.BeelzeBot, 64f, 64f);
+			CreateOctoSprite("Beelze_Drone", SpriteScope.Hair, Properties.Resources.BeelzeBotDrone, 64f, 64f);
 			RogueLibs.CreateCustomName("Border_Bot_Broken", "Agent", new CustomNameInfo
 			{
 				English = "Broken BorderBot",
-				Russian = "Сломанный Погран-бот",
+				Russian = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ-пїЅпїЅпїЅ",
 			});
 			RogueLibs.CreateCustomName("Border_Bot_Rusty", "Agent", new CustomNameInfo
 			{
 				English = "Rusty BorderBot",
-				Russian = "Ржавый Погран-бот",
+				Russian = "пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ-пїЅпїЅпїЅ",
 			});
 			RogueLibs.CreateCustomName("Cutter_Bot", "Agent", new CustomNameInfo
 			{
 				English = "CutterBot",
-				Russian = "Винто-бот",
+				Russian = "пїЅпїЅпїЅпїЅпїЅ-пїЅпїЅпїЅ",
 			});
 			RogueLibs.CreateCustomName("Boom_Bot", "Agent", new CustomNameInfo
 			{
 				English = "BoomBot",
-				Russian = "Взрыво-бот",
+				Russian = "пїЅпїЅпїЅпїЅпїЅпїЅ-пїЅпїЅпїЅ",
 			});
 			RogueLibs.CreateCustomName("Spidgren_Bot", "Agent", new CustomNameInfo
 			{
 				English = "SpidgrenBot",
-				Russian = "Паукогрен-бот",
+				Russian = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ-пїЅпїЅпїЅ",
 			});
 		}
 		public static string[] FirstNames;
 		public static string[] TwoNames;
 		public static string[] RareNames;
-		public static int UBSSSwitch = 1;
+		public static int UBSNames = 1;
+		public static int UBSBots1 = 1;
 		public static RogueSprite[] CreateOctoSprite(string name, SpriteScope scope, byte[] rawData, float rectSize, float ppu = 64f)
 		{
 			Rect Area(int x, int y) => new Rect(x * rectSize, y * rectSize, rectSize, rectSize);
@@ -88,7 +88,7 @@ namespace TBB
 			{
 				RogueUtilities.ConvertToSprite(rawData, Area(0, 0), ppu),
 				RogueUtilities.ConvertToSprite(rawData, Area(1, 0), ppu),
-				RogueUtilities.ConvertToSprite(rawData, Area(0, 1), ppu),
+				RogueUtilities.ConvertToSprite(rawData, Area(0, 1), ppu),	
 				RogueUtilities.ConvertToSprite(rawData, Area(1, 1), ppu),
 			};
 		}
@@ -241,17 +241,13 @@ namespace TBB
 				}
 			}
 		}
-		public class Spidgren_Bot_Hook : HookBase<PlayfieldObject>, IDoUpdate
+		public class BeelzeBot_Hook : HookBase<PlayfieldObject>, IDoUpdate
 		{
 			protected override void Initialize() { }
+			private bool boomready = false;
 			public void Update()
 			{
 				Agent agent = (Agent)Instance;
-				int animIndex = (int)Math.Floor(Time.time * 8f % 2f);
-				string direction = agent.playerDir;
-				if (string.IsNullOrEmpty(direction)) direction = "S";
-				string spriteName = $"Spidgren_Bot{animIndex + 1}{direction}";
-				agent.agentHitboxScript.hair.SetSprite(spriteName);
 				agent.agentHitboxScript.heldItemH.SetSprite("Clear");
 				agent.agentHitboxScript.heldItem2H.SetSprite("Clear");
 				agent.agentHitboxScript.heldItemWB.SetSprite("Clear");
@@ -268,6 +264,115 @@ namespace TBB
 				agent.agentHitboxScript.bodyH.SetSprite("Clear");
 				agent.agentHitboxScript.bodyWB.SetSprite("Clear");
 				agent.agentHitboxScript.bodyWBH.SetSprite("Clear");
+				agent.agentHitboxScript.arm1WB.SetSprite("Clear");
+				agent.agentHitboxScript.arm2WB.SetSprite("Clear");
+				agent.agentHitboxScript.arm1WBH.SetSprite("Clear");
+				agent.agentHitboxScript.arm2WBH.SetSprite("Clear");
+				agent.agentHitboxScript.eyesWB.SetSprite("Clear");
+				agent.agentHitboxScript.eyes.SetSprite("Clear");
+				agent.agentHitboxScript.eyesH.SetSprite("Clear");
+				agent.agentHitboxScript.facialHairWB.SetSprite("Clear");
+				agent.agentHitboxScript.footwear1WB.SetSprite("Clear");
+				agent.agentHitboxScript.footwear2WB.SetSprite("Clear");
+				agent.agentHitboxScript.headPieceWB.SetSprite("Clear");
+				agent.agentHitboxScript.headWB.SetSprite("Clear");
+				agent.agentHitboxScript.leg1WB.SetSprite("Clear");
+				agent.agentHitboxScript.leg2WB.SetSprite("Clear");
+				agent.agentHitboxScript.leg1WBH.SetSprite("Clear");
+				agent.agentHitboxScript.leg2WBH.SetSprite("Clear");
+				agent.gun.gunSprite.SetSprite("Clear");
+				agent.gun.arm1Sprite.SetSprite("Clear");
+				agent.gun.arm2Sprite.SetSprite("Clear");
+				agent.melee.arm1Sprite.SetSprite("Clear");
+				agent.melee.arm2Sprite.SetSprite("Clear");
+				if (agent.opponent == null) { }
+				else
+                {
+					agent.gc.spawnerMain.SpawnAgent(agent.tr.position, null, "Beelze_Drone");
+					boomready = true;
+				}
+			}
+		}
+		public class Bull_Bot_Hook : HookBase<PlayfieldObject>, IDoUpdate
+		{
+			protected override void Initialize() { }
+			public void Update()
+			{
+				Agent agent = (Agent)Instance;
+				agent.agentHitboxScript.heldItemH.SetSprite("Clear");
+				agent.agentHitboxScript.heldItem2H.SetSprite("Clear");
+				agent.agentHitboxScript.heldItemWB.SetSprite("Clear");
+				agent.agentHitboxScript.heldItem.SetSprite("Clear");
+				agent.agentHitboxScript.heldItem2.SetSprite("Clear");
+
+				agent.agentHitboxScript.head.SetSprite("BullBot_Head");
+
+				/*agent.agentHitboxScript.headWB.SetSprite("Clear");
+				agent.agentHitboxScript.headWBH.SetSprite("Clear");
+				agent.agentHitboxScript.arm1H.SetSprite("Clear");
+				agent.agentHitboxScript.arm2H.SetSprite("Clear");
+				agent.agentHitboxScript.leg1H.SetSprite("Clear");
+				agent.agentHitboxScript.leg2H.SetSprite("Clear");*/
+
+				agent.agentHitboxScript.body.SetSprite("BullBot_Body");
+
+				/*agent.agentHitboxScript.bodyH.SetSprite("Clear");
+				agent.agentHitboxScript.bodyWB.SetSprite("Clear");
+				agent.agentHitboxScript.bodyWBH.SetSprite("Clear");
+				agent.agentHitboxScript.arm1WB.SetSprite("Clear");
+				agent.agentHitboxScript.headH.SetSprite("Clear");
+				agent.agentHitboxScript.arm2WB.SetSprite("Clear");
+				agent.agentHitboxScript.arm1WBH.SetSprite("Clear");
+				agent.agentHitboxScript.arm2WBH.SetSprite("Clear");*/
+				agent.agentHitboxScript.eyesWB.SetSprite("Clear");
+				agent.agentHitboxScript.eyes.SetSprite("Clear");
+				agent.agentHitboxScript.eyesH.SetSprite("Clear");
+				agent.agentHitboxScript.facialHairWB.SetSprite("Clear");
+				/*agent.agentHitboxScript.footwear1WB.SetSprite("Clear");
+				agent.agentHitboxScript.footwear2WB.SetSprite("Clear");
+				agent.agentHitboxScript.headPieceWB.SetSprite("Clear");
+				agent.agentHitboxScript.headWB.SetSprite("Clear");
+				agent.agentHitboxScript.leg1WB.SetSprite("Clear");
+				agent.agentHitboxScript.leg2WB.SetSprite("Clear");
+				agent.agentHitboxScript.leg1WBH.SetSprite("Clear");
+				agent.agentHitboxScript.leg2WBH.SetSprite("Clear");*/
+				agent.gun.gunSprite.SetSprite("Clear");
+				agent.gun.arm1Sprite.SetSprite("Clear");
+				agent.gun.arm2Sprite.SetSprite("Clear");
+				agent.melee.arm1Sprite.SetSprite("Clear");
+				agent.melee.arm2Sprite.SetSprite("Clear");
+			}
+		}
+		public class Spidgren_Bot_Hook : HookBase<PlayfieldObject>, IDoUpdate
+		{
+			protected override void Initialize() { }
+			public void Update()
+			{
+				Agent agent = (Agent)Instance;
+				int animIndex = (int)Math.Floor(Time.time * 8f % 2f);
+				string direction = agent.playerDir;
+				if (string.IsNullOrEmpty(direction)) direction = "S";
+				string spriteName = $"Spidgren_Bot{animIndex + 1}{direction}";
+				agent.agentHitboxScript.body.SetSprite(spriteName);
+				//agent.agentHitboxScript.hair.SetSprite(spriteName);
+				agent.agentHitboxScript.heldItemH.SetSprite("Clear");
+				agent.agentHitboxScript.heldItem2H.SetSprite("Clear");
+				agent.agentHitboxScript.heldItemWB.SetSprite("Clear");
+				agent.agentHitboxScript.heldItem.SetSprite("Clear");
+				agent.agentHitboxScript.heldItem2.SetSprite("Clear");
+				agent.agentHitboxScript.headH.SetSprite("Clear");
+				agent.agentHitboxScript.head.SetSprite("Clear");
+				agent.agentHitboxScript.headWB.SetSprite("Clear");
+				agent.agentHitboxScript.headWBH.SetSprite("Clear");
+				agent.agentHitboxScript.arm1H.SetSprite("Clear");
+				agent.agentHitboxScript.arm2H.SetSprite("Clear");
+				agent.agentHitboxScript.leg1H.SetSprite("Clear");
+				agent.agentHitboxScript.leg2H.SetSprite("Clear");
+
+				/*agent.agentHitboxScript.bodyH.SetSprite("Clear");
+				agent.agentHitboxScript.bodyWB.SetSprite("Clear");
+				agent.agentHitboxScript.bodyWBH.SetSprite("Clear");*/
+
 				agent.agentHitboxScript.arm1WB.SetSprite("Clear");
 				agent.agentHitboxScript.arm2WB.SetSprite("Clear");
 				agent.agentHitboxScript.arm1WBH.SetSprite("Clear");
@@ -530,10 +635,239 @@ namespace TBB
 				__instance.agentActive = true;
 				__instance.SetBrainActive(true);
 			}
+			if (__instance.agentName == "Bull_Bot")
+			{
+				__instance.SetStrength(2);
+				__instance.SetEndurance(2);
+				__instance.SetAccuracy(0);
+				__instance.SetSpeed(2);
+				__instance.inhuman = false;
+				__instance.wontFlee = true;
+				__instance.cantChallengeToFight = true;
+				__instance.preventsMindControl = true;
+				//__instance.statusEffects.AddTrait("TheLaw");
+				__instance.statusEffects.AddTrait("Electronic");
+				__instance.statusEffects.AddTrait("ResistFire");
+				__instance.statusEffects.AddTrait("CantUseGuns");
+				__instance.statusEffects.AddTrait("DontHitAligned");
+				__instance.copBot = true;
+				__instance.modMeleeSkill = 2;
+				__instance.modGunSkill = 0;
+				__instance.modToughness = 1;
+				__instance.modVigilant = 0;
+				__instance.hackable = true;
+				__instance.AddDesire("Supplies");
+				__instance.AddDesire("Technology");
+				__instance.AddDesire("Guns");
+				__instance.AddJob("Bribe", 5);
+				__instance.SetupSpecialInvDatabase();
+				if (__instance.defaultGoal == string.Empty || __instance.defaultGoal == "None" || __instance.defaultGoal == null)
+				{
+					__instance.SetDefaultGoal("Guard");
+				}
+				__instance.agentHitboxScript.hasSetup = true;
+				__instance.agentHitboxScript.SetUsesNewHead();
+				/*__instance.agentHitboxScript.hairType = "Spidgren_Bot1";
+				__instance.agentHitboxScript.head.SetSprite("Clear");*/
+				__instance.customCharacterData.facialHair = "None";
+				__instance.agentHitboxScript.bodyColor = new Color32(255, 255, 255, 255);
+				__instance.agentHitboxScript.legsColor = new Color32(24, 69, 56, 255);
+				__instance.agentHitboxScript.skinColor = new Color32(0, 0, 0, 255);
+				__instance.agentHitboxScript.hairColor = new Color32(255, 255, 255, 255);
+				__instance.AddHook<Bull_Bot_Hook>();
+				__instance.agentCategories.Clear();
+				__instance.health = __instance.healthMax;
+				__instance.setInitialCategories = true;
+				__instance.agentActive = true;
+				__instance.SetBrainActive(true);
+			}
+			if (__instance.agentName == "Turret_Bot")
+			{
+				__instance.SetStrength(0);
+				__instance.SetEndurance(0);
+				__instance.SetAccuracy(1);
+				__instance.SetSpeed(1);
+				__instance.inhuman = false;
+				__instance.wontFlee = true;
+				__instance.cantChallengeToFight = true;
+				__instance.preventsMindControl = true;
+				__instance.statusEffects.AddTrait("TheLaw");
+				__instance.statusEffects.AddTrait("Electronic");
+				__instance.statusEffects.AddTrait("ResistFire");
+				__instance.copBot = true;
+				__instance.modMeleeSkill = 0;
+				__instance.modGunSkill = 1;
+				__instance.modToughness = 1;
+				__instance.modVigilant = 0;
+				__instance.hackable = true;
+				InvItem addedRevolver = __instance.inventory.AddItem("Revolver", 999);
+				addedRevolver.doSpill = false;
+				addedRevolver.cantDropNPC = true;
+				__instance.AddDesire("Supplies");
+				__instance.AddDesire("Technology");
+				__instance.AddDesire("Guns");
+				__instance.SetupSpecialInvDatabase();
+				if (__instance.defaultGoal == string.Empty || __instance.defaultGoal == "None")
+				{
+					__instance.SetDefaultGoal("Wander");
+				}
+				__instance.agentHitboxScript.hasSetup = true;
+				__instance.agentHitboxScript.SetUsesNewHead();
+				__instance.agentHitboxScript.hairType = "Spidgren_Bot1";
+				__instance.agentHitboxScript.head.SetSprite("Clear");
+				__instance.customCharacterData.facialHair = "None";
+				__instance.agentHitboxScript.bodyColor = new Color32(0, 0, 0, 255);
+				__instance.agentHitboxScript.legsColor = new Color32(0, 0, 0, 255);
+				__instance.agentHitboxScript.skinColor = new Color32(0, 0, 0, 255);
+				__instance.agentHitboxScript.hairColor = new Color32(0, 0, 0, 255);
+				__instance.AddHook<Spidgren_Bot_Hook>();
+				__instance.agentCategories.Clear();
+				__instance.health = __instance.healthMax;
+				__instance.setInitialCategories = true;
+				__instance.agentActive = true;
+				__instance.SetBrainActive(true);
+			}
+			if (__instance.agentName == "Beelze_Drone")
+			{
+				__instance.SetStrength(0);
+				__instance.SetEndurance(0);
+				__instance.SetAccuracy(0);
+				__instance.SetSpeed(5);
+				__instance.inhuman = false;
+				__instance.wontFlee = true;
+				__instance.cantChallengeToFight = true;
+				__instance.preventsMindControl = true;
+				__instance.statusEffects.AddTrait("TheLaw");
+				__instance.statusEffects.AddTrait("Electronic");
+				__instance.statusEffects.AddTrait("ResistFire");
+				__instance.statusEffects.AddTrait("CantUseGuns");
+				__instance.statusEffects.AddTrait("CantAttack");
+				__instance.copBot = true;
+				__instance.modMeleeSkill = 0;
+				__instance.modGunSkill = 0;
+				__instance.modToughness = 1;
+				__instance.modVigilant = 0;
+				__instance.hackable = true;
+				__instance.AddDesire("Supplies");
+				__instance.AddDesire("Technology");
+				__instance.AddDesire("Guns");
+				__instance.SetupSpecialInvDatabase();
+				if (__instance.defaultGoal == string.Empty || __instance.defaultGoal == "None")
+				{
+					__instance.SetDefaultGoal("Wander");
+				}
+				__instance.agentHitboxScript.hasSetup = true;
+				__instance.agentHitboxScript.SetUsesNewHead();
+				__instance.agentHitboxScript.hairType = "Spidgren_Bot1";
+				__instance.agentHitboxScript.head.SetSprite("Clear");
+				__instance.customCharacterData.facialHair = "None";
+				__instance.agentHitboxScript.bodyColor = new Color32(0, 0, 0, 255);
+				__instance.agentHitboxScript.legsColor = new Color32(0, 0, 0, 255);
+				__instance.agentHitboxScript.skinColor = new Color32(0, 0, 0, 255);
+				__instance.agentHitboxScript.hairColor = new Color32(255, 255, 255, 255);
+				__instance.AddHook<Spidgren_Bot_Hook>();
+				__instance.agentCategories.Clear();
+				__instance.health = __instance.healthMax;
+				__instance.setInitialCategories = true;
+				__instance.agentActive = true;
+				__instance.SetBrainActive(true);
+			}
+			if (__instance.agentName == "Beelze_Bot")
+			{
+				__instance.SetStrength(0);
+				__instance.SetEndurance(1);
+				__instance.SetAccuracy(0);
+				__instance.SetSpeed(1);
+				__instance.inhuman = false;
+				__instance.wontFlee = true;
+				__instance.cantChallengeToFight = true;
+				__instance.preventsMindControl = true;
+				__instance.statusEffects.AddTrait("TheLaw");
+				__instance.statusEffects.AddTrait("Electronic");
+				__instance.statusEffects.AddTrait("ResistFire");
+				__instance.statusEffects.AddTrait("CantUseGuns");
+				__instance.statusEffects.AddTrait("CantAttack");
+				__instance.copBot = true;
+				__instance.modMeleeSkill = 0;
+				__instance.modGunSkill = 0;
+				__instance.modToughness = 1;
+				__instance.modVigilant = 0;
+				__instance.hackable = true;
+				__instance.AddDesire("Supplies");
+				__instance.AddDesire("Technology");
+				__instance.AddDesire("Guns");
+				__instance.SetupSpecialInvDatabase();
+				if (__instance.defaultGoal == string.Empty || __instance.defaultGoal == "None")
+				{
+					__instance.SetDefaultGoal("Wander");
+				}
+				__instance.agentHitboxScript.hasSetup = true;
+				__instance.agentHitboxScript.SetUsesNewHead();
+				__instance.agentHitboxScript.hairType = "Spidgren_Bot1";
+				__instance.agentHitboxScript.head.SetSprite("Clear");
+				__instance.customCharacterData.facialHair = "None";
+				__instance.agentHitboxScript.bodyColor = new Color32(0, 0, 0, 0);
+				__instance.agentHitboxScript.legsColor = new Color32(0, 0, 0, 0);
+				__instance.agentHitboxScript.skinColor = new Color32(0, 0, 0, 0);
+				__instance.agentHitboxScript.hairColor = new Color32(255, 255, 255, 255);
+				__instance.AddHook<Spidgren_Bot_Hook>();
+				__instance.agentCategories.Clear();
+				__instance.health = __instance.healthMax;
+				__instance.setInitialCategories = true;
+				__instance.agentActive = true;
+				__instance.SetBrainActive(true);
+			}
+			if (__instance.agentName == "Flame_Bot")
+			{
+				__instance.SetStrength(0);
+				__instance.SetEndurance(2);
+				__instance.SetAccuracy(3);
+				__instance.SetSpeed(1);
+				__instance.inhuman = false;
+				__instance.wontFlee = true;
+				__instance.cantChallengeToFight = true;
+				__instance.preventsMindControl = true;
+				__instance.statusEffects.AddTrait("TheLaw");
+				__instance.statusEffects.AddTrait("DontTriggerFloorHazards");
+				__instance.statusEffects.AddTrait("Electronic");
+				__instance.statusEffects.AddTrait("ResistFire");
+				__instance.copBot = true;
+				__instance.modMeleeSkill = 0;
+				__instance.modGunSkill = 2;
+				__instance.modToughness = 1;
+				__instance.modVigilant = 0;
+				InvItem addedFlamethrower = __instance.inventory.AddItem("Flamethrower", 999);
+				addedFlamethrower.doSpill = false;
+				addedFlamethrower.cantDropNPC = true;
+				__instance.hackable = true;
+				__instance.AddDesire("Supplies");
+				__instance.AddDesire("Technology");
+				__instance.AddDesire("Guns");
+				__instance.SetupSpecialInvDatabase();
+				if (__instance.defaultGoal == string.Empty || __instance.defaultGoal == "None")
+				{
+					__instance.SetDefaultGoal("Wander");
+				}
+				__instance.agentHitboxScript.hasSetup = true;
+				__instance.agentHitboxScript.SetUsesNewHead();
+				__instance.agentHitboxScript.hairType = "Flame_Bot";
+				__instance.agentHitboxScript.head.SetSprite("Clear");
+				__instance.customCharacterData.facialHair = "None";
+				__instance.agentHitboxScript.bodyColor = new Color32(0, 0, 0, 0);
+				__instance.agentHitboxScript.legsColor = new Color32(0, 0, 0, 0);
+				__instance.agentHitboxScript.skinColor = new Color32(0, 0, 0, 0);
+				__instance.agentHitboxScript.hairColor = new Color32(255, 255, 255, 255);
+				__instance.AddHook<InvisibleHook>();
+				__instance.agentCategories.Clear();
+				__instance.health = __instance.healthMax;
+				__instance.setInitialCategories = true;
+				__instance.agentActive = true;
+				__instance.SetBrainActive(true);
+			}
 		}
 		public static void LoadLevel_SetupMore4(LoadLevel __instance, ref GameController ___gc)
 		{
-			if (UBS.UBSSSwitch == 1)
+			if (UBS.UBSNames == 1)
             {
 				for (int i = 0; i < ___gc.agentList.Count; i++)
 				{
@@ -549,9 +883,27 @@ namespace TBB
 						chars[r] = RandomLetter();
 					string robotname = new string(chars);
 					int botint = UnityEngine.Random.Range(111, 1000);
-					if (agent.agentName is "CopBot" or "ButlerBot" or "Robot" or "borderbotrusty" or "Border_Bot_Broken" or "Cutter_Bot" or "Boom_Bot" or "Spidgren_Bot" || agent.agentName is "RobotPlayer" && ___gc.levelType == "HomeBase")
+					if (agent.agentName is "CopBot" or "Robot" || agent.agentName is "RobotPlayer" && ___gc.levelType == "HomeBase")
 					{
 						agent.agentRealName = robotname + "-" + botint;
+					}
+					else if (agent.agentName is "Zombie")
+                    {
+						if (rnd.Next(100) == 0) // 1%
+						{
+							agent.agentRealName = "Walking Corpse of" + SelectRareName();
+						}
+						else
+							agent.agentRealName = "Walking Corpse of" + SelectFirstName() + " " + SelectTwoName();
+					}
+					else if (agent.agentName is "Ghost")
+					{
+						if (rnd.Next(100) == 0) // 1%
+						{
+							agent.agentRealName = "The Ghost of" + SelectRareName();
+						}
+						else
+							agent.agentRealName = "The Ghost of" + SelectFirstName() + " " + SelectTwoName();
 					}
 					else if (rnd.Next(100) == 0) // 1%
 					{
@@ -563,91 +915,93 @@ namespace TBB
 					}
 				}
 			}
-			if (___gc.levelType != "HomeBase" && ___gc.levelType != "Tutorial")
+			if (UBS.UBSBots1 == 1)
             {
-				/*levelTheme == 0 => levelType = "Трущобы";
-				levelTheme == 1 => levelType = "Завод";
-				levelTheme == 2 => levelType = "Парк";
-				levelTheme == 3 => levelType = "Пригород";
-				levelTheme == 4 => levelType = "Деловой центр";
-				levelTheme == 5 => levelType = "Деревня Мэра";*/
+				if (___gc.levelType != "HomeBase" && ___gc.levelType != "Tutorial")
+				{
+					/*levelTheme == 0 => levelType = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ";
+					levelTheme == 1 => levelType = "пїЅпїЅпїЅпїЅпїЅ";
+					levelTheme == 2 => levelType = "пїЅпїЅпїЅпїЅ";
+					levelTheme == 3 => levelType = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ";
+					levelTheme == 4 => levelType = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ";
+					levelTheme == 5 => levelType = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ";*/
 
-				int borderbotchoose = UnityEngine.Random.Range(1, 3);
-				Agent agent;
-				Vector2 randompos = ___gc.tileInfo.FindRandLocationGeneral();
-				if (___gc.levelTheme is 0)
-                {	
-					//___gc.spawnerMain.SpawnAgent(___gc.elevatorDown.curPosition, null, "Cutter_Bot");
-					//___gc.spawnerMain.SpawnAgent(___gc.elevatorDown.curPosition, null, "Spidgren_Bot");
-					//___gc.spawnerMain.SpawnAgent(___gc.elevatorDown.curPosition, null, "Boom_Bot");
-					for (int r = 0; r < 4; r++)
-                    {
-						borderbotchoose = UnityEngine.Random.Range(1, 3);
-						if (borderbotchoose == 1)
-						{
-							___gc.spawnerMain.SpawnAgent(randompos, null, "Border_Bot_Broken");
-						}
-						else ___gc.spawnerMain.SpawnAgent(randompos, null, "Border_Bot_Rusty");
-					}
-				}
-				else if (___gc.levelTheme is 1)
-                {
-					for (int r = 0; r < 6; r++)
-                    {
-						borderbotchoose = UnityEngine.Random.Range(1, 3);
-						if (borderbotchoose == 1)
-						{
-							___gc.spawnerMain.SpawnAgent(randompos, null, "Border_Bot_Broken");
-						}
-						else ___gc.spawnerMain.SpawnAgent(randompos, null, "Border_Bot_Rusty");
-					}
-					for (int r = 0; r < 2; r++)
-                    {
-						___gc.spawnerMain.SpawnAgent(randompos, null, "Cutter_Bot");
-					}
-				}
-				else if (___gc.levelTheme is 3)
-				{
-					for (int r = 0; r < 10; r++)
+					int borderbotchoose = UnityEngine.Random.Range(1, 3);
+					Vector2 randompos = ___gc.tileInfo.FindRandLocationGeneral();
+					if (___gc.levelTheme is 0)
 					{
-						if (borderbotchoose == 1)
+						___gc.spawnerMain.SpawnAgent(___gc.elevatorDown.curPosition, null, "Bull_Bot");
+						//___gc.spawnerMain.SpawnAgent(___gc.elevatorDown.curPosition, null, "Spidgren_Bot");
+						//___gc.spawnerMain.SpawnAgent(___gc.elevatorDown.curPosition, null, "Bull_Bot");
+						for (int r = 0; r < 4; r++)
 						{
-							___gc.spawnerMain.SpawnAgent(randompos, null, "Border_Bot_Broken");
+							borderbotchoose = UnityEngine.Random.Range(1, 3);
+							if (borderbotchoose == 1)
+							{
+								___gc.spawnerMain.SpawnAgent(randompos, null, "Border_Bot_Broken");
+							}
+							else ___gc.spawnerMain.SpawnAgent(randompos, null, "Border_Bot_Rusty");
 						}
 					}
-					for (int r = 0; r < 4; r++)
+					else if (___gc.levelTheme is 1)
 					{
-						___gc.spawnerMain.SpawnAgent(randompos, null, "Cutter_Bot");
+						for (int r = 0; r < 6; r++)
+						{
+							borderbotchoose = UnityEngine.Random.Range(1, 3);
+							if (borderbotchoose == 1)
+							{
+								___gc.spawnerMain.SpawnAgent(randompos, null, "Border_Bot_Broken");
+							}
+							else ___gc.spawnerMain.SpawnAgent(randompos, null, "Border_Bot_Rusty");
+						}
+						for (int r = 0; r < 2; r++)
+						{
+							___gc.spawnerMain.SpawnAgent(randompos, null, "Cutter_Bot");
+						}
 					}
-				}
-				else if (___gc.levelTheme is 4)
-				{
-					for (int r = 0; r < 6; r++)
+					else if (___gc.levelTheme is 3)
 					{
-						___gc.spawnerMain.SpawnAgent(randompos, null, "Cutter_Bot");
+						for (int r = 0; r < 10; r++)
+						{
+							if (borderbotchoose == 1)
+							{
+								___gc.spawnerMain.SpawnAgent(randompos, null, "Border_Bot_Broken");
+							}
+						}
+						for (int r = 0; r < 4; r++)
+						{
+							___gc.spawnerMain.SpawnAgent(randompos, null, "Cutter_Bot");
+						}
 					}
-					/*for (int r = 0; r < 4; r++)
+					else if (___gc.levelTheme is 4)
 					{
-						___gc.spawnerMain.SpawnAgent(___gc.elevatorUp.curPosition, null, "Spidgren_Bot");
-					}*/
-					for (int r = 0; r < 2; r++)
-					{
-						___gc.spawnerMain.SpawnAgent(randompos, null, "Boom_Bot");
+						for (int r = 0; r < 6; r++)
+						{
+							___gc.spawnerMain.SpawnAgent(randompos, null, "Cutter_Bot");
+						}
+						/*for (int r = 0; r < 4; r++)
+						{
+							___gc.spawnerMain.SpawnAgent(___gc.elevatorUp.curPosition, null, "Spidgren_Bot");
+						}*/
+						for (int r = 0; r < 2; r++)
+						{
+							___gc.spawnerMain.SpawnAgent(randompos, null, "Boom_Bot");
+						}
 					}
-				}
-				else if (___gc.levelTheme is 5)
-				{
-					for (int r = 0; r < 8; r++)
+					else if (___gc.levelTheme is 5)
 					{
-						___gc.spawnerMain.SpawnAgent(randompos, null, "Cutter_Bot");
-					}
-					/*for (int r = 0; r < 4; r++)
-					{
-						___gc.spawnerMain.SpawnAgent(___gc.elevatorUp.curPosition, null, "Spidgren_Bot");
-					}*/
-					for (int r = 0; r < 4; r++)
-					{
-						___gc.spawnerMain.SpawnAgent(randompos, null, "Boom_Bot");
+						for (int r = 0; r < 8; r++)
+						{
+							___gc.spawnerMain.SpawnAgent(randompos, null, "Cutter_Bot");
+						}
+						/*for (int r = 0; r < 4; r++)
+						{
+							___gc.spawnerMain.SpawnAgent(___gc.elevatorUp.curPosition, null, "Spidgren_Bot");
+						}*/
+						for (int r = 0; r < 4; r++)
+						{
+							___gc.spawnerMain.SpawnAgent(randompos, null, "Boom_Bot");
+						}
 					}
 				}
 			}

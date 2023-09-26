@@ -1,19 +1,15 @@
 ﻿using System;
 using System.Linq;
-using BepInEx;
 using RogueLibsCore;
 using UnityEngine;
-using HarmonyLib;
-using System.Reflection.Emit;
 using System.Collections.Generic;
-using System.IO;
 using System.Collections;
 
 namespace TBB
 {
-    class MTP
+    public class MTP
     {
-        public static bool IsATOIInstalled;
+        //public static bool IsATOIInstalled;
         public static List<TraitUnlock> Traits = new List<TraitUnlock>();
         public static void SetActive(bool isEnabled)
         {
@@ -27,7 +23,7 @@ namespace TBB
         {
             RoguePatcher Patcher = new RoguePatcher(Main.MainInstance, typeof(MTP));
             Patcher.Postfix(typeof(Relationships), "SetupRelationshipOriginal", new Type[1] { typeof(Agent) });
-            IsATOIInstalled = File.Exists(Path.GetFullPath(Path.Combine(Paths.PluginPath, "aTonOfItems.dll")));
+            //IsATOIInstalled = File.Exists(Path.GetFullPath(Path.Combine(Paths.PluginPath, "aTonOfItems.dll")));
             RogueFramework.TraitFactories.Add(new AlignedTraitFactory());
             TraitUnlock unlock = new TraitUnlock("AlignedTo_Gangbanger") { UnlockCost = 0, CharacterCreationCost = 5 };
             Traits.Add(unlock);
@@ -309,7 +305,6 @@ namespace TBB
                 string agentName = instance.traitName.Substring("AlignedTo_".Length);
                 AlignedTrait aligned = new AlignedTrait { AgentName = agentName };
                 hook = aligned;
-                hook.Instance = instance;
                 return true;
             }
             hook = null;
@@ -325,7 +320,6 @@ namespace TBB
                 string agentName = instance.traitName.Substring("LoyalTo_".Length);
                 LoyalTrait loyal = new LoyalTrait { AgentName = agentName };
                 hook = loyal;
-                hook.Instance = instance;
                 return true;
             }
             hook = null;
